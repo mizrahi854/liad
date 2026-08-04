@@ -200,12 +200,29 @@ def load_rules():
 
 
 def match_rule(trail, rules):
-    """מוצא את הכלל המתאים לנתיב התיקייה."""
+    """
+    מוצא את הכלל המתאים ביותר לנתיב התיקייה.
+
+    בוחרים לפי ספציפיות ולא לפי סדר בקובץ. הספציפיות נמדדת לפי
+    *כמות התווים* שהכלל מכסה, ורק אז לפי מספר המילים.
+
+    למה תווים ולא מילים: "Koyo לק רגיל" היא מילת התאמה אחת אבל ארוכה
+    וספציפית, בעוד ["Koyo", "גוונים"] הן שתי מילים כלליות. ספירה לפי
+    מילים הייתה נותנת ניצחון לכלל לק הג׳ל, וכל הלק הרגיל היה מקוטלג
+    בטעות כלק ג׳ל — שני מוצרים שונים לגמרי במחיר ובשימוש.
+    """
     key = " / ".join(trail)
+    best, best_score = None, None
+
     for rule in rules["lines"]:
-        if all(part in key for part in rule["match"]):
-            return rule
-    return None
+        terms = rule["match"]
+        if not all(part in key for part in terms):
+            continue
+        score = (sum(len(t) for t in terms), len(terms))
+        if best_score is None or score > best_score:
+            best, best_score = rule, score
+
+    return best
 
 
 # קוד גוון: 3 ספרות ומעלה, אפשר עם אות מובילה (b002) או נגררת (100a)
@@ -285,17 +302,22 @@ def build_catalog(leaves, rules, downloaded):
                 ))
             continue
 
-        # 3. רגיל
+        # 3. רגיל — כל קובץ הוא גוון. המיזוג בין סגנונות הצילום קורה בהמשך.
         for stem, local in entries:
             is_shade = bool(SHADE_RE.match(stem))
-            products.append(make(
+            item = make(
                 rule, stem, local,
                 title=f'{rule["title"]} — גוון {stem}' if is_shade
                       else f'{rule["title"]} — {stem}',
                 shade=stem if is_shade else None,
-            ))
+            )
+            # סגנון הצילום שממנו הגיע הקובץ — קובע את סדר התמונות במיזוג
+            item["_style"] = style_of(trail, rule)
+            products.append(item)
 
-    # הגנה מפני מזהים כפולים
+    products = merge_variants(products)
+
+    # הגנה מפני מזהים כפולים ששרדו את המיזוג
     seen = {}
     for p in products:
         if p["id"] in seen:
@@ -305,6 +327,67 @@ def build_catalog(leaves, rules, downloaded):
             seen[p["id"]] = 1
 
     return products, skipped
+
+
+def style_of(trail, rule):
+    """
+    מזהה את סגנון הצילום של התיקייה לפי מפת styles שבכלל.
+    מחזיר (עדיפות, שם תפקיד). ככל שהעדיפות נמוכה יותר — התמונה מוקדמת יותר.
+    """
+    key = " / ".join(trail)
+    for fragment, meta in (rule.get("styles") or {}).items():
+        if fragment in key:
+            return (meta.get("order", 50), meta.get("role", "photo"))
+    return (50, "photo")
+
+
+def merge_variants(products):
+    """
+    ממזג מוצרים שהם למעשה אותו פריט שצולם בכמה סגנונות.
+
+    זהות מוצר = (מותג, קו, גוון). כל השאר נחשב תמונות נוספות של אותו מוצר.
+    התמונות ממוינות לפי תפקיד הצילום — בקבוק ראשון, סווטצ׳ שני — כדי
+    שהכרטיס בקטלוג תמיד יציג את הבקבוק, וה-hover את הגוון על הציפורן.
+    """
+    from collections import OrderedDict
+
+    groups = OrderedDict()
+    for p in products:
+        # מוצרים ללא גוון (מכשור, מארזים) מזוהים לפי המזהה שלהם ולא ממוזגים
+        key = (p["brand"], p["line"], p["shade"]) if p["shade"] else ("#", p["id"], None)
+        groups.setdefault(key, []).append(p)
+
+    merged = []
+    for key, items in groups.items():
+        if len(items) == 1:
+            item = items[0]
+            item.pop("_style", None)
+            merged.append(item)
+            continue
+
+        # מיון לפי סדר סגנון הצילום
+        items.sort(key=lambda x: x.get("_style", (50, "photo"))[0])
+        base = items[0]
+
+        # איסוף כל התמונות מכל הסגנונות, ללא כפילויות ובשמירת סדר
+        images, roles = [], []
+        for it in items:
+            for img in [it["image"], *it.get("gallery", [])]:
+                if img not in images:
+                    images.append(img)
+                    roles.append(it.get("_style", (50, "photo"))[1])
+
+        base["image"] = images[0]
+        base["imageRole"] = roles[0]
+        if len(images) > 1:
+            base["gallery"] = images[1:]
+        else:
+            base.pop("gallery", None)
+
+        base.pop("_style", None)
+        merged.append(base)
+
+    return merged
 
 
 # ---------------------------------------------------------------- main

@@ -4,6 +4,7 @@
    ========================================================================== */
 
 import { $, $$, CONFIG, getCart, cartCount } from "./store.js";
+import { initAccessibility } from "./accessibility.js";
 
 /**
  * כתובת ה-API לשליחת לידים ולהזמנות.
@@ -13,6 +14,7 @@ import { $, $$, CONFIG, getCart, cartCount } from "./store.js";
 export const LEAD_ENDPOINT = null;
 
 export function initShared() {
+  initAccessibility();
   initHeader();
   initMobileNav();
   initAnnouncement();

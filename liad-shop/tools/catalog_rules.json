@@ -1,9 +1,11 @@
 {
   "_comment": "כללי תמחור וקיטלוג. כל תיקייה בדרייב מותאמת לכלל לפי 'match' (כל המילים חייבות להופיע בנתיב). priceSource: client = מחיר שהלקוחה נתנה | market = מחיר ייחוס מסקר שוק (nail-it.co.il) שצריך אישור.",
-
   "lines": [
     {
-      "match": ["Bell", "Bell Builder"],
+      "match": [
+        "Bell",
+        "Bell Builder"
+      ],
       "brand": "BELL",
       "title": "ג׳ל בנייה בגוון BELL Color Builder",
       "slug": "bell-color-builder",
@@ -14,7 +16,10 @@
       "description": "ג׳ל בנייה בגוון של BELL בנפח 15 מ״ל. נוסחת HEMA FREE ו-T.P.O FREE, מרקם נוח לעבודה ושליטה מלאה בפיסול. מתאים לבנייה, חיזוק ומילוי."
     },
     {
-      "match": ["Bell", "גוונים"],
+      "match": [
+        "Bell",
+        "גוונים"
+      ],
       "brand": "BELL",
       "title": "ראבר בייס בגוון BELL",
       "slug": "bell-rubber-base",
@@ -22,11 +27,27 @@
       "price": 49,
       "priceSource": "client",
       "defaultStock": 10,
-      "description": "ראבר בייס בגוון של BELL. אחיזה גמישה שמתיישרת על הציפורן, כיסוי אחיד ועמידות גבוהה — מתאים גם כבסיס וגם כגוון עצמאי."
+      "description": "ראבר בייס בגוון של BELL. אחיזה גמישה שמתיישרת על הציפורן, כיסוי אחיד ועמידות גבוהה — מתאים גם כבסיס וגם כגוון עצמאי.",
+      "styles": {
+        "סגנון 3": {
+          "role": "bottle",
+          "order": 1
+        },
+        "סגנון 2": {
+          "role": "composite",
+          "order": 2
+        },
+        "סגנון 1": {
+          "role": "swatch",
+          "order": 3
+        }
+      }
     },
-
     {
-      "match": ["Buba", "Buba Colors"],
+      "match": [
+        "Buba",
+        "Buba Colors"
+      ],
       "brand": "BUBA",
       "title": "לק ג׳ל BUBA",
       "slug": "buba-color",
@@ -37,7 +58,10 @@
       "description": "לק ג׳ל של BUBA. פיגמנט עשיר שמכסה בשכבה-שתיים, מרקם נוח למריחה וגימור נקי לאורך זמן."
     },
     {
-      "match": ["Buba", "Buba Basic"],
+      "match": [
+        "Buba",
+        "Buba Basic"
+      ],
       "brand": "BUBA",
       "title": "BUBA Basic",
       "slug": "buba-basic",
@@ -47,9 +71,11 @@
       "defaultStock": 10,
       "description": "מוצרי הבסיס של BUBA — בייסים, טופים ונוזלי עבודה לשגרה היומיומית במכון."
     },
-
     {
-      "match": ["Kodi", "בייס וטופ"],
+      "match": [
+        "Kodi",
+        "בייס וטופ"
+      ],
       "brand": "KODI",
       "title": "בייס / טופ KODI",
       "slug": "kodi-base-top",
@@ -60,7 +86,10 @@
       "description": "בייס וטופ מקצועיים של KODI בנפח 15 מ״ל. שכבה יציבה, ברק עמיד וגימור נקי ללא נטרול."
     },
     {
-      "match": ["Kodi", "ג'ל בנייה"],
+      "match": [
+        "Kodi",
+        "ג'ל בנייה"
+      ],
       "brand": "KODI",
       "title": "ג׳ל בנייה KODI",
       "slug": "kodi-builder",
@@ -70,9 +99,11 @@
       "defaultStock": 10,
       "description": "ג׳ל בנייה של KODI בנפח 15 מ״ל. צמיגות בינונית שנותנת שליטה טובה בפיסול, ומתאימה לבנייה ולחיזוק."
     },
-
     {
-      "match": ["Koyo", "גוונים"],
+      "match": [
+        "Koyo",
+        "גוונים"
+      ],
       "brand": "KOYO",
       "title": "לק ג׳ל KOYO",
       "slug": "koyo-gel-polish",
@@ -80,10 +111,27 @@
       "price": 35,
       "priceSource": "market",
       "defaultStock": 10,
-      "description": "לק ג׳ל של KOYO. כיסוי מלא בשתי שכבות, מרקם אחיד וגימור מבריק שנשאר נקי לאורך זמן."
+      "description": "לק ג׳ל של KOYO. כיסוי מלא בשתי שכבות, מרקם אחיד וגימור מבריק שנשאר נקי לאורך זמן.",
+      "styles": {
+        "סגנון 1": {
+          "role": "bottle",
+          "order": 1
+        },
+        "סגנון 2": {
+          "role": "swatch",
+          "order": 2
+        },
+        "סגנון 3": {
+          "role": "detail",
+          "order": 3
+        }
+      }
     },
     {
-      "match": ["Koyo", "בייס וטופ"],
+      "match": [
+        "Koyo",
+        "בייס וטופ"
+      ],
       "brand": "KOYO",
       "title": "בייס / טופ KOYO",
       "slug": "koyo-base-top",
@@ -94,7 +142,10 @@
       "description": "בייס וטופ של KOYO. בסיס אחיזה יציב וטופ מבריק לגימור מקצועי."
     },
     {
-      "match": ["Koyo", "בילדר"],
+      "match": [
+        "Koyo",
+        "בילדר"
+      ],
       "brand": "KOYO",
       "title": "ג׳ל בנייה KOYO",
       "slug": "koyo-builder",
@@ -105,7 +156,10 @@
       "description": "ג׳ל בנייה של KOYO בנפח 15 מ״ל. מרקם עביד ונוח לפיסול, לבנייה ולחיזוק הציפורן הטבעית."
     },
     {
-      "match": ["Koyo", "פוליג'ל"],
+      "match": [
+        "Koyo",
+        "פוליג'ל"
+      ],
       "brand": "KOYO",
       "title": "פוליג׳ל KOYO",
       "slug": "koyo-polygel",
@@ -116,7 +170,10 @@
       "description": "פוליג׳ל של KOYO בנפח 50 מ״ל. מרקם שלא נוזל ולא מתייבש מהר — נוח לעבודה עם טיפס ועם תבנית."
     },
     {
-      "match": ["Koyo", "ג'ל ציור"],
+      "match": [
+        "Koyo",
+        "ג'ל ציור"
+      ],
       "brand": "KOYO",
       "title": "ג׳ל ציור KOYO",
       "slug": "koyo-paint-gel",
@@ -127,7 +184,10 @@
       "description": "ג׳ל ציור של KOYO. פיגמנט צפוף ומרקם שנשאר במקום — לקווים דקים, אומנות ציפורן ופרטים מדויקים."
     },
     {
-      "match": ["Koyo", "ליינר"],
+      "match": [
+        "Koyo",
+        "ליינר"
+      ],
       "brand": "KOYO",
       "title": "ליינר KOYO",
       "slug": "koyo-liner",
@@ -139,7 +199,11 @@
     },
     {
       "_comment": "Junior הוא קו לק ג׳ל 10 מ״ל — לא מארז. כל הקבצים הם גוונים.",
-      "match": ["Koyo", "מארזים", "Junior"],
+      "match": [
+        "Koyo",
+        "מארזים",
+        "Junior"
+      ],
       "brand": "KOYO",
       "title": "לק ג׳ל KOYO Junior 10 מ״ל",
       "slug": "koyo-junior",
@@ -151,7 +215,11 @@
     },
     {
       "_comment": "MINI — בקבוקונים קטנים, כל קובץ הוא גוון.",
-      "match": ["Koyo", "מארזים", "MINI"],
+      "match": [
+        "Koyo",
+        "מארזים",
+        "MINI"
+      ],
       "brand": "KOYO",
       "title": "לק ג׳ל KOYO MINI",
       "slug": "koyo-mini",
@@ -163,7 +231,11 @@
     },
     {
       "_comment": "Rubber base — גוונים של ראבר בייס.",
-      "match": ["Koyo", "מארזים", "Rubber base"],
+      "match": [
+        "Koyo",
+        "מארזים",
+        "Rubber base"
+      ],
       "brand": "KOYO",
       "title": "ראבר בייס בגוון KOYO",
       "slug": "koyo-rubber-base-collection",
@@ -173,10 +245,13 @@
       "defaultStock": 10,
       "description": "ראבר בייס בגוון של KOYO. אחיזה גמישה, יישור טבעי של משטח הציפורן וכיסוי אחיד."
     },
-
     {
       "_comment": "מארזים אמיתיים: הקופסה = מוצר מארז, והגוונים שבתוכה = מוצרים בודדים.",
-      "match": ["Koyo", "מארזים", "Valentine"],
+      "match": [
+        "Koyo",
+        "מארזים",
+        "Valentine"
+      ],
       "brand": "KOYO",
       "title": "מארז KOYO Valentine's Collection — 5 גוונים",
       "slug": "koyo-kit-valentine",
@@ -193,7 +268,11 @@
       }
     },
     {
-      "match": ["Koyo", "מארזים", "French"],
+      "match": [
+        "Koyo",
+        "מארזים",
+        "French"
+      ],
       "brand": "KOYO",
       "title": "מארז KOYO French",
       "slug": "koyo-kit-french",
@@ -210,7 +289,11 @@
       }
     },
     {
-      "match": ["Koyo", "מארזים", "Ice Cream"],
+      "match": [
+        "Koyo",
+        "מארזים",
+        "Ice Cream"
+      ],
       "brand": "KOYO",
       "title": "מארז KOYO Ice Cream",
       "slug": "koyo-kit-icecream",
@@ -228,7 +311,10 @@
     },
     {
       "_comment": "כלל גיבוי לכל תיקיית מארזים אחרת שתתווסף.",
-      "match": ["Koyo", "מארזים"],
+      "match": [
+        "Koyo",
+        "מארזים"
+      ],
       "brand": "KOYO",
       "title": "מארז KOYO",
       "slug": "koyo-kit",
@@ -245,7 +331,9 @@
       }
     },
     {
-      "match": ["Koyo לק רגיל"],
+      "match": [
+        "Koyo לק רגיל"
+      ],
       "brand": "KOYO",
       "title": "לק רגיל KOYO",
       "slug": "koyo-regular-polish",
@@ -255,9 +343,11 @@
       "defaultStock": 12,
       "description": "לק רגיל של KOYO — ללא ייבוש במנורה. מברשת נוחה, כיסוי אחיד וייבוש מהיר."
     },
-
     {
-      "match": ["אביזרים", "מכונת שיוף בובה"],
+      "match": [
+        "אביזרים",
+        "מכונת שיוף בובה"
+      ],
       "brand": "BUBA",
       "title": "מכונת שיוף BUBA",
       "slug": "buba-drill",
@@ -269,7 +359,10 @@
       "description": "מכונת שיוף מקצועית של BUBA עם מיקרו-מוטור שקט, צג דיגיטלי ובקרת מהירות עדינה — לעבודת ג׳ל, בנייה והסרה מדויקת."
     },
     {
-      "match": ["אביזרים", "שואב בובה"],
+      "match": [
+        "אביזרים",
+        "שואב בובה"
+      ],
       "brand": "BUBA",
       "title": "שואב אבק שולחני BUBA",
       "slug": "buba-dust",
@@ -281,7 +374,10 @@
       "description": "שואב אבק שולחני של BUBA עם מפוח טורבינה, צג LCD ומסנן בצפיפות גבוהה נשלף. שומר על שולחן העבודה ועל הנשימה נקיים."
     },
     {
-      "match": ["אביזרים", "שואב קויו"],
+      "match": [
+        "אביזרים",
+        "שואב קויו"
+      ],
       "brand": "KOYO",
       "title": "שואב אבק שולחני KOYO",
       "slug": "koyo-dust",
@@ -293,7 +389,10 @@
       "description": "שואב אבק שולחני של KOYO. שאיבה חזקה ושקטה יחסית, עם מגירת איסוף נשלפת לניקוי קל."
     },
     {
-      "match": ["אביזרים", "Sun 1s"],
+      "match": [
+        "אביזרים",
+        "Sun 1s"
+      ],
       "brand": "SUN",
       "title": "מנורת ייבוש SUN 1S",
       "slug": "sun-1s",
@@ -305,7 +404,10 @@
       "description": "מנורת ייבוש SUN 1S. ייבוש אחיד ומהיר, טיימרים מובנים וחיישן תנועה — מתאימה לעבודה יומיומית."
     },
     {
-      "match": ["אביזרים", "Sun 4"],
+      "match": [
+        "אביזרים",
+        "Sun 4"
+      ],
       "brand": "SUN",
       "title": "מנורת ייבוש SUN 4",
       "slug": "sun-4",
@@ -317,7 +419,10 @@
       "description": "מנורת ייבוש SUN 4 בהספק גבוה. כיסוי רחב שמייבש את כל היד באחידות, עם מספר מצבי טיימר."
     },
     {
-      "match": ["אביזרים", "תנור עיקור"],
+      "match": [
+        "אביזרים",
+        "תנור עיקור"
+      ],
       "brand": "LIAD",
       "title": "תנור עיקור",
       "slug": "sterilizer-oven",
@@ -329,7 +434,10 @@
       "description": "תנור עיקור לכלי עבודה. עיקור בחום יבש לשמירה על תקן היגייני במכון."
     },
     {
-      "match": ["אביזרים", "קופסת חיטוי"],
+      "match": [
+        "אביזרים",
+        "קופסת חיטוי"
+      ],
       "brand": "LIAD",
       "title": "קופסת חיטוי",
       "slug": "disinfect-box",
@@ -341,7 +449,10 @@
       "description": "קופסת חיטוי לכלי עבודה עם מגש פנימי נשלף — להשריה ולחיטוי מסודר בין לקוחות."
     },
     {
-      "match": ["אביזרים", "כוס סטרליזטור"],
+      "match": [
+        "אביזרים",
+        "כוס סטרליזטור"
+      ],
       "brand": "LIAD",
       "title": "כוס סטריליזטור",
       "slug": "sterilizer-cup",
@@ -353,7 +464,10 @@
       "description": "כוס סטריליזטור להשריית כלים בחומר חיטוי, עם סלסלה פנימית להוצאה נוחה."
     },
     {
-      "match": ["אביזרים", "שקיות עיקור"],
+      "match": [
+        "אביזרים",
+        "שקיות עיקור"
+      ],
       "brand": "LIAD",
       "title": "שקיות עיקור",
       "slug": "sterilization-bags",
@@ -365,7 +479,10 @@
       "description": "שקיות עיקור חד-פעמיות עם אינדיקטור צבע שמאשר שהעיקור הושלם."
     },
     {
-      "match": ["אביזרים", "פצירות ובאפרים"],
+      "match": [
+        "אביזרים",
+        "פצירות ובאפרים"
+      ],
       "brand": "LIAD",
       "title": "פצירות ובאפרים",
       "slug": "files-buffers",
@@ -376,7 +493,10 @@
       "description": "פצירות ובאפרים בדרגות גסות שונות — לעיצוב הקצה, להחלקה ולהכנת משטח הציפורן."
     },
     {
-      "match": ["אביזרים", "דוחף עור עץ"],
+      "match": [
+        "אביזרים",
+        "דוחף עור עץ"
+      ],
       "brand": "LIAD",
       "title": "דוחף עור עץ",
       "slug": "wood-pusher",
@@ -388,7 +508,10 @@
       "description": "מקלוני עץ לדחיפת עור — חד-פעמיים, היגייניים ונוחים לעבודה עדינה סביב הציפורן."
     },
     {
-      "match": ["אביזרים", "פד ניקוי מחורר"],
+      "match": [
+        "אביזרים",
+        "פד ניקוי מחורר"
+      ],
       "brand": "LIAD",
       "title": "פד ניקוי מחורר",
       "slug": "lint-pad-perforated",
@@ -400,7 +523,10 @@
       "description": "פדים מחוררים לניקוי שכבת ההדבקה — סופגים היטב ולא משאירים סיבים."
     },
     {
-      "match": ["אביזרים", "פד ניקוי"],
+      "match": [
+        "אביזרים",
+        "פד ניקוי"
+      ],
       "brand": "LIAD",
       "title": "פד ניקוי",
       "slug": "lint-pad",
@@ -412,7 +538,10 @@
       "description": "פדים ללא מוך לניקוי שכבת ההדבקה ולהכנת הציפורן. סופגים היטב ולא משאירים שאריות."
     },
     {
-      "match": ["אביזרים", "טיפס ג'ל"],
+      "match": [
+        "אביזרים",
+        "טיפס ג'ל"
+      ],
       "brand": "LIAD",
       "title": "טיפס ג׳ל",
       "slug": "gel-tips",
@@ -424,7 +553,10 @@
       "description": "טיפס ג׳ל להארכה מהירה. מבנה גמיש שמתיישר על הציפורן הטבעית ומקצר משמעותית את זמן העבודה."
     },
     {
-      "match": ["אביזרים", "רגלית"],
+      "match": [
+        "אביזרים",
+        "רגלית"
+      ],
       "brand": "LIAD",
       "title": "רגלית",
       "slug": "foot-rest",

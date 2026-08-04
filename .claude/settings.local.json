@@ -30,7 +30,22 @@
       "Bash([ -f \"$F\" ])",
       "Bash(python3 -c \"import json;print\\(len\\(json.load\\(open\\('/Users/yanaimizrahi/Documents/לק גל פרויקט/liad-shop/data/products.json'\\)\\)['products']\\)\\)\")",
       "Bash(echo \"CATALOG_READY: $\\(python3 -c \"import json;print\\(len\\(json.load\\(open\\('/Users/yanaimizrahi/Documents/לק גל פרויקט/liad-shop/data/products.json'\\)\\)['products']\\)\\)\"\\) products\")",
-      "Bash(python3 -c \"import json;json.load\\(open\\('tools/catalog_rules.json',encoding='utf-8'\\)\\);print\\('JSON תקין'\\)\")"
+      "Bash(python3 -c \"import json;json.load\\(open\\('tools/catalog_rules.json',encoding='utf-8'\\)\\);print\\('JSON תקין'\\)\")",
+      "Bash(python3 tools/make_swatches.py)",
+      "Bash(cat)",
+      "Bash(node --check js/confirmation.js)",
+      "Bash(node --check js/accessibility.js)",
+      "Bash(node --check js/shared.js)",
+      "Bash(node --check js/admin.js)",
+      "Bash(curl -s \"http://localhost:4175/js/confirmation.js\")",
+      "Bash(python3 -c \"import PIL; print\\('PIL זמין', PIL.__version__\\)\")",
+      "Bash(pip3 install *)",
+      "Bash(python3 -c \"from PIL import Image; print\\('PIL מוכן'\\)\")",
+      "Read(//Users/yanaimizrahi/Documents/liad-landing/assets/**)",
+      "Bash(python3 tools/extract_shades.py)",
+      "Bash(node --check js/shade-showcase.js)",
+      "Bash(node --check js/hand.js)",
+      "Bash(node --check js/main.js)"
     ]
   }
 }

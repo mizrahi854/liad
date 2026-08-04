@@ -9,25 +9,9 @@ import {
 } from "./store.js";
 import { initCartDrawer, updateCartCount } from "./cart-ui.js";
 import { initShared } from "./shared.js";
+import { productCard, CATEGORY_LABELS } from "./product-card.js";
 
 const PAGE_SIZE = 24;
-
-const CATEGORY_LABELS = {
-  "gel-polish": "לק ג׳ל",
-  "builder-gel": "ג׳ל בנייה",
-  "bases": "בייסים וטופים",
-  "polygel": "פוליג׳ל",
-  "regular-polish": "לק רגיל",
-  "nail-art": "ציור ואומנות",
-  "starter-kits": "מארזים",
-  "machines": "מכונות ומכשור",
-  "lamps": "מנורות",
-  "hygiene": "חיטוי ועיקור",
-  "files": "פצירות ובאפרים",
-  "tools": "כלי עבודה",
-  "disposable": "חד פעמי",
-  "tips": "טיפס",
-};
 
 const state = {
   all: [],
@@ -63,6 +47,14 @@ async function init() {
   state.all = products;
   buildFilterOptions();
   wireControls();
+
+  const initialCategory = new URLSearchParams(location.search).get("category");
+  if (initialCategory) {
+    state.categories.add(initialCategory);
+    const box = $(`#categoryFilters input[value="${initialCategory}"]`);
+    if (box) box.checked = true;
+  }
+
   applyFilters();
 }
 
@@ -155,9 +147,11 @@ function wireControls() {
       e.preventDefault();
       resetFilters();
       const cat = link.dataset.filterShortcut;
-      state.categories.add(cat);
-      const box = $(`#categoryFilters input[value="${cat}"]`);
-      if (box) box.checked = true;
+      if (cat && cat !== "all") {
+        state.categories.add(cat);
+        const box = $(`#categoryFilters input[value="${cat}"]`);
+        if (box) box.checked = true;
+      }
       applyFilters();
       $(".shop-layout").scrollIntoView({ behavior: "smooth", block: "start" });
       $("#navMobile")?.classList.remove("is-open");
@@ -212,6 +206,17 @@ function applyFilters() {
   state.filtered = [...list].sort(sorters[state.sort] || sorters.featured);
   state.shown = PAGE_SIZE;
   renderGrid();
+  updateCategoryCardState();
+}
+
+function updateCategoryCardState() {
+  $$('.category-card').forEach((card) => {
+    const cat = card.dataset.filterShortcut;
+    const isActive = cat === "all"
+      ? state.categories.size === 0 && !state.brands.size && !state.inStockOnly && !state.search && state.sort === "featured"
+      : state.categories.has(cat);
+    card.classList.toggle("is-active", isActive);
+  });
 }
 
 /* ---------------------------------------------------------------- תצוגה */
@@ -236,31 +241,7 @@ function renderGrid() {
   }
 
   grid.innerHTML = "";
-  list.forEach((p) => {
-    const left = availableStock(p, cart);
-    const soldOut = (p.stock ?? 0) === 0;
-
-    const flags = [];
-    if (soldOut) flags.push('<span class="flag flag--out">אזל מהמלאי</span>');
-    else if (left <= 3) flags.push(`<span class="flag flag--low">נותרו ${left}</span>`);
-
-    grid.append(html`
-      <article class="card" data-id="${esc(p.id)}">
-        <div class="card__media">
-          <img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy" decoding="async" width="600" height="600">
-          <div class="card__flags">${flags.join("")}</div>
-        </div>
-        <div class="card__body">
-          <p class="card__brand">${esc(p.brand)}</p>
-          <h3 class="card__title">${esc(p.title)}</h3>
-          <p class="card__price">${money(p.price)}</p>
-          <button class="card__add" type="button" ${soldOut || left === 0 ? "disabled" : ""}>
-            ${soldOut ? "אזל מהמלאי" : left === 0 ? "הכול כבר בעגלה" : "הוספה לסל"}
-          </button>
-        </div>
-      </article>
-    `);
-  });
+  list.forEach((p) => grid.append(productCard(p, cart)));
 
   $("#loadMore").hidden = state.shown >= state.filtered.length;
 }

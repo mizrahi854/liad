@@ -1064,29 +1064,29 @@ ul {
 .category-card {
   position: relative;
   display: block;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
-  border-radius: 0.75rem;
+  border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  border-radius: 1rem;
   background-color: var(--secondary);
-  transition:
-    transform var(--dur-base) var(--ease-luxe),
-    box-shadow var(--dur-base) var(--ease-luxe);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--dur-base) var(--ease-luxe), box-shadow var(--dur-base) var(--ease-luxe);
 }
 
 .category-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
 }
 
 .category-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 900ms var(--ease-luxe);
+  transition: transform 650ms var(--ease-luxe);
 }
 
 .category-card:hover img {
-  transform: scale(1.06);
+  transform: scale(1.02);
 }
 
 .category-card__overlay {
@@ -1094,8 +1094,8 @@ ul {
   inset: 0;
   background-image: linear-gradient(
     to top,
-    color-mix(in oklab, var(--charcoal) 70%, transparent) 0%,
-    color-mix(in oklab, var(--charcoal) 10%, transparent) 50%,
+    color-mix(in oklab, var(--charcoal) 72%, transparent) 0%,
+    color-mix(in oklab, var(--charcoal) 16%, transparent) 46%,
     transparent 100%
   );
   transition: opacity var(--dur-slow) var(--ease-luxe);
@@ -1105,21 +1105,21 @@ ul {
   position: absolute;
   inset-inline: 0;
   bottom: 0;
-  padding: 1rem;
+  padding: 0.9rem 0.95rem 0.95rem;
   color: var(--cream);
 }
 
 .category-card__label {
   font-size: 0.625rem;
   letter-spacing: 0.28em;
-  color: color-mix(in oklab, var(--cream) 70%, transparent);
+  color: color-mix(in oklab, var(--cream) 74%, transparent);
 }
 
 .category-card__title {
   margin-top: 0.125rem;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 1.2;
   transition: color var(--dur-base) var(--ease-luxe);
 }
@@ -2016,4 +2016,357 @@ ul {
   .header-cta { display: inline-block; }
   .reel { flex: 0 0 44%; }
   .site-footer__grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+}
+
+
+/* ==========================================================================
+   23. חוויית הגוונים בגלילה
+   סקשן דביק: הלק על היד מתחלף לפי מיקום הגלילה.
+   כל התנועה היא transform/opacity בלבד — בלי layout, בלי jank.
+   ========================================================================== */
+
+.showcase {
+  position: relative;
+  /* גובה הסקשן = מסך אחד לצפייה + מרווח גלילה לכל גוון */
+  height: calc(100vh + var(--shade-count, 7) * var(--screens-per-shade, .85) * 100vh);
+  background: linear-gradient(180deg,
+    var(--background) 0%,
+    var(--cream) 12%,
+    var(--cream) 88%,
+    var(--background) 100%);
+}
+
+.showcase__track { position: absolute; inset: 0; }
+
+.showcase__stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  min-height: 40rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  /* צבע הגוון הנוכחי — מוזרק מ-JS, כל השאר נגזר ממנו */
+  --nail-color: #c9a227;
+  --drift: 0;
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+}
+
+/* ---------- רקע: הילות צבע + רשת עדינה ---------- */
+
+.showcase__ambience { position: absolute; inset: 0; pointer-events: none; }
+
+.showcase__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: .32;
+  background: var(--nail-color);
+  transition: background 1.1s var(--ease-luxe), opacity 1.1s var(--ease-luxe);
+  will-change: transform;
+}
+
+.showcase__glow--a {
+  width: 34rem; height: 34rem;
+  top: -10%; inset-inline-end: -8%;
+  transform: translate3d(0, calc(var(--drift) * 40px), 0);
+}
+
+.showcase__glow--b {
+  width: 26rem; height: 26rem;
+  bottom: -12%; inset-inline-start: -6%;
+  opacity: .2;
+  transform: translate3d(0, calc(var(--drift) * -32px), 0);
+}
+
+/* רשת דקה שנותנת עומק בלי להפריע לקריאות */
+.showcase__grid {
+  position: absolute;
+  inset: 0;
+  opacity: .5;
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--gold) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--gold) 8%, transparent) 1px, transparent 1px);
+  background-size: 5rem 5rem;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 30%, transparent 75%);
+  transform: translate3d(0, calc(var(--drift) * 14px), 0);
+}
+
+/* ---------- פריסה ---------- */
+
+.showcase__inner {
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    "intro"
+    "hand"
+    "card"
+    "dots";
+  justify-items: center;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.showcase__intro { grid-area: intro; text-align: center; }
+.showcase__intro .rule-gold { margin-bottom: .75rem; }
+
+.showcase__title {
+  margin-top: .5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -.02em;
+}
+
+/* ---------- היד ---------- */
+
+.showcase__hand {
+  grid-area: hand;
+  width: min(17rem, 62vw);
+  will-change: transform;
+  transition: transform .5s var(--ease-luxe);
+}
+
+.hand { width: 100%; height: auto; display: block; }
+
+.hand__halo { opacity: .8; }
+
+/* הציפורניים — הצבע והמעבר החלק ביניהם */
+.hand .nail {
+  fill: var(--nail-color);
+  transition: fill .85s var(--ease-luxe);
+}
+
+.hand .nail-gloss { pointer-events: none; }
+
+/* הטיה עדינה לפי העכבר, סביב מרכז היד */
+.showcase__hand {
+  transform-style: preserve-3d;
+  perspective: 900px;
+}
+.showcase__hand .hand {
+  transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transition: transform .35s var(--ease-luxe);
+}
+
+/* ---------- כרטיס המוצר ---------- */
+
+.showcase__card {
+  grid-area: card;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: min(30rem, 92vw);
+  padding: .875rem 1.125rem;
+  border: 1px solid color-mix(in oklab, var(--gold) 28%, transparent);
+  border-radius: 1.25rem;
+  /* זכוכית: שקיפות + טשטוש רקע */
+  background: color-mix(in oklab, var(--background) 72%, transparent);
+  backdrop-filter: blur(16px) saturate(130%);
+  box-shadow:
+    0 20px 50px -30px color-mix(in oklab, var(--charcoal) 55%, transparent),
+    inset 0 1px 0 color-mix(in oklab, #fff 60%, transparent);
+  will-change: transform;
+  transition: transform .5s var(--ease-luxe);
+}
+
+.showcase__card-media {
+  position: relative;
+  flex-shrink: 0;
+  width: 4.5rem;
+  aspect-ratio: 1;
+}
+
+.showcase__bottle {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(.9) translateY(6px);
+  transition: opacity .5s var(--ease-luxe), transform .5s var(--ease-luxe);
+}
+
+.showcase__bottle.is-active { opacity: 1; transform: none; }
+
+.showcase__card-body { flex: 1; min-width: 0; }
+
+.showcase__brand {
+  font-size: .625rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.showcase__name {
+  margin-top: .1875rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: .9375rem;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* הבהוב עדין ברגע החלפת הגוון */
+.showcase__card.is-swapping .showcase__name,
+.showcase__card.is-swapping .showcase__brand,
+.showcase__card.is-swapping .showcase__price { animation: shade-swap .26s var(--ease-luxe); }
+
+@keyframes shade-swap {
+  0%   { opacity: 1; transform: translateY(0); }
+  40%  { opacity: 0; transform: translateY(-4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.showcase__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .625rem;
+  margin-top: .5rem;
+}
+
+.showcase__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  padding: .1875rem .625rem;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--nail-color) 14%, transparent);
+  font-size: .75rem;
+  transition: background .85s var(--ease-luxe);
+}
+
+.showcase__dot {
+  width: .625rem;
+  height: .625rem;
+  border-radius: 50%;
+  background: var(--nail-color);
+  box-shadow: 0 0 0 2px color-mix(in oklab, #fff 70%, transparent);
+  transition: background .85s var(--ease-luxe);
+}
+
+.showcase__price {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.showcase__buy {
+  height: 2.5rem;
+  margin-top: .75rem;
+  padding-inline: 1.25rem;
+  font-size: .8125rem;
+  width: 100%;
+}
+
+.showcase__buy svg { width: .875rem; height: .875rem; }
+
+.showcase__scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 1.25rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.7rem 0.95rem;
+  border: 1px solid color-mix(in oklab, var(--gold) 28%, transparent);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--background) 72%, transparent);
+  backdrop-filter: blur(12px) saturate(120%);
+  box-shadow: 0 12px 24px -16px color-mix(in oklab, var(--charcoal) 45%, transparent);
+  color: var(--foreground);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transform: translateX(-50%);
+  transition: transform var(--dur-base) var(--ease-luxe), box-shadow var(--dur-base) var(--ease-luxe);
+}
+
+.showcase__scroll:hover {
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 18px 30px -18px color-mix(in oklab, var(--charcoal) 50%, transparent);
+}
+
+.showcase__scroll svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+/* ---------- נקודות בחירת גוון ---------- */
+
+.showcase__dots {
+  grid-area: dots;
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+  margin-top: .25rem;
+}
+
+.showcase__dot-btn {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--dot);
+  box-shadow: 0 0 0 2px color-mix(in oklab, #fff 75%, transparent),
+              0 2px 6px -2px color-mix(in oklab, var(--charcoal) 40%, transparent);
+  opacity: .55;
+  transition: transform var(--dur-base) var(--ease-luxe), opacity var(--dur-base) var(--ease-luxe);
+}
+
+.showcase__dot-btn:hover { opacity: .85; transform: scale(1.12); }
+
+.showcase__dot-btn.is-active {
+  opacity: 1;
+  transform: scale(1.22);
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 3px var(--nail-color);
+}
+
+/* ---------- רספונסיביות ---------- */
+
+@media (min-width: 768px) {
+  .showcase__inner {
+    grid-template-areas:
+      "intro hand"
+      "card  hand"
+      "dots  hand";
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    align-items: center;
+    justify-items: start;
+    gap: 1.5rem 3rem;
+  }
+  .showcase__intro { text-align: start; }
+  .showcase__hand { width: min(24rem, 38vw); justify-self: center; }
+  .showcase__card { width: 100%; max-width: 26rem; }
+  .showcase__dots { justify-content: flex-start; margin-top: 0; }
+  .showcase__buy { width: auto; }
+}
+
+@media (min-width: 1280px) {
+  .showcase__hand { width: min(28rem, 34vw); }
+  .showcase__title { font-size: clamp(2.5rem, 3.6vw, 3.75rem); }
+}
+
+/* מסכים נמוכים: מקטינים את היד כדי שהכל ייכנס */
+@media (max-height: 46rem) and (min-width: 768px) {
+  .showcase__hand { width: min(19rem, 30vw); }
+}
+
+/* ---------- העדפת תנועה מופחתת ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  /* הסקשן מתקצר: הגוון עדיין מתחלף, אבל בלי מסע גלילה ארוך */
+  .showcase { height: auto; }
+  .showcase__track { position: static; }
+  .showcase__stage { position: static; height: auto; padding-block: 4rem; }
+  .showcase__hand,
+  .showcase__card,
+  .showcase__glow,
+  .showcase__grid { transform: none !important; }
+  .hand .nail { transition-duration: .01ms; }
 }

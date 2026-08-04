@@ -1,0 +1,81 @@
+{
+ "shades": [
+  {
+   "id": "koyo-koyo-junior-080",
+   "title": "לק ג׳ל KOYO Junior 10 מ״ל — גוון 080",
+   "brand": "KOYO",
+   "shade": "080",
+   "price": 29,
+   "color": "#aa0000",
+   "image": "../liad-shop/assets/products/koyo-מארזים-junior/080.jpg",
+   "swatch": "../liad-shop/assets/products/_swatch/koyo-מארזים-junior/080-swatch.jpg",
+   "href": "../liad-shop/product.html?id=koyo-koyo-junior-080"
+  },
+  {
+   "id": "koyo-koyo-junior-102",
+   "title": "לק ג׳ל KOYO Junior 10 מ״ל — גוון 102",
+   "brand": "KOYO",
+   "shade": "102",
+   "price": 29,
+   "color": "#00956d",
+   "image": "../liad-shop/assets/products/koyo-מארזים-junior/102.jpg",
+   "swatch": "../liad-shop/assets/products/_swatch/koyo-מארזים-junior/102-swatch.jpg",
+   "href": "../liad-shop/product.html?id=koyo-koyo-junior-102"
+  },
+  {
+   "id": "buba-buba-color-049",
+   "title": "לק ג׳ל BUBA — גוון 049",
+   "brand": "BUBA",
+   "shade": "049",
+   "price": 35,
+   "color": "#182552",
+   "image": "../liad-shop/assets/products/buba-buba-colors/049.jpg",
+   "swatch": "../liad-shop/assets/products/_swatch/buba-buba-colors/049-swatch.jpg",
+   "href": "../liad-shop/product.html?id=buba-buba-color-049"
+  },
+  {
+   "id": "koyo-koyo-junior-104",
+   "title": "לק ג׳ל KOYO Junior 10 מ״ל — גוון 104",
+   "brand": "KOYO",
+   "shade": "104",
+   "price": 29,
+   "color": "#00007c",
+   "image": "../liad-shop/assets/products/koyo-מארזים-junior/104.jpg",
+   "swatch": "../liad-shop/assets/products/_swatch/koyo-מארזים-junior/104-swatch.jpg",
+   "href": "../liad-shop/product.html?id=koyo-koyo-junior-104"
+  },
+  {
+   "id": "buba-buba-color-040",
+   "title": "לק ג׳ל BUBA — גוון 040",
+   "brand": "BUBA",
+   "shade": "040",
+   "price": 35,
+   "color": "#8b1e93",
+   "image": "../liad-shop/assets/products/buba-buba-colors/040.jpg",
+   "swatch": "../liad-shop/assets/products/_swatch/buba-buba-colors/040-swatch.jpg",
+   "href": "../liad-shop/product.html?id=buba-buba-color-040"
+  },
+  {
+   "id": "koyo-koyo-mini-069",
+   "title": "לק ג׳ל KOYO MINI — גוון 069",
+   "brand": "KOYO",
+   "shade": "069",
+   "price": 25,
+   "color": "#d50170",
+   "image": "../liad-shop/assets/products/koyo-מארזים-mini-01/069.jpg",
+   "swatch": "../liad-shop/assets/products/_swatch/koyo-מארזים-mini-01/069-swatch.jpg",
+   "href": "../liad-shop/product.html?id=koyo-koyo-mini-069"
+  },
+  {
+   "id": "koyo-koyo-junior-082",
+   "title": "לק ג׳ל KOYO Junior 10 מ״ל — גוון 082",
+   "brand": "KOYO",
+   "shade": "082",
+   "price": 29,
+   "color": "#92001b",
+   "image": "../liad-shop/assets/products/koyo-מארזים-junior/082.jpg",
+   "swatch": "../liad-shop/assets/products/_swatch/koyo-מארזים-junior/082-swatch.jpg",
+   "href": "../liad-shop/product.html?id=koyo-koyo-junior-082"
+  }
+ ]
+}

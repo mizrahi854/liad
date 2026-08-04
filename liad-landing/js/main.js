@@ -1,3 +1,5 @@
+import { initShadeShowcase } from './shade-showcase.js';
+
 /* ==========================================================================
    LIAD — דף כניסה
    כל הלוגיקה של הדף. ללא ספריות חיצוניות.
@@ -681,7 +683,14 @@ async function init() {
   }
 
   initNewsletter();
+  initShadeShowcase();
   initReveal();
 }
 
-document.addEventListener("DOMContentLoaded", init);
+// main.js נטען כמודול, כלומר הוא deferred ורץ לפני DOMContentLoaded.
+// אם בכל זאת האירוע כבר קרה (למשל בטעינה מהקאש) — מפעילים מיד.
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}

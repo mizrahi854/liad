@@ -4,6 +4,7 @@
    ========================================================================== */
 
 import { $, $$, html, esc, money, CONFIG, loadCatalog, toast } from "./store.js";
+import { initAccessibility } from "./accessibility.js";
 
 const STOCK_OVERRIDES = "liad:stock-overrides";
 
@@ -12,6 +13,7 @@ const state = { products: [], overrides: {}, search: "", filter: "all" };
 /* ---------------------------------------------------------------- אתחול */
 
 async function init() {
+  initAccessibility();
   $("#copyrightYear").textContent = new Date().getFullYear();
 
   state.overrides = readJSON(STOCK_OVERRIDES, {});

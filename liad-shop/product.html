@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LIAD | אסתטיקה ויופי</title>
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<a class="skip-link" href="#pdpMain">דילוג לתוכן הראשי</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="site-header__inner">
+      <div class="site-header__side">
+        <a class="link-arrow" href="index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+          לחנות
+        </a>
+      </div>
+      <a class="site-logo" href="index.html" aria-label="LIAD">
+        <img src="assets/liad-logo.png" alt="LIAD" width="200" height="52">
+      </a>
+      <div class="site-header__side site-header__side--end">
+        <button class="icon-btn cart-btn" id="cartOpen" aria-label="פתיחת עגלת הקניות">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 10a4 4 0 0 1-8 0"/><path d="M3.1 6h17.8"/>
+            <path d="M3.4 5.5a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.7a2 2 0 0 0-.4-1.2l-2-2.7A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"/>
+          </svg>
+          <span class="cart-btn__count" id="cartCount" aria-live="polite">0</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<main id="pdpMain">
+  <!-- הדף כולו נבנה ב-js/product.js לפי ?id= שב-URL -->
+  <div class="container">
+    <div class="pdp" id="pdp" aria-busy="true">
+      <div class="pdp__media"><div class="skeleton" style="aspect-ratio:1/1;border-radius:1.5rem"></div></div>
+      <div class="pdp__panel">
+        <div class="skeleton" style="height:1rem;width:6rem;border-radius:.5rem"></div>
+        <div class="skeleton" style="height:2rem;margin-top:1rem;border-radius:.5rem"></div>
+        <div class="skeleton" style="height:1.5rem;width:8rem;margin-top:1rem;border-radius:.5rem"></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="container" id="relatedSection" hidden>
+    <div class="section-head section-head--split" style="margin-bottom:1.5rem">
+      <div>
+        <p class="eyebrow">מאותו קו</p>
+        <h2 class="section-title" style="font-size:clamp(1.5rem,3vw,1.875rem)">גוונים נוספים</h2>
+      </div>
+      <a class="link-arrow" href="index.html">
+        לכל המוצרים
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>
+        </svg>
+      </a>
+    </div>
+    <div class="grid-products" id="relatedGrid"></div>
+  </section>
+</main>
+
+
+<!-- הוספה לסל דביקה — מובייל בלבד -->
+<div class="buy-bar" id="buyBar" hidden>
+  <div class="buy-bar__info">
+    <p class="buy-bar__title" id="buyBarTitle"></p>
+    <p class="buy-bar__price" id="buyBarPrice"></p>
+  </div>
+  <button class="btn btn--gold buy-bar__cta" id="buyBarAdd">הוספה לסל</button>
+</div>
+
+
+<!-- עגלת קניות -->
+<div class="drawer-backdrop" id="cartBackdrop"></div>
+<aside class="drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true">
+  <div class="drawer__head">
+    <h2 id="cartTitle">העגלה שלי</h2>
+    <button class="icon-btn" id="cartClose" aria-label="סגירת העגלה">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+        <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+      </svg>
+    </button>
+  </div>
+  <div class="drawer__body" id="cartBody"></div>
+  <div class="drawer__foot" id="cartFoot" hidden>
+    <div id="shippingHint"></div>
+    <div class="summary-row">
+      <span>סכום ביניים</span>
+      <span class="summary-row__value" id="cartSubtotal">0 ₪</span>
+    </div>
+    <div class="summary-row summary-row--total">
+      <span>סה״כ</span>
+      <span class="summary-row__value" id="cartTotal">0 ₪</span>
+    </div>
+    <a class="btn btn--gold" href="checkout.html" style="width:100%;margin-top:1rem">מעבר לתשלום</a>
+    <p style="margin-top:.75rem;text-align:center;font-size:.75rem;color:var(--muted-foreground)">
+      תשלום מאובטח · ללא צורך בהרשמה
+    </p>
+  </div>
+</aside>
+
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <img src="assets/liad-logo.png" alt="LIAD" style="height:2.75rem;width:auto" loading="lazy">
+      <nav class="site-footer__links">
+        <a href="index.html">החנות</a>
+        <a href="#">מדיניות משלוחים</a>
+        <a href="#">החזרות</a>
+        <a href="#">תקנון</a>
+        <a href="mailto:rubinliad@gmail.com">צור קשר</a>
+      </nav>
+    </div>
+  </div>
+  <div class="site-footer__bottom">© <span id="copyrightYear">2026</span> LIAD. כל הזכויות שמורות</div>
+</footer>
+
+<script type="module" src="js/product.js"></script>
+</body>
+</html>
