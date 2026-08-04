@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c ' *)",
+      "Bash(python3 \"/private/tmp/claude-501/-Users-yanaimizrahi-Documents-------------/31fddb2b-b6a8-44f6-87e9-dbb945d1f663/scratchpad/build_html.py\")",
+      "Bash(mkdir -p ../_originals)",
+      "Bash(cp hero-liad-portrait.jpg academy-liad-new.png liad-logo.png ../_originals/)",
+      "Bash(sips -s format jpeg -s formatOptions 80 hero-liad-portrait.jpg --out hero-tmp.jpg)",
+      "Bash(mv hero-tmp.jpg hero-liad-portrait.jpg)",
+      "Bash(sips -s format jpeg -s formatOptions 82 academy-liad-new.png --out academy-liad-new.jpg)",
+      "Bash(awk '{printf \"%-32s %8.0f KB\\\\n\", $9, $5/1024}')",
+      "Bash(cd /private/tmp/claude-501/-Users-yanaimizrahi-Documents-------------/31fddb2b-b6a8-44f6-87e9-dbb945d1f663/scratchpad)",
+      "Bash(curl -sL 'https://drive.google.com/uc?export=download&id=__TRACKED_VAR__' -o test003.jpg)",
+      "Bash(stat -f%z test003.jpg)",
+      "Bash(echo \"size: $\\(stat -f%z test003.jpg\\) bytes\")",
+      "Bash(file test003.jpg)",
+      "Bash(chmod +x \"/private/tmp/claude-501/-Users-yanaimizrahi-Documents-------------/31fddb2b-b6a8-44f6-87e9-dbb945d1f663/scratchpad/scrape_prices.sh\")",
+      "Bash(bash \"/private/tmp/claude-501/-Users-yanaimizrahi-Documents-------------/31fddb2b-b6a8-44f6-87e9-dbb945d1f663/scratchpad/scrape_prices.sh\")",
+      "Bash(curl -sL --max-time 30 -A \"Mozilla/5.0\" \"https://drive.google.com/drive/folders/14lW2B3pTxBtt3RUwLQPa1O76h7XEGHqd\" -o bell_builder.html)",
+      "Bash(grep -o '\\\\[\"[-_A-Za-z0-9]\\\\{25,45\\\\}\",\"[^\"]*\",\\\\[\"image/jpeg\"' bell_builder.html)",
+      "Bash(grep -o '\"1[-_A-Za-z0-9]\\\\{25,44\\\\}\"' bell_builder.html)",
+      "Bash(python3 -)",
+      "Bash(python3 tools/drive_import.py --scan)",
+      "Bash(curl -sL --max-time 30 -A \"Mozilla/5.0\" \"https://drive.google.com/drive/folders/1afzEapbIGJ_kpf81NrhPQ8P3MvMEqObr\" -o root.html)",
+      "Bash(python3 tools/drive_import.py --download)",
+      "Bash(mkdir -p liad-shop/css liad-shop/js liad-shop/assets)",
+      "Bash(cp liad-landing/assets/img/liad-logo.png liad-shop/assets/)",
+      "Bash(cp liad-landing/assets/favicon.ico liad-shop/assets/)",
+      "Bash(cp -r liad-landing/assets/fonts liad-shop/assets/)",
+      "Bash([ -f \"$F\" ])",
+      "Bash(python3 -c \"import json;print\\(len\\(json.load\\(open\\('/Users/yanaimizrahi/Documents/לק גל פרויקט/liad-shop/data/products.json'\\)\\)['products']\\)\\)\")",
+      "Bash(echo \"CATALOG_READY: $\\(python3 -c \"import json;print\\(len\\(json.load\\(open\\('/Users/yanaimizrahi/Documents/לק גל פרויקט/liad-shop/data/products.json'\\)\\)['products']\\)\\)\"\\) products\")",
+      "Bash(python3 -c \"import json;json.load\\(open\\('tools/catalog_rules.json',encoding='utf-8'\\)\\);print\\('JSON תקין'\\)\")"
+    ]
+  }
+}

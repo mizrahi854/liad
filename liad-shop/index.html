@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>LIAD | אסתטיקה ויופי</title>
+  <meta name="description" content="חנות מוצרי הציפורניים של LIAD — ג׳ל בנייה, לק ג׳ל, בייסים, פוליג׳ל, מכונות ואביזרים. רכישה מהירה ללא הרשמה.">
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- שורת הכרזות -->
+<div class="announcement">
+  <div class="container">
+    <div class="announcement__viewport">
+      <p class="sr-only">משלוח חינם מעל ₪329.90 · רכישה ללא הרשמה · מותג ישראלי</p>
+      <div style="position:relative;width:100%;height:100%" aria-hidden="true">
+        <span class="announcement__slot is-active">משלוח חינם בהזמנה מעל <strong>₪329.90</strong></span>
+        <span class="announcement__slot">רכישה נקייה ומהירה, ללא הרשמה</span>
+        <span class="announcement__slot">10% הנחה בקנייה הראשונה שלך</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- הדר -->
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="site-header__inner">
+
+      <div class="site-header__side">
+        <button class="icon-btn nav-toggle" id="navToggle" aria-label="פתיחת תפריט" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/>
+          </svg>
+        </button>
+      </div>
+
+      <a class="site-logo" href="index.html" aria-label="LIAD — החנות">
+        <img src="assets/liad-logo.png" alt="LIAD" width="200" height="52">
+      </a>
+
+      <div class="site-header__side site-header__side--end">
+        <nav class="nav-desktop" aria-label="ניווט ראשי">
+          <a href="index.html">כל המוצרים</a>
+          <a href="#" data-filter-shortcut="gel-polish">לק ג׳ל</a>
+          <a href="#" data-filter-shortcut="builder-gel">ג׳ל בנייה</a>
+          <a href="#" data-filter-shortcut="machines">מכשור</a>
+          <a href="../liad-landing/index.html" data-site-home>הבית</a>
+        </nav>
+
+        <button class="icon-btn cart-btn" id="cartOpen" aria-label="פתיחת עגלת הקניות">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 10a4 4 0 0 1-8 0"/><path d="M3.1 6h17.8"/>
+            <path d="M3.4 5.5a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.7a2 2 0 0 0-.4-1.2l-2-2.7A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"/>
+          </svg>
+          <span class="cart-btn__count" id="cartCount" aria-live="polite">0</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<!-- תפריט מובייל -->
+<nav class="nav-mobile" id="navMobile" aria-label="תפריט ניווט">
+  <button class="nav-mobile__close" id="navClose" aria-label="סגירת תפריט">&times;</button>
+  <a href="index.html">כל המוצרים</a>
+  <a href="#" data-filter-shortcut="gel-polish">לק ג׳ל</a>
+  <a href="#" data-filter-shortcut="builder-gel">ג׳ל בנייה</a>
+  <a href="#" data-filter-shortcut="machines">מכשור</a>
+  <a href="../liad-landing/index.html" data-site-home>חזרה לאתר</a>
+</nav>
+
+
+<main>
+
+  <section class="shop-hero">
+    <div class="container">
+      <p class="eyebrow">החנות של LIAD</p>
+      <h1>כל מה שצריך לעבודה מקצועית</h1>
+      <p>חומרי פרמיום שנבחרו אחד-אחד — ג׳ל בנייה, לק ג׳ל, בייסים, פוליג׳ל, מכשור ואביזרים.
+         הרכישה מהירה ובלי להירשם.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="shop-layout">
+
+      <!-- סינון -->
+      <aside>
+        <button class="filters__toggle" id="filtersToggle" aria-expanded="false" aria-controls="filtersPanel">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+            <path d="M3 6h18"/><path d="M7 12h10"/><path d="M10 18h4"/>
+          </svg>
+          סינון וחיפוש
+        </button>
+
+        <div class="filters__panel" id="filtersPanel">
+          <div class="filter-group">
+            <h3>חיפוש</h3>
+            <input class="search-input" type="search" id="searchInput" placeholder="שם מוצר או מספר גוון" aria-label="חיפוש מוצר" style="width:100%">
+          </div>
+
+          <div class="filter-group">
+            <h3>קטגוריה</h3>
+            <div id="categoryFilters"></div>
+          </div>
+
+          <div class="filter-group">
+            <h3>מותג</h3>
+            <div id="brandFilters"></div>
+          </div>
+
+          <div class="filter-group">
+            <h3>זמינות</h3>
+            <label class="filter-option">
+              <input type="checkbox" id="inStockOnly">
+              <span>רק מה שיש במלאי</span>
+            </label>
+          </div>
+
+          <button class="filter-reset" id="filterReset">ניקוי כל הסינונים</button>
+        </div>
+      </aside>
+
+      <!-- תוצאות -->
+      <section>
+        <div class="results-bar">
+          <p class="results-bar__count" id="resultsCount" aria-live="polite">טוען…</p>
+          <div class="results-bar__tools">
+            <label class="sr-only" for="sortSelect">מיון</label>
+            <select class="select" id="sortSelect">
+              <option value="featured">מיון: מומלץ</option>
+              <option value="price-asc">מחיר: מהנמוך לגבוה</option>
+              <option value="price-desc">מחיר: מהגבוה לנמוך</option>
+              <option value="name">שם: א׳–ת׳</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-products" id="productGrid">
+          <div class="skeleton"></div><div class="skeleton"></div>
+          <div class="skeleton"></div><div class="skeleton"></div>
+        </div>
+
+        <div style="margin-top:2.5rem;text-align:center">
+          <button class="btn btn--outline" id="loadMore" hidden>הצגת מוצרים נוספים</button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</main>
+
+
+<!-- עגלת קניות -->
+<div class="drawer-backdrop" id="cartBackdrop"></div>
+<aside class="drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true">
+  <div class="drawer__head">
+    <h2 id="cartTitle">העגלה שלי</h2>
+    <button class="icon-btn" id="cartClose" aria-label="סגירת העגלה">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+        <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="drawer__body" id="cartBody"></div>
+
+  <div class="drawer__foot" id="cartFoot" hidden>
+    <div id="shippingHint"></div>
+    <div class="summary-row">
+      <span>סכום ביניים</span>
+      <span class="summary-row__value" id="cartSubtotal">0 ₪</span>
+    </div>
+    <div class="summary-row summary-row--total">
+      <span>סה״כ</span>
+      <span class="summary-row__value" id="cartTotal">0 ₪</span>
+    </div>
+    <a class="btn btn--gold" href="checkout.html" style="width:100%;margin-top:1rem">מעבר לתשלום</a>
+    <p style="margin-top:.75rem;text-align:center;font-size:.75rem;color:var(--muted-foreground)">
+      תשלום מאובטח · ללא צורך בהרשמה
+    </p>
+  </div>
+</aside>
+
+
+<!-- פוטר -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <img src="assets/liad-logo.png" alt="LIAD" style="height:2.75rem;width:auto" loading="lazy">
+      <nav class="site-footer__links">
+        <a href="../liad-landing/index.html" data-site-home>הבית</a>
+        <a href="#">מדיניות משלוחים</a>
+        <a href="#">החזרות</a>
+        <a href="#">תקנון</a>
+        <a href="#">פרטיות</a>
+        <a href="mailto:rubinliad@gmail.com">צור קשר</a>
+      </nav>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    © <span id="copyrightYear">2026</span> LIAD. כל הזכויות שמורות
+  </div>
+</footer>
+
+
+<!-- פופאפ הנחה -->
+<div class="promo" id="promo" role="dialog" aria-modal="true" aria-labelledby="promoTitle" aria-hidden="true">
+  <div class="promo__card">
+    <button class="promo__close" id="promoClose" aria-label="סגירה">&times;</button>
+    <p class="promo__value text-gold-gradient">10%</p>
+    <h2 class="promo__title" id="promoTitle">הנחה לרכישה הראשונה</h2>
+    <p class="promo__text">השאירו אימייל וקבלו קוד הנחה חד־פעמי — ואיתו גם המדריך הדיגיטלי שלנו במתנה.</p>
+
+    <form class="promo__form" id="promoForm" novalidate>
+      <input type="text" class="honeypot" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="field-row">
+        <input class="field" type="email" name="email" placeholder="כתובת אימייל" required autocomplete="email" aria-label="כתובת אימייל">
+        <button class="field-submit" type="submit">קבלו את הקוד</button>
+      </div>
+      <p class="form-status" id="promoStatus" role="status" aria-live="polite"></p>
+    </form>
+
+    <div class="promo__code" id="promoCode">
+      <p class="promo__code-value" id="promoCodeValue">LIAD10</p>
+      <p class="promo__code-hint">הקוד נשלח גם למייל. תקף לרכישה הראשונה בלבד.</p>
+    </div>
+
+    <button class="promo__dismiss" id="promoDismiss">לא תודה, אמשיך לגלוש</button>
+  </div>
+</div>
+
+
+<script type="module" src="js/shop.js"></script>
+</body>
+</html>

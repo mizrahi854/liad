@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LIAD | אסתטיקה ויופי</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .admin-tabs { display: flex; gap: .5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .admin-tab {
+      padding: .625rem 1.25rem; border: 1px solid var(--border); border-radius: 999px;
+      background: var(--card); font-size: .875rem; transition: all var(--dur-fast) var(--ease-luxe);
+    }
+    .admin-tab[aria-selected="true"] {
+      background-image: linear-gradient(105deg, var(--gold-soft), var(--gold));
+      color: var(--charcoal); border-color: transparent; font-weight: 500;
+    }
+    .stat-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2rem; }
+    .stat {
+      padding: 1.25rem; border: 1px solid var(--border); border-radius: 1rem;
+      background: var(--card); box-shadow: var(--shadow-card);
+    }
+    .stat__label { font-size: .6875rem; letter-spacing: .2em; color: var(--muted-foreground); text-transform: uppercase; }
+    .stat__value { margin-top: .375rem; font-family: var(--font-display); font-weight: 700; font-size: 1.75rem; }
+    .admin-table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+    .admin-table th {
+      padding: .75rem .5rem; text-align: start; font-weight: 400; font-size: .6875rem;
+      letter-spacing: .15em; color: var(--muted-foreground); border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; background: var(--background);
+    }
+    .admin-table td { padding: .625rem .5rem; border-bottom: 1px solid color-mix(in oklab, var(--border) 50%, transparent); }
+    .admin-table tbody tr:hover { background: color-mix(in oklab, var(--muted) 40%, transparent); }
+    .thumb { width: 2.75rem; height: 2.75rem; border-radius: .5rem; object-fit: cover; background: var(--secondary); }
+    .stock-input {
+      width: 4.5rem; padding: .375rem .5rem; border: 1px solid var(--border);
+      border-radius: .5rem; text-align: center; font-variant-numeric: tabular-nums;
+    }
+    .stock-input.is-zero { border-color: oklch(57.7% .245 27.325); color: oklch(57.7% .245 27.325); }
+    .pill { padding: .1875rem .625rem; border-radius: 999px; font-size: .6875rem; }
+    .pill--ok { background: color-mix(in oklab, var(--gold) 20%, transparent); }
+    .pill--out { background: color-mix(in oklab, var(--charcoal) 12%, transparent); }
+    .toolbar { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; margin-bottom: 1.25rem; }
+    .toolbar input[type="search"], .toolbar select { flex: 0 1 auto; }
+    .table-wrap { max-height: 34rem; overflow: auto; border: 1px solid var(--border); border-radius: 1rem; background: var(--card); }
+    .warn {
+      padding: 1rem 1.25rem; border: 1px dashed var(--gold); border-radius: .875rem;
+      background: color-mix(in oklab, var(--gold) 8%, transparent); font-size: .875rem;
+      line-height: 1.6; margin-bottom: 2rem;
+    }
+    @media (min-width: 768px) { .stat-row { grid-template-columns: repeat(4, 1fr); } }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="site-header__inner">
+      <div class="site-header__side">
+        <a class="link-arrow" href="index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+          לחנות
+        </a>
+      </div>
+      <a class="site-logo" href="index.html" aria-label="LIAD">
+        <img src="assets/liad-logo.png" alt="LIAD" width="200" height="52">
+      </a>
+      <div class="site-header__side site-header__side--end"></div>
+    </div>
+  </div>
+</header>
+
+<main class="container" style="padding-block:2.5rem 5rem">
+
+  <p class="eyebrow">ניהול</p>
+  <h1 style="margin-top:.5rem;margin-bottom:2rem;font-family:var(--font-display);font-weight:700;font-size:clamp(1.75rem,4vw,2.25rem)">
+    לוח הבקרה של LIAD
+  </h1>
+
+  <div class="warn">
+    <strong>הדף הזה עובד מקומית בלבד.</strong>
+    שינויי המלאי נשמרים בדפדפן הזה, וההזמנות שמוצגות הן אלו שבוצעו בדפדפן הזה.
+    כדי שזה יעבוד באמת — מלאי משותף, הזמנות מכל הלקוחות וגישה מוגנת בסיסמה — צריך שרת ומסד נתונים.
+    בינתיים אפשר לעדכן מלאי כאן וללחוץ <strong>ייצוא products.json</strong> כדי לשמור את הקובץ המעודכן.
+  </div>
+
+  <div class="stat-row">
+    <div class="stat"><p class="stat__label">מוצרים</p><p class="stat__value" id="statProducts">—</p></div>
+    <div class="stat"><p class="stat__label">אזלו מהמלאי</p><p class="stat__value" id="statOut">—</p></div>
+    <div class="stat"><p class="stat__label">הזמנות</p><p class="stat__value" id="statOrders">—</p></div>
+    <div class="stat"><p class="stat__label">סך מכירות</p><p class="stat__value" id="statRevenue">—</p></div>
+  </div>
+
+  <div class="admin-tabs" role="tablist">
+    <button class="admin-tab" role="tab" aria-selected="true" data-tab="stock">מלאי</button>
+    <button class="admin-tab" role="tab" aria-selected="false" data-tab="orders">הזמנות</button>
+  </div>
+
+  <!-- מלאי -->
+  <section id="tabStock">
+    <div class="toolbar">
+      <input class="search-input" type="search" id="stockSearch" placeholder="חיפוש מוצר…" aria-label="חיפוש מוצר">
+      <select class="select" id="stockFilter">
+        <option value="all">כל המוצרים</option>
+        <option value="out">אזלו מהמלאי</option>
+        <option value="low">מלאי נמוך (≤3)</option>
+      </select>
+      <button class="btn btn--outline btn--sm" id="exportBtn">ייצוא products.json</button>
+      <button class="btn btn--outline btn--sm" id="resetStockBtn">איפוס שינויים</button>
+    </div>
+
+    <div class="table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th style="width:3.5rem"></th>
+            <th>מוצר</th>
+            <th style="width:6rem">מותג</th>
+            <th style="width:6rem">מחיר</th>
+            <th style="width:7rem">מלאי</th>
+            <th style="width:6rem">סטטוס</th>
+          </tr>
+        </thead>
+        <tbody id="stockBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- הזמנות -->
+  <section id="tabOrders" hidden>
+    <div class="toolbar">
+      <button class="btn btn--outline btn--sm" id="exportOrdersBtn">ייצוא הזמנות (CSV)</button>
+      <button class="btn btn--outline btn--sm" id="clearOrdersBtn">מחיקת כל ההזמנות</button>
+    </div>
+    <div id="ordersList"></div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__bottom">© <span id="copyrightYear">2026</span> LIAD</div>
+</footer>
+
+<script type="module" src="js/admin.js"></script>
+</body>
+</html>

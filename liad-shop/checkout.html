@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LIAD | אסתטיקה ויופי</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="site-header__inner">
+      <div class="site-header__side">
+        <a class="link-arrow" href="index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+          חזרה לחנות
+        </a>
+      </div>
+      <a class="site-logo" href="index.html" aria-label="LIAD">
+        <img src="assets/liad-logo.png" alt="LIAD" width="200" height="52">
+      </a>
+      <div class="site-header__side site-header__side--end"></div>
+    </div>
+  </div>
+</header>
+
+
+<main class="container">
+
+  <div style="padding-block:2.5rem 0">
+    <p class="eyebrow">השלמת הזמנה</p>
+    <h1 style="margin-top:.5rem;font-family:var(--font-display);font-weight:700;font-size:clamp(1.75rem,4vw,2.25rem)">
+      עוד רגע וזה אצלך
+    </h1>
+  </div>
+
+  <!-- עגלה ריקה -->
+  <div id="emptyState" hidden style="padding-block:4rem 6rem;text-align:center">
+    <p style="font-family:var(--font-display);font-size:1.5rem">העגלה ריקה</p>
+    <p style="margin-top:.75rem;color:var(--muted-foreground)">אי אפשר להשלים הזמנה בלי מוצרים.</p>
+    <a class="btn btn--gold" href="index.html" style="margin-top:1.5rem">חזרה לחנות</a>
+  </div>
+
+  <form class="checkout" id="checkoutForm" novalidate hidden>
+
+    <!-- פרטים -->
+    <div>
+      <div class="guest-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+          <path d="m9 12 2 2 4-4"/>
+        </svg>
+        <span><strong>רכישה כאורחת.</strong> אין צורך להירשם ואין חשבון לפתוח — רק הפרטים שצריך למשלוח.</span>
+      </div>
+
+      <div class="checkout__box">
+        <h2>פרטי הלקוחה</h2>
+        <div class="form-grid form-grid--2">
+          <div class="field-block">
+            <label for="firstName">שם פרטי *</label>
+            <input id="firstName" name="firstName" type="text" autocomplete="given-name" required>
+            <p class="field-error" data-for="firstName"></p>
+          </div>
+          <div class="field-block">
+            <label for="lastName">שם משפחה *</label>
+            <input id="lastName" name="lastName" type="text" autocomplete="family-name" required>
+            <p class="field-error" data-for="lastName"></p>
+          </div>
+          <div class="field-block">
+            <label for="phone">טלפון *</label>
+            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="050-0000000" required>
+            <p class="field-error" data-for="phone"></p>
+          </div>
+          <div class="field-block">
+            <label for="email">אימייל * <span style="font-size:.75rem">(לקבלת החשבונית)</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+            <p class="field-error" data-for="email"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- אופן קבלה -->
+      <div class="checkout__box">
+        <h2>אופן קבלת ההזמנה</h2>
+        <div class="form-grid">
+          <label class="radio-card">
+            <input type="radio" name="shipping" value="delivery" checked>
+            <span>
+              <span class="radio-card__title">משלוח עד הבית</span>
+              <span class="radio-card__note">3–6 ימי עסקים · חינם מעל ₪329.90</span>
+            </span>
+            <span class="radio-card__price" id="shippingPriceLabel">29.90 ₪</span>
+          </label>
+
+          <label class="radio-card">
+            <input type="radio" name="shipping" value="pickup">
+            <span>
+              <span class="radio-card__title">איסוף עצמי — בנימינה</span>
+              <span class="radio-card__note">מתחם הפיל · א׳–ה׳ 08:00–19:00, ו׳ 08:00–12:00</span>
+            </span>
+            <span class="radio-card__price">חינם</span>
+          </label>
+        </div>
+
+        <div class="form-grid" id="addressFields" style="margin-top:1.25rem">
+          <div class="form-grid form-grid--2">
+            <div class="field-block">
+              <label for="city">עיר *</label>
+              <input id="city" name="city" type="text" autocomplete="address-level2" required>
+              <p class="field-error" data-for="city"></p>
+            </div>
+            <div class="field-block">
+              <label for="street">רחוב ומספר *</label>
+              <input id="street" name="street" type="text" autocomplete="street-address" required>
+              <p class="field-error" data-for="street"></p>
+            </div>
+          </div>
+          <div class="form-grid form-grid--2">
+            <div class="field-block">
+              <label for="apartment">דירה / כניסה</label>
+              <input id="apartment" name="apartment" type="text">
+            </div>
+            <div class="field-block">
+              <label for="zip">מיקוד</label>
+              <input id="zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code">
+            </div>
+          </div>
+        </div>
+
+        <div class="field-block" style="margin-top:1rem">
+          <label for="notes">הערות להזמנה</label>
+          <textarea id="notes" name="notes" rows="3" placeholder="משהו שכדאי שנדע?"></textarea>
+        </div>
+      </div>
+
+      <!-- תשלום -->
+      <div class="checkout__box">
+        <h2>תשלום</h2>
+        <div id="paymentNotice" style="padding:1rem;border:1px dashed var(--border);border-radius:.75rem;background:color-mix(in oklab,var(--muted) 50%,transparent)">
+          <p style="font-size:.9375rem;font-weight:500">סליקה טרם חוברה</p>
+          <p style="margin-top:.5rem;font-size:.875rem;color:var(--muted-foreground);line-height:1.6">
+            כרגע ההזמנה נשמרת ונשלחת לדף הניהול, אבל <strong>לא מתבצע חיוב בפועל</strong>.
+            כדי לגבות תשלום צריך לחבר ספק סליקה (Tranzila / Cardcom / Meshulam / Stripe).
+            אנחנו לעולם לא נבקש כאן פרטי אשראי עד שהסליקה תחובר כמו שצריך.
+          </p>
+        </div>
+
+        <label class="filter-option" style="margin-top:1.25rem">
+          <input type="checkbox" id="terms" name="terms" required>
+          <span>קראתי ואני מאשרת את התקנון ומדיניות הפרטיות *</span>
+        </label>
+        <p class="field-error" data-for="terms"></p>
+      </div>
+    </div>
+
+    <!-- סיכום -->
+    <aside class="order-summary">
+      <div class="checkout__box">
+        <h2>סיכום ההזמנה</h2>
+
+        <div id="summaryItems" style="max-height:18rem;overflow-y:auto;margin-bottom:1.25rem"></div>
+
+        <div id="couponArea">
+          <div class="coupon-row">
+            <input class="field" type="text" id="couponInput" placeholder="קוד קופון" aria-label="קוד קופון">
+            <button class="field-submit" type="button" id="couponApply">החלה</button>
+          </div>
+          <p class="form-status" id="couponStatus" role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="summary-row">
+          <span>סכום ביניים</span>
+          <span class="summary-row__value" id="sumSubtotal">0 ₪</span>
+        </div>
+        <div class="summary-row summary-row--free" id="discountRow" hidden>
+          <span id="discountLabel">הנחה</span>
+          <span class="summary-row__value" id="sumDiscount">0 ₪</span>
+        </div>
+        <div class="summary-row">
+          <span>משלוח</span>
+          <span class="summary-row__value" id="sumShipping">0 ₪</span>
+        </div>
+        <div class="summary-row summary-row--total">
+          <span>סה״כ לתשלום</span>
+          <span class="summary-row__value" id="sumTotal">0 ₪</span>
+        </div>
+
+        <button class="btn btn--gold" type="submit" id="placeOrder" style="width:100%;margin-top:1.25rem">
+          שליחת ההזמנה
+        </button>
+
+        <p style="margin-top:.75rem;text-align:center;font-size:.75rem;color:var(--muted-foreground)">
+          ללא הרשמה · חשבונית תישלח למייל
+        </p>
+      </div>
+    </aside>
+
+  </form>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="site-footer__bottom">
+    © <span id="copyrightYear">2026</span> LIAD. כל הזכויות שמורות
+  </div>
+</footer>
+
+<script type="module" src="js/checkout.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "liad-shop",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4175", "--directory", "liad-shop"],
+      "port": 4175
+    },
+    {
+      "name": "liad-landing",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4174", "--directory", "liad-landing"],
+      "port": 4174
+    }
+  ]
+}

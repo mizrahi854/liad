@@ -1,0 +1,2019 @@
+/* ==========================================================================
+   LIAD — דף כניסה (Landing)
+   קובץ עיצוב ראשי. מחולק לפי אזורים, ניתן לעריכה נוחה.
+
+   תוכן עניינים:
+   01. טוקני עיצוב (צבעים, צללים, מרווחים)
+   02. גופנים
+   03. איפוס ובסיס
+   04. עזרים כלליים (container, section, כותרות)
+   05. כפתורים
+   06. שורת הכרזות + הדר + ניווט
+   07. Hero
+   08. שתי הדלתות (חנות / אקדמיה)
+   09. מוצרים מומלצים
+   10. צ'יפים לפי צורך
+   11. קטגוריות
+   12. אודות
+   13. אקדמיה (טיזר)
+   14. המלצות וידאו
+   15. יומן / טיפים
+   16. שאלות נפוצות
+   17. סניפים
+   18. ניוזלטר + מתנה דיגיטלית
+   19. פוטר
+   20. פופאפ הנחה
+   21. אנימציות חשיפה בגלילה
+   22. רספונסיביות
+   ========================================================================== */
+
+/* ==========================================================================
+   01. טוקני עיצוב
+   ========================================================================== */
+:root {
+  /* צבעי מותג */
+  --gold: oklch(72% 0.093 78.5);
+  --gold-soft: oklch(80% 0.083 82);
+  --cream: oklch(96.5% 0.012 78);
+  --powder: oklch(92.5% 0.028 66);
+  --charcoal: oklch(26% 0 0);
+  --rich-black: oklch(18% 0 0);
+
+  /* צבעי ממשק */
+  --background: oklch(98.5% 0.006 78);
+  --foreground: oklch(26% 0 0);
+  --card: oklch(100% 0 0);
+  --secondary: oklch(92.5% 0.028 66);
+  --muted: oklch(95% 0.012 74);
+  --muted-foreground: oklch(50% 0.015 70);
+  --border: oklch(90% 0.015 74);
+
+  /* גופנים */
+  --font-sans: "Assistant", "Heebo", system-ui, sans-serif;
+  --font-display: "Heebo", "Assistant", system-ui, sans-serif;
+  --font-wordmark: "Fraunces Variable", Georgia, serif;
+
+  /* צללים */
+  --shadow-card: 0 2px 8px -4px color-mix(in oklab, var(--charcoal) 18%, transparent);
+  --shadow-card-hover: 0 24px 50px -24px color-mix(in oklab, var(--charcoal) 40%, transparent);
+  --shadow-soft: 0 8px 30px -18px color-mix(in oklab, var(--charcoal) 35%, transparent);
+  --shadow-luxe: 0 20px 60px -25px color-mix(in oklab, var(--charcoal) 45%, transparent);
+
+  /* תנועה */
+  --ease-luxe: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 0.2s;
+  --dur-base: 0.4s;
+  --dur-slow: 0.7s;
+
+  /* מבנה */
+  --container: 80rem;
+  --radius: 0.5rem;
+  --header-height: 5rem;
+}
+
+/* ==========================================================================
+   02. גופנים
+   ========================================================================== */
+@font-face {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../assets/fonts/assistant-hebrew-300-normal-BJ-T_jEV.woff2") format("woff2");
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+@font-face {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/assistant-hebrew-400-normal-BaQtOmbn.woff2") format("woff2");
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+@font-face {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/fonts/assistant-hebrew-500-normal-D-sgbtFC.woff2") format("woff2");
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+@font-face {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../assets/fonts/assistant-hebrew-600-normal-DM_XHISn.woff2") format("woff2");
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+@font-face {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/assistant-hebrew-700-normal-DbcUQTwo.woff2") format("woff2");
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+@font-face {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/assistant-latin-400-normal-CDF-mh-3.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../assets/fonts/assistant-latin-600-normal-DQhO4fCi.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/assistant-latin-700-normal-Bh4ZScKg.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Heebo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/heebo-hebrew-400-normal-CVTJgQVK.woff2") format("woff2");
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+@font-face {
+  font-family: "Heebo";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/fonts/heebo-hebrew-500-normal-TEhwuRN-.woff2") format("woff2");
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+@font-face {
+  font-family: "Heebo";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../assets/fonts/heebo-hebrew-600-normal-CGRgQ0cj.woff2") format("woff2");
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+@font-face {
+  font-family: "Heebo";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/heebo-hebrew-700-normal-BmueYKsA.woff2") format("woff2");
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+@font-face {
+  font-family: "Heebo";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/heebo-latin-700-normal-PoyjiH5f.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Fraunces Variable";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../assets/fonts/fraunces-latin-wght-normal-ukD16Tqj.woff2") format("woff2-variations");
+}
+
+/* ==========================================================================
+   03. איפוס ובסיס
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 1rem);
+  /* חוסם גלילה אופקית מאלמנטים דקורטיביים.
+     חשוב שיישב על html ולא על body — על body זה שובר את גלילת העמוד. */
+  overflow-x: clip;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+input {
+  font: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   04. עזרים כלליים
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.section {
+  padding-block: 5rem;
+}
+
+.section--tight {
+  padding-block: 4rem;
+}
+
+.section--cream { background-color: var(--cream); }
+.section--powder { background-color: color-mix(in oklab, var(--powder) 50%, transparent); }
+.section--secondary { background-color: color-mix(in oklab, var(--secondary) 30%, transparent); }
+.section--bordered { border-top: 1px solid var(--border); }
+
+/* כותרת אזור */
+.eyebrow {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+}
+
+.section-title {
+  margin-top: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.section-lead {
+  margin-top: 0.75rem;
+  max-width: 36rem;
+  color: var(--muted-foreground);
+}
+
+.section-head {
+  margin-bottom: 2.5rem;
+}
+
+.section-head--center {
+  text-align: center;
+}
+
+.section-head--center .section-lead {
+  margin-inline: auto;
+}
+
+.section-head--split {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* קו זהב קטן לפני כותרת */
+.rule-gold {
+  display: inline-block;
+  width: 2.5rem;
+  height: 1px;
+  background-color: var(--gold);
+}
+
+.eyebrow-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* טקסט בגרדיאנט זהב */
+.text-gold-gradient {
+  background: linear-gradient(105deg, var(--gold-soft), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.wordmark {
+  font-family: var(--font-wordmark);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* קישור "לכל ה..." עם חץ */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--gold);
+  transition: color var(--dur-base) var(--ease-luxe);
+}
+
+.link-arrow:hover {
+  color: var(--foreground);
+}
+
+.link-arrow svg {
+  width: 1rem;
+  height: 1rem;
+  transition: transform var(--dur-base) var(--ease-luxe);
+}
+
+.link-arrow:hover svg {
+  transform: translateX(-0.25rem);
+}
+
+/* ==========================================================================
+   05. כפתורים
+   ========================================================================== */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  height: 3rem;
+  padding-inline: 2rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    transform var(--dur-base) var(--ease-luxe),
+    box-shadow var(--dur-base) var(--ease-luxe),
+    background-color var(--dur-base) var(--ease-luxe),
+    background-position var(--dur-base) var(--ease-luxe),
+    color var(--dur-base) var(--ease-luxe),
+    border-color var(--dur-base) var(--ease-luxe);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* כפתור זהב ראשי */
+.btn--gold {
+  color: var(--charcoal);
+  background-image: linear-gradient(105deg, var(--gold-soft), var(--gold));
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  box-shadow: var(--shadow-luxe);
+}
+
+.btn--gold:hover {
+  background-position: 100% 50%;
+  transform: translateY(-2px);
+  box-shadow: 0 28px 60px -24px color-mix(in oklab, var(--gold) 65%, transparent);
+}
+
+/* כפתור מתאר */
+.btn--outline {
+  border: 1px solid color-mix(in oklab, var(--charcoal) 25%, transparent);
+  background-color: transparent;
+}
+
+.btn--outline:hover {
+  border-color: var(--charcoal);
+  background-color: var(--charcoal);
+  color: var(--cream);
+  transform: translateY(-2px);
+}
+
+/* כפתור כהה */
+.btn--dark {
+  background-color: var(--charcoal);
+  color: var(--cream);
+  box-shadow: var(--shadow-card);
+}
+
+.btn--dark:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn--sm {
+  height: 2.5rem;
+  padding-inline: 1.25rem;
+  font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   06. שורת הכרזות + הדר
+   ========================================================================== */
+.announcement {
+  background-color: var(--gold);
+  color: var(--charcoal);
+}
+
+.announcement__viewport {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+.announcement__slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-size: 0.8125rem;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transform: translateY(100%);
+  transition:
+    opacity var(--dur-slow) var(--ease-luxe),
+    transform var(--dur-slow) var(--ease-luxe);
+}
+
+.announcement__slot.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background-color: color-mix(in oklab, var(--background) 62%, transparent);
+  backdrop-filter: blur(10px) saturate(120%);
+  border-bottom: 1px solid color-mix(in oklab, var(--border) 40%, transparent);
+  transition:
+    background-color var(--dur-slow) var(--ease-luxe),
+    box-shadow var(--dur-slow) var(--ease-luxe);
+}
+
+.site-header[data-scrolled="true"] {
+  background-color: color-mix(in oklab, var(--background) 92%, transparent);
+  box-shadow: 0 8px 24px -16px color-mix(in oklab, var(--charcoal) 35%, transparent);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  height: var(--header-height);
+  transition: height var(--dur-slow) var(--ease-luxe);
+}
+
+.site-header__side {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.site-header__side--end {
+  justify-content: flex-end;
+}
+
+.site-logo img {
+  height: 3.25rem;
+  width: auto;
+  object-fit: contain;
+  transition: height var(--dur-slow) var(--ease-luxe);
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  color: color-mix(in oklab, var(--foreground) 80%, transparent);
+  transition: color var(--dur-base) var(--ease-luxe);
+}
+
+.icon-btn:hover {
+  color: var(--gold);
+}
+
+.icon-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.nav-desktop {
+  display: none;
+  align-items: center;
+}
+
+.nav-desktop a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: color-mix(in oklab, var(--foreground) 80%, transparent);
+  transition: color var(--dur-base) var(--ease-luxe);
+}
+
+.nav-desktop a:hover {
+  color: var(--foreground);
+}
+
+.nav-desktop a::after {
+  content: "";
+  position: absolute;
+  inset-inline: 1rem;
+  bottom: -2px;
+  height: 1px;
+  background-color: var(--gold);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--dur-slow) var(--ease-luxe);
+}
+
+.nav-desktop a:hover::after {
+  transform: scaleX(1);
+}
+
+.header-cta {
+  display: none;
+  padding: 0.625rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--charcoal);
+  background-image: linear-gradient(105deg, var(--gold-soft), var(--gold));
+  box-shadow: var(--shadow-luxe);
+  transition: transform var(--dur-base) var(--ease-luxe), opacity var(--dur-base) var(--ease-luxe);
+}
+
+.header-cta:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+/* תפריט מובייל */
+.nav-mobile {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 6rem 2rem 2rem;
+  background-color: var(--background);
+  transform: translateX(100%);
+  transition: transform var(--dur-base) var(--ease-luxe);
+  visibility: hidden;
+}
+
+.nav-mobile.is-open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.nav-mobile a {
+  padding-block: 0.75rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  border-bottom: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+}
+
+.nav-mobile__close {
+  position: absolute;
+  top: 1.5rem;
+  inset-inline-start: 1.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.nav-mobile__actions {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+/* ==========================================================================
+   07. Hero
+   ========================================================================== */
+.hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--cream);
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 100%);
+}
+
+.hero__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 68% 100%;
+  opacity: 0.96;
+  filter: brightness(1.03);
+}
+
+.hero__fade-bottom {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 1;
+  height: 38%;
+  pointer-events: none;
+  background-image: linear-gradient(
+    to top,
+    var(--cream) 0%,
+    color-mix(in oklab, var(--cream) 80%, transparent) 50%,
+    transparent 100%
+  );
+}
+
+.hero__fade-side {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: linear-gradient(
+    to left,
+    color-mix(in oklab, var(--cream) 60%, transparent) 0%,
+    color-mix(in oklab, var(--cream) 10%, transparent) 50%,
+    transparent 100%
+  );
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  min-height: 92svh;
+  padding-block: 4rem 6rem;
+}
+
+.hero__content {
+  max-width: 36rem;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.75rem, 8vw, 4.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: #000;
+}
+
+.hero__title .wordmark {
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.hero__lead {
+  margin-top: 2rem;
+  max-width: 28rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: color-mix(in oklab, var(--foreground) 80%, transparent);
+}
+
+.hero__lead strong {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+.hero__badges {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.hero__badges span {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.hero__badges svg {
+  flex-shrink: 0;
+  width: 0.875rem;
+  height: 0.875rem;
+  color: var(--gold);
+}
+
+/* ==========================================================================
+   08. שתי הדלתות (חנות / אקדמיה)
+   ========================================================================== */
+.doors {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.door {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  min-height: 22rem;
+  box-shadow: var(--shadow-card);
+  transition:
+    transform var(--dur-base) var(--ease-luxe),
+    box-shadow var(--dur-base) var(--ease-luxe);
+}
+
+.door:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.door__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 900ms var(--ease-luxe);
+}
+
+.door:hover .door__img {
+  transform: scale(1.06);
+}
+
+.door__overlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    to top,
+    color-mix(in oklab, var(--charcoal) 82%, transparent) 0%,
+    color-mix(in oklab, var(--charcoal) 35%, transparent) 55%,
+    transparent 100%
+  );
+  transition: background-image var(--dur-slow) var(--ease-luxe);
+}
+
+.door__body {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  padding: 2rem;
+  color: var(--cream);
+}
+
+.door__eyebrow {
+  font-size: 0.6875rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--gold-soft) 90%, white);
+}
+
+.door__title {
+  margin-top: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.875rem;
+  line-height: 1.15;
+}
+
+.door__text {
+  margin-top: 0.5rem;
+  max-width: 24rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: color-mix(in oklab, var(--cream) 85%, transparent);
+}
+
+.door__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding: 0.625rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  background-image: linear-gradient(105deg, var(--gold-soft), var(--gold));
+  transition: transform var(--dur-base) var(--ease-luxe);
+}
+
+.door:hover .door__cta {
+  transform: translateX(-4px);
+}
+
+/* ==========================================================================
+   09. מוצרים מומלצים
+   ========================================================================== */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.product-card {
+  display: block;
+  overflow: hidden;
+  border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  border-radius: 1.5rem;
+  background-color: var(--card);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform 250ms var(--ease-luxe),
+    box-shadow 250ms var(--ease-luxe),
+    border-color 250ms var(--ease-luxe);
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in oklab, var(--gold) 40%, transparent);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.product-card__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: var(--secondary);
+}
+
+.product-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 250ms var(--ease-luxe);
+}
+
+.product-card:hover .product-card__media img {
+  transform: scale(1.03);
+}
+
+.product-card__badges {
+  position: absolute;
+  top: 1rem;
+  inset-inline-end: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.375rem;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.625rem;
+  letter-spacing: 0.28em;
+  background-color: color-mix(in oklab, var(--background) 95%, transparent);
+  color: color-mix(in oklab, var(--foreground) 70%, transparent);
+  box-shadow: 0 1px 2px color-mix(in oklab, var(--charcoal) 10%, transparent);
+}
+
+.badge--gold {
+  background-image: linear-gradient(105deg, var(--gold-soft), var(--gold));
+  color: var(--charcoal);
+}
+
+.product-card__stock {
+  position: absolute;
+  inset-inline: 1rem;
+  bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 0.75rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  color: var(--cream);
+  background-color: color-mix(in oklab, var(--charcoal) 85%, transparent);
+  backdrop-filter: blur(4px);
+}
+
+.product-card__body {
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+}
+
+.product-card__brand {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--muted-foreground);
+}
+
+.product-card__title {
+  margin-top: 0.375rem;
+  min-height: 3.25rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 250ms var(--ease-luxe);
+}
+
+.product-card:hover .product-card__title {
+  color: var(--gold);
+}
+
+.product-card__desc {
+  margin-top: 0.375rem;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-card__price {
+  margin-top: 0.75rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.product-card__price del {
+  margin-inline-start: 0.5rem;
+  font-weight: 400;
+  color: var(--muted-foreground);
+}
+
+/* ==========================================================================
+   10. צ'יפים לפי צורך
+   ========================================================================== */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.625rem;
+  margin-top: 2rem;
+}
+
+.chip {
+  padding: 0.625rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background-color: var(--card);
+  box-shadow: var(--shadow-card);
+  font-size: 0.875rem;
+  color: color-mix(in oklab, var(--foreground) 80%, transparent);
+  transition:
+    transform var(--dur-base) var(--ease-luxe),
+    box-shadow var(--dur-base) var(--ease-luxe),
+    border-color var(--dur-base) var(--ease-luxe),
+    color var(--dur-base) var(--ease-luxe);
+}
+
+.chip:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+  color: var(--gold);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ==========================================================================
+   11. קטגוריות
+   ========================================================================== */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.category-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background-color: var(--secondary);
+  transition:
+    transform var(--dur-base) var(--ease-luxe),
+    box-shadow var(--dur-base) var(--ease-luxe);
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 900ms var(--ease-luxe);
+}
+
+.category-card:hover img {
+  transform: scale(1.06);
+}
+
+.category-card__overlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    to top,
+    color-mix(in oklab, var(--charcoal) 70%, transparent) 0%,
+    color-mix(in oklab, var(--charcoal) 10%, transparent) 50%,
+    transparent 100%
+  );
+  transition: opacity var(--dur-slow) var(--ease-luxe);
+}
+
+.category-card__body {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  padding: 1rem;
+  color: var(--cream);
+}
+
+.category-card__label {
+  font-size: 0.625rem;
+  letter-spacing: 0.28em;
+  color: color-mix(in oklab, var(--cream) 70%, transparent);
+}
+
+.category-card__title {
+  margin-top: 0.125rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.2;
+  transition: color var(--dur-base) var(--ease-luxe);
+}
+
+.category-card:hover .category-card__title {
+  color: var(--gold-soft);
+}
+
+/* ==========================================================================
+   12. אודות
+   ========================================================================== */
+.about {
+  display: grid;
+  align-items: center;
+  gap: 3rem;
+}
+
+.about__media {
+  position: relative;
+}
+
+.about__frame {
+  position: absolute;
+  inset-block-start: 1rem;
+  inset-inline-start: -1rem;
+  width: 100%;
+  height: 100%;
+  border: 1px solid color-mix(in oklab, var(--gold) 30%, transparent);
+  border-radius: 1.75rem;
+  pointer-events: none;
+}
+
+.about__media img {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  border-radius: 1.5rem;
+  object-fit: cover;
+  box-shadow: var(--shadow-luxe);
+}
+
+.about__badge {
+  position: absolute;
+  top: 1rem;
+  inset-inline-end: 1rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.625rem;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+  background-color: color-mix(in oklab, var(--background) 85%, transparent);
+  backdrop-filter: blur(4px);
+}
+
+.about__title {
+  margin-top: 1.25rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.about__text {
+  margin-top: 1.75rem;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: color-mix(in oklab, var(--foreground) 75%, transparent);
+}
+
+/* ==========================================================================
+   13. אקדמיה (טיזר)
+   ========================================================================== */
+.academy {
+  display: grid;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.academy__media {
+  position: relative;
+}
+
+.academy__media img {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  border-radius: 1rem;
+  object-fit: cover;
+  box-shadow: var(--shadow-luxe);
+}
+
+.academy__stamp {
+  display: none;
+  position: absolute;
+  bottom: -1.25rem;
+  inset-inline-start: -1.25rem;
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  background-color: var(--card);
+  box-shadow: var(--shadow-luxe);
+  text-align: center;
+}
+
+.academy__stamp-mark {
+  font-family: var(--font-wordmark);
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.academy__stamp-sub {
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  color: var(--muted-foreground);
+}
+
+.academy__title {
+  margin-top: 0.75rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 4.5vw, 2.6rem);
+  line-height: 1.2;
+}
+
+.academy__features {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+}
+
+.academy__feature svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--gold);
+}
+
+.academy__feature h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.academy__feature p {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}
+
+/* ==========================================================================
+   14. המלצות וידאו
+   ========================================================================== */
+.reels {
+  position: relative;
+  max-width: 64rem;
+  margin-inline: auto;
+}
+
+.reels__track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-block: 0.5rem;
+}
+
+.reels__track::-webkit-scrollbar {
+  display: none;
+}
+
+.reel {
+  flex: 0 0 82%;
+  scroll-snap-align: center;
+  transition:
+    opacity var(--dur-slow) var(--ease-luxe),
+    transform var(--dur-slow) var(--ease-luxe);
+  opacity: 0.7;
+  transform: scale(0.96);
+}
+
+.reel.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.reel__stage {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 22px;
+  background-color: var(--cream);
+  box-shadow: var(--shadow-luxe);
+}
+
+.reel__backdrop,
+.reel__poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.reel__poster {
+  transition: opacity var(--dur-slow) var(--ease-luxe);
+}
+
+.reel__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--dur-slow) var(--ease-luxe);
+}
+
+.reel.is-playing .reel__video {
+  opacity: 1;
+}
+
+.reel.is-playing .reel__poster {
+  opacity: 0;
+}
+
+.reel__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--dur-base) var(--ease-luxe);
+}
+
+.reel.is-playing .reel__play {
+  opacity: 0;
+}
+
+.reel__play-circle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 999px;
+  background-color: color-mix(in oklab, var(--cream) 75%, transparent);
+  backdrop-filter: blur(4px);
+  box-shadow: var(--shadow-luxe), 0 0 0 1px color-mix(in oklab, var(--gold) 50%, transparent) inset;
+  transition: transform var(--dur-slow) var(--ease-luxe);
+}
+
+.reel:hover .reel__play-circle {
+  transform: scale(1.05);
+}
+
+.reel__play-circle svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--gold);
+}
+
+.reel__tools {
+  position: absolute;
+  top: 0.75rem;
+  inset-inline-end: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-luxe);
+}
+
+.reel.is-active .reel__tools,
+.reel:hover .reel__tools {
+  opacity: 1;
+}
+
+.reel__tool {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  color: var(--charcoal);
+  background-color: color-mix(in oklab, var(--cream) 75%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--gold) 40%, transparent);
+  backdrop-filter: blur(4px);
+  transition: color var(--dur-base) var(--ease-luxe), background-color var(--dur-base) var(--ease-luxe);
+}
+
+.reel__tool:hover {
+  color: var(--gold);
+  background-color: var(--cream);
+}
+
+.reel__tool svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.reels__nav {
+  display: none;
+  position: absolute;
+  top: 50%;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background-color: var(--cream);
+  color: var(--gold);
+  box-shadow: var(--shadow-luxe), 0 0 0 1px color-mix(in oklab, var(--gold) 40%, transparent);
+  transition: transform var(--dur-base) var(--ease-luxe);
+}
+
+.reels__nav:hover {
+  transform: translateY(-50%) scale(1.05);
+}
+
+.reels__nav--prev {
+  inset-inline-end: -1.375rem;
+  transform: translateY(-50%);
+}
+
+.reels__nav--next {
+  inset-inline-start: -1.375rem;
+  transform: translateY(-50%);
+}
+
+.reels__nav svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ==========================================================================
+   15. יומן / טיפים
+   ========================================================================== */
+.journal-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.journal-card__media {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background-color: var(--secondary);
+}
+
+.journal-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease-luxe);
+}
+
+.journal-card:hover .journal-card__media img {
+  transform: scale(1.05);
+}
+
+.journal-card__meta {
+  margin-top: 1rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+}
+
+.journal-card__title {
+  margin-top: 0.25rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  transition: color var(--dur-base) var(--ease-luxe);
+}
+
+.journal-card:hover .journal-card__title {
+  color: var(--gold);
+}
+
+.journal-card__excerpt {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}
+
+/* ==========================================================================
+   16. שאלות נפוצות
+   ========================================================================== */
+.faq {
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding-block: 1rem;
+  text-align: start;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.125rem;
+  transition: color var(--dur-base) var(--ease-luxe);
+}
+
+.faq__trigger:hover {
+  color: var(--gold);
+}
+
+.faq__trigger svg {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  color: var(--muted-foreground);
+  transition: transform var(--dur-base) var(--ease-luxe);
+}
+
+.faq__item[data-state="open"] .faq__trigger svg {
+  transform: rotate(180deg);
+}
+
+/* הגובה נקבע ב-JS (js/main.js -> initFaq) כדי שהאנימציה תעבוד בכל דפדפן. */
+.faq__panel {
+  height: 0;
+  overflow: hidden;
+  transition: height var(--dur-base) var(--ease-luxe);
+}
+
+.faq__panel p {
+  padding-bottom: 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+
+/* ==========================================================================
+   17. סניפים
+   ========================================================================== */
+.locations {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 56rem;
+  margin-inline: auto;
+}
+
+.location {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background-color: var(--card);
+  box-shadow: var(--shadow-card);
+}
+
+.location h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  white-space: pre-line;
+}
+
+.location__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  color: var(--muted-foreground);
+  white-space: pre-line;
+}
+
+.location__row svg {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.35rem;
+  color: var(--gold);
+}
+
+.location__note {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--gold);
+}
+
+.location__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.location__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: opacity var(--dur-base) var(--ease-luxe), background-color var(--dur-base) var(--ease-luxe);
+}
+
+.location__link svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.location__link--solid {
+  background-color: var(--gold);
+  color: var(--charcoal);
+}
+
+.location__link--solid:hover {
+  opacity: 0.9;
+}
+
+.location__link--outline {
+  border: 1px solid var(--gold);
+  color: var(--gold);
+}
+
+.location__link--outline:hover {
+  background-color: color-mix(in oklab, var(--gold) 10%, transparent);
+}
+
+/* ==========================================================================
+   18. ניוזלטר + מתנה דיגיטלית
+   ========================================================================== */
+.newsletter {
+  max-width: 48rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.newsletter__gift {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  color: var(--charcoal);
+  background-image: linear-gradient(105deg, var(--gold-soft), var(--gold));
+}
+
+.newsletter__gift svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.newsletter__form {
+  max-width: 28rem;
+  margin: 2rem auto 0;
+}
+
+.field-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field {
+  width: 100%;
+  padding: 0.625rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background-color: var(--background);
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color var(--dur-base) var(--ease-luxe);
+}
+
+.field:focus {
+  border-color: var(--gold);
+}
+
+.field-submit {
+  flex-shrink: 0;
+  padding: 0.625rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  background-color: var(--gold);
+  transition: opacity var(--dur-base) var(--ease-luxe);
+}
+
+.field-submit:hover {
+  opacity: 0.9;
+}
+
+.field-submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.honeypot {
+  position: absolute;
+  inset-inline-start: -9999px;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.form-note {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.form-status {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  min-height: 1.25rem;
+}
+
+.form-status[data-state="success"] { color: var(--gold); }
+.form-status[data-state="error"] { color: oklch(57.7% 0.245 27.325); }
+
+/* ==========================================================================
+   19. פוטר
+   ========================================================================== */
+.site-footer {
+  margin-top: 6rem;
+  border-top: 1px solid var(--border);
+  background-color: color-mix(in oklab, var(--secondary) 40%, transparent);
+}
+
+.site-footer__grid {
+  display: grid;
+  gap: 2.5rem;
+  padding-block: 4rem;
+}
+
+.site-footer__brand img {
+  height: 3.5rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.site-footer__brand p {
+  margin-top: 1rem;
+  max-width: 20rem;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+
+.site-footer__mail {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  transition: color var(--dur-base) var(--ease-luxe);
+}
+
+.site-footer__mail:hover {
+  color: var(--gold);
+}
+
+.site-footer__mail svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.site-footer__col h4 {
+  margin-bottom: 1rem;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  color: var(--muted-foreground);
+}
+
+.site-footer__col li + li {
+  margin-top: 0.5rem;
+}
+
+.site-footer__col a {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  transition: color var(--dur-base) var(--ease-luxe);
+}
+
+.site-footer__col a:hover {
+  color: var(--gold);
+}
+
+.site-footer__bottom {
+  padding-block: 1.25rem;
+  border-top: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+/* ==========================================================================
+   20. פופאפ הנחה
+   ========================================================================== */
+.promo {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background-color: color-mix(in oklab, var(--charcoal) 55%, transparent);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur-base) var(--ease-luxe), visibility var(--dur-base);
+}
+
+.promo.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.promo__card {
+  position: relative;
+  width: 100%;
+  max-width: 26rem;
+  padding: 2.5rem 2rem 2rem;
+  border-radius: 1.5rem;
+  background-color: var(--background);
+  box-shadow: var(--shadow-luxe);
+  text-align: center;
+  transform: translateY(1.5rem) scale(0.97);
+  transition: transform var(--dur-slow) var(--ease-luxe);
+}
+
+.promo.is-open .promo__card {
+  transform: translateY(0) scale(1);
+}
+
+.promo__close {
+  position: absolute;
+  top: 0.75rem;
+  inset-inline-start: 0.75rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--muted-foreground);
+  transition: color var(--dur-base) var(--ease-luxe);
+}
+
+.promo__close:hover {
+  color: var(--foreground);
+}
+
+.promo__value {
+  font-family: var(--font-wordmark);
+  font-weight: 600;
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+.promo__title {
+  margin-top: 0.75rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.promo__text {
+  margin-top: 0.75rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}
+
+.promo__form {
+  margin-top: 1.5rem;
+}
+
+.promo__code {
+  display: none;
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border: 1px dashed var(--gold);
+  border-radius: 0.75rem;
+  background-color: color-mix(in oklab, var(--gold) 8%, transparent);
+}
+
+.promo__code.is-visible {
+  display: block;
+}
+
+.promo__code-value {
+  font-family: var(--font-wordmark);
+  font-weight: 600;
+  font-size: 1.75rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+}
+
+.promo__code-hint {
+  margin-top: 0.375rem;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.promo__dismiss {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   21. אנימציות חשיפה בגלילה
+   ========================================================================== */
+/* האנימציה פועלת רק כאשר ה-JS הוסיף את המחלקה .js ל-<html>.
+   כך, אם ה-JS נכשל או חסום — התוכן פשוט מוצג, ולא נשאר שקוף. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity var(--dur-slow) var(--ease-luxe),
+    transform var(--dur-slow) var(--ease-luxe);
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+.js .reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   22. רספונסיביות
+   ========================================================================== */
+@media (min-width: 640px) {
+  .container { padding-inline: 2rem; }
+  .announcement__slot { font-size: 0.875rem; letter-spacing: 0.12em; }
+  .hero__actions { flex-direction: row; }
+  .hero__badges { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+  .hero__badges span { justify-content: center; }
+  .product-grid { gap: 1.5rem; }
+  .category-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .journal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .locations { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .academy__stamp { display: block; }
+  /* ארבעה יתרונות — שתי עמודות נותנות טקסט קריא, בניגוד לשלוש שדוחסות אותו */
+  .academy__features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .field-row { flex-direction: row; }
+  .reel { flex: 0 0 62%; }
+  .site-footer__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 768px) {
+  .section { padding-block: 6rem; }
+  .doors { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about { grid-template-columns: 0.9fr 1fr; gap: 4rem; }
+  .academy { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero__media img { object-position: 22% 0%; }
+  .hero__inner { min-height: 86vh; }
+  .nav-desktop { display: flex; }
+  .nav-toggle { display: none; }
+  .search-mobile { display: none; }
+  .reels__nav { display: flex; }
+}
+
+@media (min-width: 1024px) {
+  .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .journal-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .header-cta { display: inline-block; }
+  .reel { flex: 0 0 44%; }
+  .site-footer__grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+}

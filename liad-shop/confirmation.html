@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LIAD | אסתטיקה ויופי</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* הדפסה / שמירה כ-PDF: משאירים רק את החשבונית */
+    @media print {
+      .site-header, .site-footer, .confirmation__actions, .no-print { display: none !important; }
+      .receipt { border: none; padding: 0; }
+      body { background: #fff; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="site-header__inner">
+      <div class="site-header__side"></div>
+      <a class="site-logo" href="index.html" aria-label="LIAD">
+        <img src="assets/liad-logo.png" alt="LIAD" width="200" height="52">
+      </a>
+      <div class="site-header__side site-header__side--end"></div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="confirmation" id="confirmation">
+    <p>טוען…</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__bottom">
+    © <span id="copyrightYear">2026</span> LIAD. כל הזכויות שמורות
+  </div>
+</footer>
+
+<script type="module" src="js/confirmation.js"></script>
+</body>
+</html>
