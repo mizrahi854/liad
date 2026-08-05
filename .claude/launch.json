@@ -12,6 +12,14 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "4174", "--directory", "liad-landing"],
       "port": 4174
+    },
+    {
+      "_comment": "מגיש את התיקייה הראשית. רק כאן דף הבית והחנות רואים זה את הנכסים של זה (../liad-shop/...), בדיוק כמו באתר החי. השרת שולח no-store, אחרת הדפדפן מגיש מודולי JS ישנים אחרי כל שינוי.",
+      "name": "liad-site",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["tools/dev_server.py", "4176"],
+      "port": 4176,
+      "url": "http://localhost:4176"
     }
   ]
 }

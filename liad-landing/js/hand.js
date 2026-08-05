@@ -1,121 +1,261 @@
 /* ==========================================================================
-   LIAD — יד עם ציפורניים (SVG)
-   רכיב עצמאי. מייצר יד וקטורית שבה אפשר לצבוע כל ציפורן בנפרד.
+   LIAD — היד שבסקשן הגוונים
+   רכיב עצמאי. שני מצבים, אותה חוויה:
 
-   למה SVG ולא צילום:
-     • שליטה מדויקת בצבע כל ציפורן, עם מעבר חלק בין גוונים
-     • חד בכל רזולוציה, במשקל של כמה קילובייטים
-     • אין תלות בצילום יד שאין לנו
+   1. מצב צילום (המצב הפעיל)
+      צילום יד אמיתי + שכבת SVG שקופה שמכילה רק את צורות הציפורניים.
+      קווי המתאר נמדדו מהצילום עצמו (ראו data/shades.json → hand.nails),
+      ולכן הם יושבים עליו לפיקסל.
 
-   הצבע מוזרק דרך משתנה CSS (--nail-color), כך שהמעבר בין גוונים
-   מתבצע ע"י ה-compositor ולא ע"י JavaScript — חלק ובחינם מבחינת ביצועים.
+      הצביעה נעשית בשלוש שכבות, כי לק אמיתי הוא לא כתם צבע אחיד:
+
+        tint   — multiply. הצבע מוכפל בצילום, ולכן כל הצללים, ההשתקפויות
+                 והמרקם של הציפורן נשארים. זה ההבדל בין "לק" ל"מדבקה".
+        depth  — קו כהה ורך בשוליים הפנימיים, שנותן לציפורן נפח.
+        gloss  — פס אור שמגיע מאותו כיוון שממנו מגיע האור בצילום,
+                 ומחזיר את הברק הרטוב ש-multiply לבדו היה מכבה.
+
+      כל שכבה חתוכה בדיוק לצורת הציפורניים, ולכן שום צבע לא נוגע בעור.
+
+   2. מצב וקטורי (גיבוי)
+      נכנס לפעולה אם אין צילום בנתונים, כדי שהסקשן לעולם לא יישבר.
+
+   בשני המצבים הצבע מגיע ממשתנה CSS אחד (--nail-color), כך שהמעבר
+   בין גוונים מתבצע ע"י ה-compositor — חלק, ובחינם מבחינת ביצועים.
    ========================================================================== */
 
 /**
- * מחזיר את ה-SVG של היד כמחרוזת.
- * חמש הציפורניים נושאות class="nail" ומקבלות את צבען מ---nail-color.
+ * @typedef {Object} HandNail
+ * @property {string} name  אצבע (index / middle / ring / pinky / thumb)
+ * @property {string} d     נתיב SVG במערכת הצירים של הצילום
+ * @property {number} [gloss] עוצמת הברק, 0..1
+ * @property {number} [blur]  ריכוך הקצה בפיקסלים — לאצבע מחוץ לפוקוס
+ */
+
+/**
+ * @typedef {Object} HandConfig
+ * @property {string} image
+ * @property {string} [imageWebp]
+ * @property {string} [alt]
+ * @property {number} [width]
+ * @property {number} [height]
+ * @property {HandNail[]} nails
+ */
+
+/**
+ * בוחר את מצב היד לפי מה שקיים בנתונים.
+ * @param {HandConfig} [config]
+ */
+export function handMarkup(config) {
+  return config?.image && config.nails?.length ? handPhoto(config) : handSVG();
+}
+
+/* ==========================================================================
+   מצב צילום
+   ========================================================================== */
+
+function handPhoto({ image, imageWebp, alt, width = 800, height = 800, nails = [] }) {
+  const clean = nails
+    .map((nail, i) => ({
+      id: `nail-${(nail.name || i).toString().replace(/[^a-z0-9-]/gi, "")}-${i}`,
+      d: nail.d,
+      gloss: clamp(nail.gloss ?? 0.85, 0, 1),
+      blur: Math.max(0, Number(nail.blur) || 0),
+    }))
+    .filter((nail) => nail.d);
+
+  if (!clean.length) return handSVG();
+
+  // filter אחד לכל ערך ריכוך, ולא אחד לכל ציפורן
+  const blurs = [...new Set(clean.map((n) => n.blur))];
+  const blurId = (value) => `handBlur${String(value).replace(".", "_")}`;
+
+  const shapes = (extra = "") =>
+    clean
+      .map((n) => `<path d="${esc(n.d)}" filter="url(#${blurId(n.blur)})"${extra}/>`)
+      .join("");
+
+  const source = imageWebp
+    ? `<source srcset="${esc(imageWebp)}" type="image/webp">`
+    : "";
+
+  return `
+<div class="hand hand--photo" style="--hand-ratio:${(width / height).toFixed(4)}">
+  <picture class="hand__frame">
+    ${source}
+    <img class="hand__photo" data-cms-image="hand.photo" src="${esc(image)}"
+         alt="${esc(alt || "יד עם לק ג׳ל בגוון הנבחר")}"
+         width="${width}" height="${height}"
+         loading="eager" fetchpriority="high" decoding="async">
+  </picture>
+
+  <svg class="hand__paint" viewBox="0 0 ${width} ${height}"
+       preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+    <defs>
+      ${blurs.map((b) => `
+      <filter id="${blurId(b)}" x="-25%" y="-25%" width="150%" height="150%"
+              color-interpolation-filters="sRGB">
+        <feGaussianBlur stdDeviation="${b || 0.35}"/>
+      </filter>`).join("")}
+
+      <!-- כל הציפורניים כאזור חיתוך אחד: שום שכבה לא יכולה לגלוש לעור -->
+      <clipPath id="handNailClip">
+        ${clean.map((n) => `<path d="${esc(n.d)}"/>`).join("")}
+      </clipPath>
+
+      <!-- כיוון האור בצילום: מלמעלה־שמאל -->
+      <linearGradient id="handGloss" x1="0.1" y1="0" x2="0.75" y2="1">
+        <stop offset="0%"   stop-color="#fff" stop-opacity="0.85"/>
+        <stop offset="22%"  stop-color="#fff" stop-opacity="0.30"/>
+        <stop offset="46%"  stop-color="#fff" stop-opacity="0.04"/>
+        <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+
+    <!-- 1. הגוון -->
+    <g class="hand__tint">${shapes()}</g>
+
+    <!-- 2. נפח: קו כהה רך בשוליים, מצויר פנימה בזכות ה-clip -->
+    <g class="hand__depth" clip-path="url(#handNailClip)">${shapes(' fill="none"')}</g>
+
+    <!-- 3. ברק -->
+    <g class="hand__gloss" clip-path="url(#handNailClip)">
+      <rect x="0" y="0" width="${width}" height="${height}" fill="url(#handGloss)"/>
+    </g>
+  </svg>
+</div>`;
+}
+
+/* ==========================================================================
+   מצב וקטורי (גיבוי)
+   ========================================================================== */
+
+/*
+ * חמש האצבעות נבנות מאותה צורה אחת, וכל אחת רק מוזזת, מסובבת ומוקטנת.
+ * כך הפרופורציות נשארות עקביות — וזה גם מה שמונע את המראה ה"מצויר":
+ * הציפורן תופסת בערך רבע מאורך האצבע, כמו ביד אמיתית.
+ */
+const FINGERS = [
+  { name: "index",  x: 152, y: 128, rotate: -7,  scale: 1 },
+  { name: "middle", x: 212, y: 106, rotate: -1,  scale: 1.08 },
+  { name: "ring",   x: 270, y: 122, rotate: 5,   scale: 1 },
+  { name: "pinky",  x: 322, y: 168, rotate: 12,  scale: 0.82 },
+  { name: "thumb",  x: 122, y: 348, rotate: -62, scale: 0.94 },
+];
+
+/** קו המתאר של אצבע אחת — קפסולה מעט צרה בקצה */
+const FINGER_PATH =
+  "M -22 22 c 0 -18 9 -28 22 -28 c 13 0 22 10 22 28 " +
+  "L 24 196 c 0 16 -10 26 -24 26 c -14 0 -24 -10 -24 -26 z";
+
+/** מיטת הציפורן: שקד מוארך בקצה האצבע */
+const NAIL_PATH =
+  "M -15 14 c 0 -17 5 -26 15 -26 c 10 0 15 9 15 26 " +
+  "l 0 40 c 0 13 -7 20 -15 20 c -8 0 -15 -7 -15 -20 z";
+
+function finger({ name, x, y, rotate, scale }) {
+  const transform = `translate(${x} ${y}) rotate(${rotate}) scale(${scale})`;
+  return `
+    <g class="finger finger--${name}" transform="${transform}">
+      <path fill="url(#skin)" d="${FINGER_PATH}"/>
+      <path fill="url(#knuckle)" d="M -22 78 h 44 v 46 h -44 z" opacity=".5"/>
+      <path class="nail-bed" fill="url(#bed)" d="${NAIL_PATH}"/>
+      <path class="nail" d="${NAIL_PATH}"/>
+      <path class="nail-gloss" fill="url(#gloss)" d="${NAIL_PATH}"/>
+    </g>`;
+}
+
+/**
+ * יד וקטורית עם חמש ציפורניים נפרדות.
+ * הציפורניים נושאות class="nail" ומקבלות את צבען מ---nail-color.
  */
 export function handSVG() {
   return `
-<svg class="hand" viewBox="0 0 420 520" role="img"
+<svg class="hand hand--vector" viewBox="0 0 440 560" role="img"
      aria-label="יד עם לק ג׳ל בגוון הנבחר" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- גוון עור רך, בהיר יותר בקצוות כדי לתת נפח -->
-    <linearGradient id="skin" x1="0.2" y1="0" x2="0.9" y2="1">
-      <stop offset="0%"   stop-color="#f6e2d4"/>
-      <stop offset="45%"  stop-color="#efd3c1"/>
-      <stop offset="100%" stop-color="#e3bfa9"/>
+    <!-- עור: בהיר במרכז, חם ועמוק יותר בקצוות -->
+    <linearGradient id="skin" x1="0.15" y1="0" x2="0.9" y2="1">
+      <stop offset="0%"   stop-color="#f8e7db"/>
+      <stop offset="38%"  stop-color="#f0d6c4"/>
+      <stop offset="78%"  stop-color="#e5c3ad"/>
+      <stop offset="100%" stop-color="#d8b19a"/>
     </linearGradient>
 
-    <!-- ברק הלכה: פס אור אלכסוני -->
-    <linearGradient id="gloss" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%"   stop-color="#fff" stop-opacity="0.55"/>
-      <stop offset="42%"  stop-color="#fff" stop-opacity="0.12"/>
+    <!-- מפרקים: הצללה רכה שנותנת נפח לאצבעות -->
+    <linearGradient id="knuckle" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#c99f86" stop-opacity="0"/>
+      <stop offset="55%"  stop-color="#c99f86" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#c99f86" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- מיטת הציפורן: הוורוד הטבעי שמתחת ללק -->
+    <linearGradient id="bed" x1="0.2" y1="0" x2="0.85" y2="1">
+      <stop offset="0%"   stop-color="#f6dcd2"/>
+      <stop offset="100%" stop-color="#e8bfb2"/>
+    </linearGradient>
+
+    <!-- ברק הלכה: פס אור אלכסוני צר -->
+    <linearGradient id="gloss" x1="0.1" y1="0" x2="0.75" y2="1">
+      <stop offset="0%"   stop-color="#fff" stop-opacity="0.62"/>
+      <stop offset="26%"  stop-color="#fff" stop-opacity="0.20"/>
+      <stop offset="55%"  stop-color="#fff" stop-opacity="0.04"/>
       <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
     </linearGradient>
 
     <!-- הילה רכה סביב היד -->
-    <radialGradient id="halo" cx="0.5" cy="0.45" r="0.6">
-      <stop offset="0%"   stop-color="#fff" stop-opacity="0.85"/>
-      <stop offset="70%"  stop-color="#fff" stop-opacity="0.15"/>
+    <radialGradient id="halo" cx="0.5" cy="0.42" r="0.62">
+      <stop offset="0%"   stop-color="#fff" stop-opacity="0.9"/>
+      <stop offset="62%"  stop-color="#fff" stop-opacity="0.16"/>
       <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
     </radialGradient>
 
-    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="10" stdDeviation="14"
-                    flood-color="#8a6a55" flood-opacity="0.20"/>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20"
+                    flood-color="#8a6a55" flood-opacity="0.22"/>
     </filter>
 
-    <filter id="nailGlow" x="-60%" y="-60%" width="220%" height="220%">
-      <feDropShadow dx="0" dy="2" stdDeviation="4"
-                    flood-color="var(--nail-color, #c9a227)" flood-opacity="0.45"/>
+    <filter id="skinSoften" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="0.7"/>
     </filter>
   </defs>
 
-  <ellipse class="hand__halo" cx="210" cy="250" rx="190" ry="200" fill="url(#halo)"/>
+  <ellipse class="hand__halo" cx="220" cy="292" rx="196" ry="212" fill="url(#halo)"/>
 
   <g filter="url(#softShadow)">
-    <!-- כף היד -->
-    <path fill="url(#skin)" d="
-      M112 300
-      c-6-42 4-88 18-120
-      c10-24 28-38 52-40
-      c30-3 62 2 88 16
-      c30 16 46 44 50 78
-      c5 44-4 92-26 128
-      c-18 30-48 46-84 44
-      c-40-2-70-24-84-58
-      c-8-16-12-32-14-48 z"/>
 
-    <!-- אצבע קטנה -->
-    <g class="finger finger--pinky">
-      <path fill="url(#skin)" d="M300 236c14-4 26 4 28 18c3 20 1 42-4 60c-4 14-16 20-27 16
-                                 c-11-4-16-16-13-29c5-22 8-46 16-65z"/>
-      <path class="nail" d="M303 240c9-3 17 2 19 12c2 13 1 27-2 39c-3 10-11 14-18 11
-                            c-7-3-10-11-8-20c3-14 5-30 9-42z"/>
-      <path class="nail-gloss" d="M303 240c9-3 17 2 19 12c2 13 1 27-2 39c-3 10-11 14-18 11
-                                  c-7-3-10-11-8-20c3-14 5-30 9-42z" fill="url(#gloss)"/>
+    <!-- כף היד: צורה מלבנית מעוגלת שמתרחבת מעט למעלה, לא עיגול -->
+    <g filter="url(#skinSoften)">
+      <path fill="url(#skin)" d="
+        M 138 318
+        c -4 -36 5 -60 24 -72
+        c 46 -22 106 -22 152 0
+        c 20 12 28 36 24 72
+        c -6 52 -18 100 -40 130
+        c -18 24 -44 34 -74 32
+        c -32 -2 -56 -16 -70 -42
+        c -12 -22 -18 -68 -16 -120 z"/>
+
+      <!-- כרית האגודל -->
+      <path fill="#e7c5b0" opacity=".38" d="
+        M 160 344 c -10 40 0 84 26 112 c -32 -8 -54 -34 -60 -70 c -4 -22 6 -34 34 -42 z"/>
+
+      <!-- אור רך במרכז כף היד -->
+      <path fill="#f7e3d7" opacity=".5" d="
+        M 216 340 c 34 -6 66 -2 90 12 c -8 46 -22 82 -40 106 c -28 -18 -44 -58 -50 -118 z"/>
     </g>
 
-    <!-- קמיצה -->
-    <g class="finger finger--ring">
-      <path fill="url(#skin)" d="M254 176c15-5 29 4 31 20c4 28 2 60-4 86c-4 18-18 26-31 21
-                                 c-13-5-19-19-16-35c6-30 11-63 20-92z"/>
-      <path class="nail" d="M258 181c10-4 19 2 21 14c3 19 1 41-3 58c-3 13-13 18-21 14
-                            c-8-4-12-14-9-26c4-20 7-42 12-60z"/>
-      <path class="nail-gloss" d="M258 181c10-4 19 2 21 14c3 19 1 41-3 58c-3 13-13 18-21 14
-                                  c-8-4-12-14-9-26c4-20 7-42 12-60z" fill="url(#gloss)"/>
-    </g>
-
-    <!-- אמה -->
-    <g class="finger finger--middle">
-      <path fill="url(#skin)" d="M198 152c16-5 31 5 33 22c4 30 2 66-4 94c-5 19-20 28-34 22
-                                 c-14-6-20-21-17-38c7-33 13-69 22-100z"/>
-      <path class="nail" d="M202 157c11-4 20 3 22 15c3 21 1 45-3 64c-3 14-14 19-22 15
-                            c-9-4-13-15-10-28c5-22 8-46 13-66z"/>
-      <path class="nail-gloss" d="M202 157c11-4 20 3 22 15c3 21 1 45-3 64c-3 14-14 19-22 15
-                                  c-9-4-13-15-10-28c5-22 8-46 13-66z" fill="url(#gloss)"/>
-    </g>
-
-    <!-- אצבע מורה -->
-    <g class="finger finger--index">
-      <path fill="url(#skin)" d="M142 172c15-5 30 4 32 21c4 28 2 62-4 88c-5 18-19 27-32 21
-                                 c-13-6-19-20-16-36c6-31 12-65 20-94z"/>
-      <path class="nail" d="M146 177c10-4 19 2 21 14c3 20 1 43-3 60c-3 13-13 18-21 14
-                            c-8-4-12-14-9-26c4-21 7-44 12-62z"/>
-      <path class="nail-gloss" d="M146 177c10-4 19 2 21 14c3 20 1 43-3 60c-3 13-13 18-21 14
-                                  c-8-4-12-14-9-26c4-21 7-44 12-62z" fill="url(#gloss)"/>
-    </g>
-
-    <!-- אגודל -->
-    <g class="finger finger--thumb">
-      <path fill="url(#skin)" d="M96 300c-16 6-26 22-22 38c6 24 20 46 38 60c12 10 28 6 34-8
-                                 c6-13 1-27-10-36c-16-14-28-34-40-54z"/>
-      <path class="nail" d="M104 318c-11 5-16 16-12 27c5 15 14 29 25 38c8 7 18 4 22-5
-                            c4-9 1-19-7-25c-11-9-20-22-28-35z"/>
-      <path class="nail-gloss" d="M104 318c-11 5-16 16-12 27c5 15 14 29 25 38c8 7 18 4 22-5
-                                  c4-9 1-19-7-25c-11-9-20-22-28-35z" fill="url(#gloss)"/>
-    </g>
+    ${FINGERS.map(finger).join("")}
   </g>
 </svg>`;
+}
+
+/* ---------------------------------------------------------------- עזרים */
+
+const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+
+function esc(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }

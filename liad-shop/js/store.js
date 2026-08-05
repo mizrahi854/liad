@@ -3,7 +3,12 @@
    מודול משותף לכל הדפים: קטלוג, עגלה, מלאי, קופונים, משלוח.
 
    חשוב: אין התחברות ואין חשבון משתמש. העגלה נשמרת ב-localStorage בלבד.
+
+   הקטלוג והקופונים עוברים דרך js/admin-store.js, כך שמה שמנוהל
+   במערכת הניהול משפיע ישירות על מה שהחנות מציגה ומחשבת.
    ========================================================================== */
+
+import { applyCatalogPatch, validateCoupon as checkCoupon } from "./admin-store.js";
 
 /* ---------------------------------------------------------------- הגדרות */
 
@@ -12,12 +17,6 @@ export const CONFIG = {
   freeShippingFrom: 329.9,
   shippingFlat: 29.9,
   pickupLocations: ["מתחם הפיל, בנימינה"],
-
-  // קופונים. בשלב הזה הבדיקה היא בצד הלקוח בלבד —
-  // כשיהיה שרת, האימות חייב לעבור לשם (אחרת אפשר לזייף קוד).
-  coupons: {
-    LIAD10: { type: "percent", value: 10, firstOrderOnly: true, label: "10% לרכישה ראשונה" },
-  },
 
   storageKeys: {
     cart: "liad:cart",
@@ -79,18 +78,25 @@ function writeJSON(key, value) {
 
 let catalogCache = null;
 
-export async function loadCatalog() {
-  if (catalogCache) return catalogCache;
-  try {
-    const res = await fetch("data/products.json", { cache: "no-cache" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    catalogCache = data.products || [];
-    return catalogCache;
-  } catch (err) {
-    console.error("[LIAD] טעינת הקטלוג נכשלה:", err);
-    return null;
+/**
+ * טוען את הקטלוג ומחיל עליו את שינויי מערכת הניהול.
+ *
+ * @param {{raw?: boolean}} [options] raw=true מחזיר את קובץ הבסיס בלי
+ *        שינויי הניהול — משמש את מסך הניהול עצמו ואת הייצוא.
+ */
+export async function loadCatalog({ raw = false } = {}) {
+  if (!catalogCache) {
+    try {
+      const res = await fetch("data/products.json", { cache: "no-cache" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      catalogCache = data.products || [];
+    } catch (err) {
+      console.error("[LIAD] טעינת הקטלוג נכשלה:", err);
+      return null;
+    }
   }
+  return raw ? catalogCache : applyCatalogPatch(catalogCache);
 }
 
 /** מלאי בפועל = המלאי בקטלוג פחות מה שכבר בעגלה */
@@ -177,12 +183,17 @@ export function calcTotals(cart = getCart(), couponCode = null, shippingMethod =
 
   let discount = 0;
   let coupon = null;
-  const rule = couponCode ? CONFIG.coupons[couponCode.toUpperCase()] : null;
 
-  if (rule && (!rule.firstOrderOnly || isFirstOrder())) {
+  // הקופונים מנוהלים במערכת הניהול, ולכן הבדיקה עוברת דרכה
+  const check = couponCode
+    ? checkCoupon(couponCode, { firstOrder: isFirstOrder() })
+    : { ok: false };
+
+  if (check.ok) {
+    const rule = check.coupon;
     discount = rule.type === "percent" ? (subtotal * rule.value) / 100 : rule.value;
     discount = Math.min(discount, subtotal);
-    coupon = { code: couponCode.toUpperCase(), ...rule };
+    coupon = { ...rule };
   }
 
   const afterDiscount = subtotal - discount;
@@ -204,12 +215,10 @@ export function calcTotals(cart = getCart(), couponCode = null, shippingMethod =
 }
 
 export function validateCoupon(code) {
-  const rule = CONFIG.coupons[String(code).toUpperCase()];
-  if (!rule) return { ok: false, message: "הקוד לא נמצא" };
-  if (rule.firstOrderOnly && !isFirstOrder()) {
-    return { ok: false, message: "הקוד תקף לרכישה הראשונה בלבד" };
-  }
-  return { ok: true, rule };
+  const result = checkCoupon(code, { firstOrder: isFirstOrder() });
+  return result.ok
+    ? { ok: true, rule: result.coupon }
+    : { ok: false, message: result.reason };
 }
 
 /* ---------------------------------------------------------------- הזמנות */

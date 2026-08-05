@@ -9,6 +9,8 @@ import {
   saveOrder, newOrderId, toast,
 } from "./store.js";
 import { initShared } from "./shared.js";
+import { addLead, redeemCoupon } from "./admin-store.js";
+import { initMotion } from "./motion.js";
 
 const state = {
   coupon: null,
@@ -39,6 +41,7 @@ function init() {
   wireValidation();
   form.addEventListener("submit", onSubmit);
   refreshTotals();
+  initMotion();
 }
 
 /* ---------------------------------------------------------------- סיכום */
@@ -231,9 +234,19 @@ function onSubmit(e) {
   };
 
   saveOrder(order);
+
+  // הלקוחה נכנסת לרשימת הלידים, והקופון מסמן שימוש — שניהם נצפים בניהול
+  addLead({
+    name: `${data.firstName ?? ""} ${data.lastName ?? ""}`.trim(),
+    email: data.email ?? "",
+    phone: data.phone ?? "",
+    source: "checkout",
+  });
+  if (order.totals.coupon) redeemCoupon(order.totals.coupon);
+
   clearCart();
 
-  // כאן, כשיהיה שרת: שליחת ההזמנה למייל של הלקוחה + יצירת PDF + הורדת מלאי
+  // כאן, כשיהיה שרת: שליחת ההזמנה למייל של הלקוחה + הורדת מלאי
   console.info("[LIAD] הזמנה נשמרה מקומית:", order.id);
 
   window.location.href = `confirmation.html?order=${encodeURIComponent(order.id)}`;

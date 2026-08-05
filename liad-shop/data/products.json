@@ -11,10 +11,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/003.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/003-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/003.jpg"
   },
   {
    "id": "bell-bell-color-builder-004",
@@ -27,10 +24,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/004.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/004-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/004.jpg"
   },
   {
    "id": "bell-bell-color-builder-005",
@@ -43,10 +37,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/005.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/005-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/005.jpg"
   },
   {
    "id": "bell-bell-color-builder-009",
@@ -59,10 +50,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/009.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/009-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/009.jpg"
   },
   {
    "id": "bell-bell-color-builder-100",
@@ -75,10 +63,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/100.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/100-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/100.jpg"
   },
   {
    "id": "bell-bell-color-builder-101",
@@ -91,10 +76,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/101.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/101-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/101.jpg"
   },
   {
    "id": "bell-bell-color-builder-114",
@@ -107,10 +89,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/114.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/114-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/114.jpg"
   },
   {
    "id": "bell-bell-color-builder-200",
@@ -123,10 +102,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/200.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/200-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/200.jpg"
   },
   {
    "id": "bell-bell-color-builder-201",
@@ -139,10 +115,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/201.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/201-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/201.jpg"
   },
   {
    "id": "bell-bell-color-builder-202",
@@ -155,10 +128,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/202.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/202-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/202.jpg"
   },
   {
    "id": "bell-bell-color-builder-203",
@@ -171,10 +141,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/203.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/203-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/203.jpg"
   },
   {
    "id": "bell-bell-color-builder-204",
@@ -187,10 +154,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/204.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/204-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/204.jpg"
   },
   {
    "id": "bell-bell-color-builder-205",
@@ -203,10 +167,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/205.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/205-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/205.jpg"
   },
   {
    "id": "bell-bell-color-builder-206",
@@ -219,10 +180,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/206.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/206-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/206.jpg"
   },
   {
    "id": "bell-bell-color-builder-207",
@@ -235,10 +193,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/207.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/207-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/207.jpg"
   },
   {
    "id": "bell-bell-color-builder-208",
@@ -251,10 +206,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/208.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/208-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/208.jpg"
   },
   {
    "id": "bell-bell-color-builder-209",
@@ -267,10 +219,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/209.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/209-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/209.jpg"
   },
   {
    "id": "bell-bell-color-builder-210",
@@ -283,10 +232,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/210.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/210-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/210.jpg"
   },
   {
    "id": "bell-bell-color-builder-211",
@@ -299,10 +245,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/211.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/211-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/211.jpg"
   },
   {
    "id": "bell-bell-color-builder-212",
@@ -315,10 +258,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/212.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/212-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/212.jpg"
   },
   {
    "id": "bell-bell-color-builder-213",
@@ -331,10 +271,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/213.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/213-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/213.jpg"
   },
   {
    "id": "bell-bell-color-builder-214",
@@ -347,10 +284,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/214.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/214-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/214.jpg"
   },
   {
    "id": "bell-bell-color-builder-215",
@@ -363,10 +297,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/215.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/215-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/215.jpg"
   },
   {
    "id": "bell-bell-color-builder-216",
@@ -379,10 +310,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/216.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/216-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/216.jpg"
   },
   {
    "id": "bell-bell-color-builder-217",
@@ -395,10 +323,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/217.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/217-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/217.jpg"
   },
   {
    "id": "bell-bell-color-builder-218",
@@ -411,10 +336,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/218.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/218-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/218.jpg"
   },
   {
    "id": "bell-bell-color-builder-219",
@@ -427,10 +349,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/219.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/219-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/219.jpg"
   },
   {
    "id": "bell-bell-color-builder-220",
@@ -443,10 +362,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/220.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/220-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/220.jpg"
   },
   {
    "id": "bell-bell-color-builder-221",
@@ -459,10 +375,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/221.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/221-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/221.jpg"
   },
   {
    "id": "bell-bell-color-builder-222",
@@ -475,10 +388,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-bell-builder/222.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-bell-builder/222-swatch.jpg"
-   ]
+   "image": "assets/products/bell-bell-builder/222.jpg"
   },
   {
    "id": "bell-bell-rubber-base-001",
@@ -1386,10 +1296,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-גוונים-סגנון-3/013.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-גוונים-סגנון-3/013-swatch.jpg"
-   ]
+   "image": "assets/products/bell-גוונים-סגנון-3/013.jpg"
   },
   {
    "id": "bell-bell-rubber-base-014",
@@ -1402,10 +1309,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-גוונים-סגנון-3/014.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-גוונים-סגנון-3/014-swatch.jpg"
-   ]
+   "image": "assets/products/bell-גוונים-סגנון-3/014.jpg"
   },
   {
    "id": "bell-bell-rubber-base-015",
@@ -1418,10 +1322,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-גוונים-סגנון-3/015.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-גוונים-סגנון-3/015-swatch.jpg"
-   ]
+   "image": "assets/products/bell-גוונים-סגנון-3/015.jpg"
   },
   {
    "id": "bell-bell-rubber-base-016",
@@ -1434,10 +1335,7 @@
    "price": 49,
    "priceSource": "client",
    "stock": 10,
-   "image": "assets/products/bell-גוונים-סגנון-3/016.jpg",
-   "gallery": [
-    "assets/products/_swatch/bell-גוונים-סגנון-3/016-swatch.jpg"
-   ]
+   "image": "assets/products/bell-גוונים-סגנון-3/016.jpg"
   },
   {
    "id": "buba-buba-basic-liquid-base",
@@ -1450,10 +1348,7 @@
    "price": 45,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-basic/liquid-base.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-basic/liquid-base-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-basic/liquid-base.jpg"
   },
   {
    "id": "buba-buba-basic-primer",
@@ -1466,10 +1361,7 @@
    "price": 45,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-basic/primer.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-basic/primer-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-basic/primer.jpg"
   },
   {
    "id": "buba-buba-basic-sense-base",
@@ -1482,10 +1374,7 @@
    "price": 45,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-basic/sense-base.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-basic/sense-base-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-basic/sense-base.jpg"
   },
   {
    "id": "buba-buba-basic-strong-base",
@@ -1498,10 +1387,7 @@
    "price": 45,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-basic/strong-base.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-basic/strong-base-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-basic/strong-base.jpg"
   },
   {
    "id": "buba-buba-basic-top-matt",
@@ -1514,10 +1400,7 @@
    "price": 45,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-basic/top-matt.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-basic/top-matt-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-basic/top-matt.jpg"
   },
   {
    "id": "buba-buba-basic-top-no-sticky",
@@ -1530,10 +1413,7 @@
    "price": 45,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-basic/top-no-sticky.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-basic/top-no-sticky-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-basic/top-no-sticky.jpg"
   },
   {
    "id": "buba-buba-color-001",
@@ -1546,10 +1426,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/001.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/001-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/001.jpg"
   },
   {
    "id": "buba-buba-color-002",
@@ -1562,10 +1439,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/002.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/002-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/002.jpg"
   },
   {
    "id": "buba-buba-color-003",
@@ -1578,10 +1452,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/003.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/003-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/003.jpg"
   },
   {
    "id": "buba-buba-color-004",
@@ -1594,10 +1465,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/004.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/004-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/004.jpg"
   },
   {
    "id": "buba-buba-color-005",
@@ -1610,10 +1478,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/005.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/005-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/005.jpg"
   },
   {
    "id": "buba-buba-color-006",
@@ -1626,10 +1491,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/006.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/006-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/006.jpg"
   },
   {
    "id": "buba-buba-color-007",
@@ -1642,10 +1504,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/007.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/007-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/007.jpg"
   },
   {
    "id": "buba-buba-color-008",
@@ -1658,10 +1517,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/008.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/008-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/008.jpg"
   },
   {
    "id": "buba-buba-color-009",
@@ -1674,10 +1530,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/009.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/009-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/009.jpg"
   },
   {
    "id": "buba-buba-color-010",
@@ -1690,10 +1543,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/010.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/010-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/010.jpg"
   },
   {
    "id": "buba-buba-color-011",
@@ -1706,10 +1556,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/011.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/011-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/011.jpg"
   },
   {
    "id": "buba-buba-color-012",
@@ -1722,10 +1569,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/012.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/012-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/012.jpg"
   },
   {
    "id": "buba-buba-color-013",
@@ -1738,10 +1582,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/013.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/013-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/013.jpg"
   },
   {
    "id": "buba-buba-color-014",
@@ -1754,10 +1595,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/014.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/014-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/014.jpg"
   },
   {
    "id": "buba-buba-color-015",
@@ -1770,10 +1608,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/015.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/015-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/015.jpg"
   },
   {
    "id": "buba-buba-color-016",
@@ -1786,10 +1621,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/016.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/016-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/016.jpg"
   },
   {
    "id": "buba-buba-color-017",
@@ -1802,10 +1634,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/017.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/017-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/017.jpg"
   },
   {
    "id": "buba-buba-color-018",
@@ -1818,10 +1647,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/018.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/018-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/018.jpg"
   },
   {
    "id": "buba-buba-color-019",
@@ -1834,10 +1660,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/019.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/019-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/019.jpg"
   },
   {
    "id": "buba-buba-color-020",
@@ -1850,10 +1673,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/020.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/020-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/020.jpg"
   },
   {
    "id": "buba-buba-color-021",
@@ -1866,10 +1686,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/021.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/021-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/021.jpg"
   },
   {
    "id": "buba-buba-color-022",
@@ -1882,10 +1699,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/022.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/022-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/022.jpg"
   },
   {
    "id": "buba-buba-color-023",
@@ -1898,10 +1712,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/023.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/023-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/023.jpg"
   },
   {
    "id": "buba-buba-color-024",
@@ -1914,10 +1725,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/024.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/024-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/024.jpg"
   },
   {
    "id": "buba-buba-color-025",
@@ -1930,10 +1738,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/025.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/025-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/025.jpg"
   },
   {
    "id": "buba-buba-color-026",
@@ -1946,10 +1751,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/026.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/026-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/026.jpg"
   },
   {
    "id": "buba-buba-color-027",
@@ -1962,10 +1764,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/027.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/027-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/027.jpg"
   },
   {
    "id": "buba-buba-color-028",
@@ -1978,10 +1777,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/028.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/028-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/028.jpg"
   },
   {
    "id": "buba-buba-color-029",
@@ -1994,10 +1790,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/029.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/029-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/029.jpg"
   },
   {
    "id": "buba-buba-color-030",
@@ -2010,10 +1803,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/030.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/030-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/030.jpg"
   },
   {
    "id": "buba-buba-color-031",
@@ -2026,10 +1816,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/031.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/031-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/031.jpg"
   },
   {
    "id": "buba-buba-color-032",
@@ -2042,10 +1829,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/032.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/032-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/032.jpg"
   },
   {
    "id": "buba-buba-color-033",
@@ -2058,10 +1842,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/033.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/033-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/033.jpg"
   },
   {
    "id": "buba-buba-color-034",
@@ -2074,10 +1855,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/034.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/034-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/034.jpg"
   },
   {
    "id": "buba-buba-color-035",
@@ -2090,10 +1868,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/035.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/035-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/035.jpg"
   },
   {
    "id": "buba-buba-color-036",
@@ -2106,10 +1881,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/036.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/036-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/036.jpg"
   },
   {
    "id": "buba-buba-color-037",
@@ -2122,10 +1894,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/037.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/037-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/037.jpg"
   },
   {
    "id": "buba-buba-color-038",
@@ -2138,10 +1907,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/038.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/038-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/038.jpg"
   },
   {
    "id": "buba-buba-color-039",
@@ -2154,10 +1920,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/039.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/039-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/039.jpg"
   },
   {
    "id": "buba-buba-color-040",
@@ -2170,10 +1933,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/040.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/040-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/040.jpg"
   },
   {
    "id": "buba-buba-color-041",
@@ -2186,10 +1946,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/041.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/041-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/041.jpg"
   },
   {
    "id": "buba-buba-color-042",
@@ -2202,10 +1959,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/042.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/042-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/042.jpg"
   },
   {
    "id": "buba-buba-color-043",
@@ -2218,10 +1972,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/043.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/043-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/043.jpg"
   },
   {
    "id": "buba-buba-color-044",
@@ -2234,10 +1985,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/044.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/044-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/044.jpg"
   },
   {
    "id": "buba-buba-color-045",
@@ -2250,10 +1998,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/045.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/045-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/045.jpg"
   },
   {
    "id": "buba-buba-color-046",
@@ -2266,10 +2011,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/046.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/046-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/046.jpg"
   },
   {
    "id": "buba-buba-color-047",
@@ -2282,10 +2024,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/047.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/047-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/047.jpg"
   },
   {
    "id": "buba-buba-color-048",
@@ -2298,10 +2037,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/048.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/048-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/048.jpg"
   },
   {
    "id": "buba-buba-color-049",
@@ -2314,10 +2050,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/049.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/049-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/049.jpg"
   },
   {
    "id": "buba-buba-color-050",
@@ -2330,10 +2063,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/buba-buba-colors/050.jpg",
-   "gallery": [
-    "assets/products/_swatch/buba-buba-colors/050-swatch.jpg"
-   ]
+   "image": "assets/products/buba-buba-colors/050.jpg"
   },
   {
    "id": "kodi-kodi-base-top-1",
@@ -2418,10 +2148,7 @@
    "price": 54.9,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/kodi-בייס-וטופ-בייס-בגוונים/dark-beige.jpg",
-   "gallery": [
-    "assets/products/_swatch/kodi-בייס-וטופ-בייס-בגוונים/dark-beige-swatch.jpg"
-   ]
+   "image": "assets/products/kodi-בייס-וטופ-בייס-בגוונים/dark-beige.jpg"
   },
   {
    "id": "kodi-kodi-base-top-natural-beige",
@@ -2434,10 +2161,7 @@
    "price": 54.9,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/kodi-בייס-וטופ-בייס-בגוונים/natural-beige.jpg",
-   "gallery": [
-    "assets/products/_swatch/kodi-בייס-וטופ-בייס-בגוונים/natural-beige-swatch.jpg"
-   ]
+   "image": "assets/products/kodi-בייס-וטופ-בייס-בגוונים/natural-beige.jpg"
   },
   {
    "id": "kodi-kodi-base-top-pink",
@@ -2450,10 +2174,7 @@
    "price": 54.9,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/kodi-בייס-וטופ-בייס-בגוונים/pink.jpg",
-   "gallery": [
-    "assets/products/_swatch/kodi-בייס-וטופ-בייס-בגוונים/pink-swatch.jpg"
-   ]
+   "image": "assets/products/kodi-בייס-וטופ-בייס-בגוונים/pink.jpg"
   },
   {
    "id": "kodi-kodi-base-top-pink-ice",
@@ -2466,10 +2187,7 @@
    "price": 54.9,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/kodi-בייס-וטופ-בייס-בגוונים/pink-ice.jpg",
-   "gallery": [
-    "assets/products/_swatch/kodi-בייס-וטופ-בייס-בגוונים/pink-ice-swatch.jpg"
-   ]
+   "image": "assets/products/kodi-בייס-וטופ-בייס-בגוונים/pink-ice.jpg"
   },
   {
    "id": "kodi-kodi-base-top-tea-rose",
@@ -2482,10 +2200,7 @@
    "price": 54.9,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/kodi-בייס-וטופ-בייס-בגוונים/tea-rose.jpg",
-   "gallery": [
-    "assets/products/_swatch/kodi-בייס-וטופ-בייס-בגוונים/tea-rose-swatch.jpg"
-   ]
+   "image": "assets/products/kodi-בייס-וטופ-בייס-בגוונים/tea-rose.jpg"
   },
   {
    "id": "kodi-kodi-base-top-ivory",
@@ -2498,10 +2213,7 @@
    "price": 54.9,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/kodi-בייס-וטופ-בייס-בגוונים/ivory.jpg",
-   "gallery": [
-    "assets/products/_swatch/kodi-בייס-וטופ-בייס-בגוונים/ivory-swatch.jpg"
-   ]
+   "image": "assets/products/kodi-בייס-וטופ-בייס-בגוונים/ivory.jpg"
   },
   {
    "id": "kodi-kodi-base-top-2",
@@ -2565,10 +2277,7 @@
    "price": 54.9,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/kodi-בייס-וטופ-טופ-ללא-נטרול/8.jpg",
-   "gallery": [
-    "assets/products/_swatch/kodi-בייס-וטופ-טופ-ללא-נטרול/8-swatch.jpg"
-   ]
+   "image": "assets/products/kodi-בייס-וטופ-טופ-ללא-נטרול/8.jpg"
   },
   {
    "id": "kodi-kodi-base-top-rubber_base_gel_15ml-800x800",
@@ -2581,10 +2290,7 @@
    "price": 54.9,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/kodi-בייס-וטופ-ראבר-בייס/rubber_base_gel_15ml-800x800.jpg",
-   "gallery": [
-    "assets/products/_swatch/kodi-בייס-וטופ-ראבר-בייס/rubber_base_gel_15ml-800x800-swatch.jpg"
-   ]
+   "image": "assets/products/kodi-בייס-וטופ-ראבר-בייס/rubber_base_gel_15ml-800x800.jpg"
   },
   {
    "id": "kodi-kodi-builder-1",
@@ -2597,10 +2303,7 @@
    "price": 54.9,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/kodi-ג-ל-בנייה/1.jpg",
-   "gallery": [
-    "assets/products/_swatch/kodi-ג-ל-בנייה/1-swatch.jpg"
-   ]
+   "image": "assets/products/kodi-ג-ל-בנייה/1.jpg"
   },
   {
    "id": "kodi-kodi-builder-2",
@@ -2613,10 +2316,7 @@
    "price": 54.9,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/kodi-ג-ל-בנייה/2.jpg",
-   "gallery": [
-    "assets/products/_swatch/kodi-ג-ל-בנייה/2-swatch.jpg"
-   ]
+   "image": "assets/products/kodi-ג-ל-בנייה/2.jpg"
   },
   {
    "id": "kodi-kodi-builder-5",
@@ -2629,10 +2329,7 @@
    "price": 54.9,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/kodi-ג-ל-בנייה/5.jpg",
-   "gallery": [
-    "assets/products/_swatch/kodi-ג-ל-בנייה/5-swatch.jpg"
-   ]
+   "image": "assets/products/kodi-ג-ל-בנייה/5.jpg"
   },
   {
    "id": "kodi-kodi-builder-baby-boom",
@@ -2645,10 +2342,7 @@
    "price": 54.9,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/kodi-ג-ל-בנייה/baby-boom.jpg",
-   "gallery": [
-    "assets/products/_swatch/kodi-ג-ל-בנייה/baby-boom-swatch.jpg"
-   ]
+   "image": "assets/products/kodi-ג-ל-בנייה/baby-boom.jpg"
   },
   {
    "id": "kodi-kodi-builder-cover-pink",
@@ -2661,10 +2355,7 @@
    "price": 54.9,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/kodi-ג-ל-בנייה/cover-pink.jpg",
-   "gallery": [
-    "assets/products/_swatch/kodi-ג-ל-בנייה/cover-pink-swatch.jpg"
-   ]
+   "image": "assets/products/kodi-ג-ל-בנייה/cover-pink.jpg"
   },
   {
    "id": "kodi-kodi-builder-latte",
@@ -2677,10 +2368,7 @@
    "price": 54.9,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/kodi-ג-ל-בנייה/latte.jpg",
-   "gallery": [
-    "assets/products/_swatch/kodi-ג-ל-בנייה/latte-swatch.jpg"
-   ]
+   "image": "assets/products/kodi-ג-ל-בנייה/latte.jpg"
   },
   {
    "id": "kodi-kodi-builder-long-nails",
@@ -2693,10 +2381,7 @@
    "price": 54.9,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/kodi-ג-ל-בנייה/long-nails.jpg",
-   "gallery": [
-    "assets/products/_swatch/kodi-ג-ל-בנייה/long-nails-swatch.jpg"
-   ]
+   "image": "assets/products/kodi-ג-ל-בנייה/long-nails.jpg"
   },
   {
    "id": "kodi-kodi-builder-milky",
@@ -2709,10 +2394,7 @@
    "price": 54.9,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/kodi-ג-ל-בנייה/milky.jpg",
-   "gallery": [
-    "assets/products/_swatch/kodi-ג-ל-בנייה/milky-swatch.jpg"
-   ]
+   "image": "assets/products/kodi-ג-ל-בנייה/milky.jpg"
   },
   {
    "id": "kodi-kodi-builder-milky-rose",
@@ -2725,10 +2407,7 @@
    "price": 54.9,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/kodi-ג-ל-בנייה/milky-rose.jpg",
-   "gallery": [
-    "assets/products/_swatch/kodi-ג-ל-בנייה/milky-rose-swatch.jpg"
-   ]
+   "image": "assets/products/kodi-ג-ל-בנייה/milky-rose.jpg"
   },
   {
    "id": "kodi-kodi-builder-short-nails",
@@ -2741,10 +2420,7 @@
    "price": 54.9,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/kodi-ג-ל-בנייה/short-nails.jpg",
-   "gallery": [
-    "assets/products/_swatch/kodi-ג-ל-בנייה/short-nails-swatch.jpg"
-   ]
+   "image": "assets/products/kodi-ג-ל-בנייה/short-nails.jpg"
   },
   {
    "id": "koyo-koyo-base-top-טופ-מט",
@@ -2757,10 +2433,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ/טופ-מט.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ/טופ-מט-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ/טופ-מט.jpg"
   },
   {
    "id": "koyo-koyo-base-top-img_4986",
@@ -2773,10 +2446,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-אקסטרה-ראבר-בייס-20/img_4986.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-אקסטרה-ראבר-בייס-20/img_4986-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-אקסטרה-ראבר-בייס-20/img_4986.jpg"
   },
   {
    "id": "koyo-koyo-base-top-extra-rubber-595x595",
@@ -2789,10 +2459,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-אקסטרה-ראבר-בייס-50/extra-rubber-595x595.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-אקסטרה-ראבר-בייס-50/extra-rubber-595x595-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-אקסטרה-ראבר-בייס-50/extra-rubber-595x595.jpg"
   },
   {
    "id": "koyo-koyo-base-top-whatsapp-image-2024-12-29-at-12-11-16",
@@ -2805,10 +2472,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-16.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-16-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-16.jpg"
   },
   {
    "id": "koyo-koyo-base-top-whatsapp-image-2024-12-29-at-12-11-16-1",
@@ -2821,10 +2485,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-16-1.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-16-1-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-16-1.jpg"
   },
   {
    "id": "koyo-koyo-base-top-whatsapp-image-2024-12-29-at-12-11-17",
@@ -2837,10 +2498,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-17.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-17-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-17.jpg"
   },
   {
    "id": "koyo-koyo-base-top-whatsapp-image-2024-12-29-at-12-11-17-1",
@@ -2853,10 +2511,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-17-1.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-17-1-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-17-1.jpg"
   },
   {
    "id": "koyo-koyo-base-top-whatsapp-image-2024-12-29-at-12-11-17-2",
@@ -2869,10 +2524,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-17-2.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-17-2-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-17-2.jpg"
   },
   {
    "id": "koyo-koyo-base-top-whatsapp-image-2024-12-29-at-12-11-17-3",
@@ -2885,10 +2537,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-17-3.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-17-3-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-17-3.jpg"
   },
   {
    "id": "koyo-koyo-base-top-whatsapp-image-2024-12-29-at-12-11-17-4",
@@ -2901,10 +2550,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-17-4.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-17-4-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-בייס-בגוונים-50/whatsapp-image-2024-12-29-at-12-11-17-4.jpg"
   },
   {
    "id": "koyo-koyo-base-top-b002-1",
@@ -2917,10 +2563,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-בייס-בגוונים-50/b002-1.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-בייס-בגוונים-50/b002-1-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-בייס-בגוונים-50/b002-1.jpg"
   },
   {
    "id": "koyo-koyo-base-top-8011",
@@ -2933,10 +2576,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8011.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-בגוונים-20/8011-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8011.jpg"
   },
   {
    "id": "koyo-koyo-base-top-8011-2",
@@ -2949,10 +2589,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8011-2.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-בגוונים-20/8011-2-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8011-2.jpg"
   },
   {
    "id": "koyo-koyo-base-top-8031",
@@ -2965,10 +2602,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8031.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-בגוונים-20/8031-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8031.jpg"
   },
   {
    "id": "koyo-koyo-base-top-8031-1",
@@ -2981,10 +2615,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8031-1.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-בגוונים-20/8031-1-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8031-1.jpg"
   },
   {
    "id": "koyo-koyo-base-top-8032",
@@ -2997,10 +2628,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8032.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-בגוונים-20/8032-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8032.jpg"
   },
   {
    "id": "koyo-koyo-base-top-8032-2",
@@ -3013,10 +2641,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8032-2.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-בגוונים-20/8032-2-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8032-2.jpg"
   },
   {
    "id": "koyo-koyo-base-top-8033",
@@ -3029,10 +2654,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8033.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-בגוונים-20/8033-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8033.jpg"
   },
   {
    "id": "koyo-koyo-base-top-8033-1",
@@ -3045,10 +2667,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8033-1.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-בגוונים-20/8033-1-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8033-1.jpg"
   },
   {
    "id": "koyo-koyo-base-top-8034",
@@ -3061,10 +2680,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8034.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-בגוונים-20/8034-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8034.jpg"
   },
   {
    "id": "koyo-koyo-base-top-8034-2",
@@ -3077,10 +2693,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8034-2.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-בגוונים-20/8034-2-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8034-2.jpg"
   },
   {
    "id": "koyo-koyo-base-top-8035",
@@ -3093,10 +2706,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8035.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-בגוונים-20/8035-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8035.jpg"
   },
   {
    "id": "koyo-koyo-base-top-8035-2",
@@ -3109,10 +2719,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8035-2.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-בגוונים-20/8035-2-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8035-2.jpg"
   },
   {
    "id": "koyo-koyo-base-top-8037",
@@ -3125,10 +2732,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8037.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-בגוונים-20/8037-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8037.jpg"
   },
   {
    "id": "koyo-koyo-base-top-8037-2",
@@ -3141,10 +2745,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8037-2.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-בגוונים-20/8037-2-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/8037-2.jpg"
   },
   {
    "id": "koyo-koyo-base-top-milky-top",
@@ -3157,10 +2758,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/milky-top.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-בגוונים-20/milky-top-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/milky-top.jpg"
   },
   {
    "id": "koyo-koyo-base-top-milky-top-2",
@@ -3173,10 +2771,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/milky-top-2.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-בגוונים-20/milky-top-2-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/milky-top-2.jpg"
   },
   {
    "id": "koyo-koyo-base-top-top-deep-sky",
@@ -3189,10 +2784,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/top-deep-sky.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-בגוונים-20/top-deep-sky-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/top-deep-sky.jpg"
   },
   {
    "id": "koyo-koyo-base-top-top-deep-space",
@@ -3205,10 +2797,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/top-deep-space.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-בגוונים-20/top-deep-space-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-בגוונים-20/top-deep-space.jpg"
   },
   {
    "id": "koyo-koyo-base-top-טופ-ללא-נטרול-optimized",
@@ -3221,10 +2810,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-ללא-נטרול-20/טופ-ללא-נטרול-optimized.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-ללא-נטרול-20/טופ-ללא-נטרול-optimized-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-ללא-נטרול-20/טופ-ללא-נטרול-optimized.jpg"
   },
   {
    "id": "koyo-koyo-base-top-top-no-sticky50",
@@ -3237,10 +2823,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-טופ-ללא-נטרול-50/top-no-sticky50.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-טופ-ללא-נטרול-50/top-no-sticky50-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-טופ-ללא-נטרול-50/top-no-sticky50.jpg"
   },
   {
    "id": "koyo-koyo-base-top-img_8306-1",
@@ -3253,10 +2836,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-ראבר-בייס-20/img_8306-1.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-ראבר-בייס-20/img_8306-1-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-ראבר-בייס-20/img_8306-1.jpg"
   },
   {
    "id": "koyo-koyo-base-top-koyo-24-of-27-scaled",
@@ -3269,10 +2849,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-ראבר-בייס-20/koyo-24-of-27-scaled.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-ראבר-בייס-20/koyo-24-of-27-scaled-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-ראבר-בייס-20/koyo-24-of-27-scaled.jpg"
   },
   {
    "id": "koyo-koyo-base-top-rubberbase50",
@@ -3285,10 +2862,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-ראבר-בייס-50/rubberbase50.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-ראבר-בייס-50/rubberbase50-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-ראבר-בייס-50/rubberbase50.jpg"
   },
   {
    "id": "koyo-koyo-base-top-rubbr-base",
@@ -3301,10 +2875,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בייס-וטופ-ראבר-בייס-50/rubbr-base.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בייס-וטופ-ראבר-בייס-50/rubbr-base-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בייס-וטופ-ראבר-בייס-50/rubbr-base.jpg"
   },
   {
    "id": "koyo-koyo-builder-clear-pink",
@@ -3317,10 +2888,7 @@
    "price": 50,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בילדר-ג-ל-בילדר-15/clear-pink.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בילדר-ג-ל-בילדר-15/clear-pink-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בילדר-ג-ל-בילדר-15/clear-pink.jpg"
   },
   {
    "id": "koyo-koyo-builder-dark-pink",
@@ -3333,10 +2901,7 @@
    "price": 50,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בילדר-ג-ל-בילדר-15/dark-pink.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בילדר-ג-ל-בילדר-15/dark-pink-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בילדר-ג-ל-בילדר-15/dark-pink.jpg"
   },
   {
    "id": "koyo-koyo-builder-funny-milk",
@@ -3349,10 +2914,7 @@
    "price": 50,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בילדר-ג-ל-בילדר-15/funny-milk.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בילדר-ג-ל-בילדר-15/funny-milk-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בילדר-ג-ל-בילדר-15/funny-milk.jpg"
   },
   {
    "id": "koyo-koyo-builder-light-pink",
@@ -3365,10 +2927,7 @@
    "price": 50,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בילדר-ג-ל-בילדר-15/light-pink.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בילדר-ג-ל-בילדר-15/light-pink-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בילדר-ג-ל-בילדר-15/light-pink.jpg"
   },
   {
    "id": "koyo-koyo-builder-long-nails",
@@ -3381,10 +2940,7 @@
    "price": 50,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בילדר-ג-ל-בילדר-15/long-nails.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בילדר-ג-ל-בילדר-15/long-nails-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בילדר-ג-ל-בילדר-15/long-nails.jpg"
   },
   {
    "id": "koyo-koyo-builder-natural-pink",
@@ -3397,10 +2953,7 @@
    "price": 50,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בילדר-ג-ל-בילדר-15/natural-pink.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בילדר-ג-ל-בילדר-15/natural-pink-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בילדר-ג-ל-בילדר-15/natural-pink.jpg"
   },
   {
    "id": "koyo-koyo-builder-short-nails",
@@ -3413,10 +2966,7 @@
    "price": 50,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-בילדר-ג-ל-בילדר-15/short-nails.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-בילדר-ג-ל-בילדר-15/short-nails-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-בילדר-ג-ל-בילדר-15/short-nails.jpg"
   },
   {
    "id": "koyo-koyo-paint-gel-סט-גל-לציור-6-גוונים-koyo-optimized",
@@ -3429,10 +2979,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 8,
-   "image": "assets/products/koyo-ג-ל-ציור/סט-גל-לציור-6-גוונים-koyo-optimized.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-ג-ל-ציור/סט-גל-לציור-6-גוונים-koyo-optimized-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-ג-ל-ציור/סט-גל-לציור-6-גוונים-koyo-optimized.jpg"
   },
   {
    "id": "koyo-koyo-paint-gel-סט-גל-ספיידרkoyo-שישה-גוונים-optimized",
@@ -3445,10 +2992,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 8,
-   "image": "assets/products/koyo-ג-ל-ציור/סט-גל-ספיידרkoyo-שישה-גוונים-optimized.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-ג-ל-ציור/סט-גל-ספיידרkoyo-שישה-גוונים-optimized-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-ג-ל-ציור/סט-גל-ספיידרkoyo-שישה-גוונים-optimized.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-001",
@@ -3920,10 +3464,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/028.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/028-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/028.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-029",
@@ -3936,10 +3477,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/029.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/029-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/029.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-030",
@@ -3952,10 +3490,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/030.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/030-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/030.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-031",
@@ -3968,10 +3503,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/031.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/031-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/031.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-032",
@@ -3984,10 +3516,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/032.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/032-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/032.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-033",
@@ -4000,10 +3529,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/033.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/033-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/033.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-034",
@@ -4016,10 +3542,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/034.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/034-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/034.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-035",
@@ -4032,10 +3555,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/035.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/035-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/035.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-036",
@@ -4048,10 +3568,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/036.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/036-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/036.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-037",
@@ -4064,10 +3581,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/037.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/037-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/037.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-038",
@@ -4080,10 +3594,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/038.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/038-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/038.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-039",
@@ -4096,10 +3607,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/039.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/039-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/039.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-040",
@@ -4112,10 +3620,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/040.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/040-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/040.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-041",
@@ -4128,10 +3633,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/041.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/041-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/041.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-042",
@@ -4144,10 +3646,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/042.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/042-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/042.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-043",
@@ -4160,10 +3659,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/043.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/043-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/043.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-044",
@@ -4176,10 +3672,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/044.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/044-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/044.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-045",
@@ -4192,10 +3685,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/045.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/045-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/045.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-046",
@@ -4208,10 +3698,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/046.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/046-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/046.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-047",
@@ -4224,10 +3711,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/047.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/047-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/047.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-048",
@@ -4240,10 +3724,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/048.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/048-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/048.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-049",
@@ -4256,10 +3737,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/049.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/049-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/049.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-050",
@@ -4272,10 +3750,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-1/050.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-1/050-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-1/050.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-142",
@@ -4288,10 +3763,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-3/142.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-3/142-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-3/142.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-143",
@@ -4304,10 +3776,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-3/143.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-3/143-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-3/143.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-144",
@@ -4320,10 +3789,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-3/144.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-3/144-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-3/144.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-145",
@@ -4336,10 +3802,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-3/145.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-3/145-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-3/145.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-146",
@@ -4352,10 +3815,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-3/146.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-3/146-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-3/146.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-147",
@@ -4368,10 +3828,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-3/147.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-3/147-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-3/147.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-148",
@@ -4384,10 +3841,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-3/148.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-3/148-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-3/148.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-149",
@@ -4400,10 +3854,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-3/149.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-3/149-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-3/149.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-150",
@@ -4416,10 +3867,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-3/150.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-3/150-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-3/150.jpg"
   },
   {
    "id": "koyo-koyo-gel-polish-151",
@@ -4432,10 +3880,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-גוונים-סגנון-3/151.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-גוונים-סגנון-3/151-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-גוונים-סגנון-3/151.jpg"
   },
   {
    "id": "koyo-koyo-liner-ליינר-שחור-קויו",
@@ -4448,10 +3893,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 8,
-   "image": "assets/products/koyo-ליינר/ליינר-שחור-קויו.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-ליינר/ליינר-שחור-קויו-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-ליינר/ליינר-שחור-קויו.jpg"
   },
   {
    "id": "koyo-koyo-liner-קויו-ליינר-לבן",
@@ -4464,10 +3906,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 8,
-   "image": "assets/products/koyo-ליינר/קויו-ליינר-לבן.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-ליינר/קויו-ליינר-לבן-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-ליינר/קויו-ליינר-לבן.jpg"
   },
   {
    "id": "koyo-koyo-kit-french-koyo-kit-french-kit",
@@ -4499,10 +3938,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 5,
-   "image": "assets/products/koyo-מארזים-french/004.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-french/004-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-french/004.jpg"
   },
   {
    "id": "koyo-koyo-kit-french-005",
@@ -4515,10 +3951,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 5,
-   "image": "assets/products/koyo-מארזים-french/005.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-french/005-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-french/005.jpg"
   },
   {
    "id": "koyo-koyo-kit-french-009",
@@ -4531,10 +3964,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 5,
-   "image": "assets/products/koyo-מארזים-french/009.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-french/009-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-french/009.jpg"
   },
   {
    "id": "koyo-koyo-kit-french-018",
@@ -4547,10 +3977,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 5,
-   "image": "assets/products/koyo-מארזים-french/018.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-french/018-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-french/018.jpg"
   },
   {
    "id": "koyo-koyo-kit-french-060",
@@ -4563,10 +3990,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 5,
-   "image": "assets/products/koyo-מארזים-french/060.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-french/060-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-french/060.jpg"
   },
   {
    "id": "koyo-koyo-kit-icecream-koyo-kit-icecream-kit",
@@ -4598,10 +4022,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 5,
-   "image": "assets/products/koyo-מארזים-ice-cream/037.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-ice-cream/037-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-ice-cream/037.jpg"
   },
   {
    "id": "koyo-koyo-kit-icecream-040",
@@ -4614,10 +4035,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 5,
-   "image": "assets/products/koyo-מארזים-ice-cream/040.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-ice-cream/040-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-ice-cream/040.jpg"
   },
   {
    "id": "koyo-koyo-kit-icecream-064",
@@ -4630,10 +4048,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 5,
-   "image": "assets/products/koyo-מארזים-ice-cream/064.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-ice-cream/064-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-ice-cream/064.jpg"
   },
   {
    "id": "koyo-koyo-kit-icecream-070",
@@ -4646,10 +4061,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 5,
-   "image": "assets/products/koyo-מארזים-ice-cream/070.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-ice-cream/070-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-ice-cream/070.jpg"
   },
   {
    "id": "koyo-koyo-kit-icecream-142",
@@ -4662,10 +4074,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 5,
-   "image": "assets/products/koyo-מארזים-ice-cream/142.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-ice-cream/142-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-ice-cream/142.jpg"
   },
   {
    "id": "koyo-koyo-junior-001",
@@ -4678,10 +4087,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/001.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/001-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/001.jpg"
   },
   {
    "id": "koyo-koyo-junior-002",
@@ -4694,10 +4100,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/002.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/002-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/002.jpg"
   },
   {
    "id": "koyo-koyo-junior-003",
@@ -4710,10 +4113,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/003.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/003-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/003.jpg"
   },
   {
    "id": "koyo-koyo-junior-004",
@@ -4726,10 +4126,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/004.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/004-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/004.jpg"
   },
   {
    "id": "koyo-koyo-junior-005",
@@ -4742,10 +4139,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/005.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/005-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/005.jpg"
   },
   {
    "id": "koyo-koyo-junior-018",
@@ -4758,10 +4152,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/018.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/018-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/018.jpg"
   },
   {
    "id": "koyo-koyo-junior-021",
@@ -4774,10 +4165,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/021.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/021-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/021.jpg"
   },
   {
    "id": "koyo-koyo-junior-035",
@@ -4790,10 +4178,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/035.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/035-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/035.jpg"
   },
   {
    "id": "koyo-koyo-junior-036",
@@ -4806,10 +4191,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/036.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/036-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/036.jpg"
   },
   {
    "id": "koyo-koyo-junior-037",
@@ -4822,10 +4204,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/037.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/037-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/037.jpg"
   },
   {
    "id": "koyo-koyo-junior-038",
@@ -4838,10 +4217,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/038.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/038-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/038.jpg"
   },
   {
    "id": "koyo-koyo-junior-039",
@@ -4854,10 +4230,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/039.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/039-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/039.jpg"
   },
   {
    "id": "koyo-koyo-junior-040",
@@ -4870,10 +4243,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/040.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/040-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/040.jpg"
   },
   {
    "id": "koyo-koyo-junior-042",
@@ -4886,10 +4256,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/042.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/042-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/042.jpg"
   },
   {
    "id": "koyo-koyo-junior-046",
@@ -4902,10 +4269,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/046.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/046-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/046.jpg"
   },
   {
    "id": "koyo-koyo-junior-052",
@@ -4918,10 +4282,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/052.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/052-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/052.jpg"
   },
   {
    "id": "koyo-koyo-junior-055",
@@ -4934,10 +4295,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/055.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/055-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/055.jpg"
   },
   {
    "id": "koyo-koyo-junior-060",
@@ -4950,10 +4308,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/060.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/060-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/060.jpg"
   },
   {
    "id": "koyo-koyo-junior-064",
@@ -4966,10 +4321,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/064.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/064-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/064.jpg"
   },
   {
    "id": "koyo-koyo-junior-069",
@@ -4982,10 +4334,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/069.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/069-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/069.jpg"
   },
   {
    "id": "koyo-koyo-junior-070",
@@ -4998,10 +4347,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/070.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/070-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/070.jpg"
   },
   {
    "id": "koyo-koyo-junior-080",
@@ -5014,10 +4360,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/080.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/080-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/080.jpg"
   },
   {
    "id": "koyo-koyo-junior-082",
@@ -5030,10 +4373,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/082.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/082-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/082.jpg"
   },
   {
    "id": "koyo-koyo-junior-084",
@@ -5046,10 +4386,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/084.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/084-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/084.jpg"
   },
   {
    "id": "koyo-koyo-junior-088",
@@ -5062,10 +4399,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/088.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/088-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/088.jpg"
   },
   {
    "id": "koyo-koyo-junior-092",
@@ -5078,10 +4412,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/092.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/092-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/092.jpg"
   },
   {
    "id": "koyo-koyo-junior-094",
@@ -5094,10 +4425,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/094.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/094-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/094.jpg"
   },
   {
    "id": "koyo-koyo-junior-102",
@@ -5110,10 +4438,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/102.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/102-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/102.jpg"
   },
   {
    "id": "koyo-koyo-junior-104",
@@ -5126,10 +4451,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/104.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/104-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/104.jpg"
   },
   {
    "id": "koyo-koyo-junior-112",
@@ -5142,10 +4464,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/112.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/112-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/112.jpg"
   },
   {
    "id": "koyo-koyo-junior-117",
@@ -5158,10 +4477,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/117.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/117-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/117.jpg"
   },
   {
    "id": "koyo-koyo-junior-120",
@@ -5174,10 +4490,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/120.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/120-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/120.jpg"
   },
   {
    "id": "koyo-koyo-junior-125",
@@ -5190,10 +4503,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/125.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/125-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/125.jpg"
   },
   {
    "id": "koyo-koyo-junior-126",
@@ -5206,10 +4516,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/126.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/126-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/126.jpg"
   },
   {
    "id": "koyo-koyo-junior-137",
@@ -5222,10 +4529,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/137.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/137-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/137.jpg"
   },
   {
    "id": "koyo-koyo-junior-138",
@@ -5238,10 +4542,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/138.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/138-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/138.jpg"
   },
   {
    "id": "koyo-koyo-junior-140",
@@ -5254,10 +4555,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/140.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/140-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/140.jpg"
   },
   {
    "id": "koyo-koyo-junior-141",
@@ -5270,10 +4568,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/141.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/141-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/141.jpg"
   },
   {
    "id": "koyo-koyo-junior-145",
@@ -5286,10 +4581,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/145.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/145-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/145.jpg"
   },
   {
    "id": "koyo-koyo-junior-146",
@@ -5302,10 +4594,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/146.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/146-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/146.jpg"
   },
   {
    "id": "koyo-koyo-junior-148",
@@ -5318,10 +4607,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/148.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/148-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/148.jpg"
   },
   {
    "id": "koyo-koyo-junior-149",
@@ -5334,10 +4620,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/149.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/149-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/149.jpg"
   },
   {
    "id": "koyo-koyo-junior-162",
@@ -5350,10 +4633,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/162.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/162-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/162.jpg"
   },
   {
    "id": "koyo-koyo-junior-164",
@@ -5366,10 +4646,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/164.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/164-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/164.jpg"
   },
   {
    "id": "koyo-koyo-junior-166",
@@ -5382,10 +4659,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/166.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/166-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/166.jpg"
   },
   {
    "id": "koyo-koyo-junior-167",
@@ -5398,10 +4672,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/167.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/167-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/167.jpg"
   },
   {
    "id": "koyo-koyo-junior-172",
@@ -5414,10 +4685,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/172.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/172-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/172.jpg"
   },
   {
    "id": "koyo-koyo-junior-173",
@@ -5430,10 +4698,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/173.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/173-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/173.jpg"
   },
   {
    "id": "koyo-koyo-junior-174",
@@ -5446,10 +4711,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-junior/174.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-junior/174-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-junior/174.jpg"
   },
   {
    "id": "koyo-koyo-mini-000",
@@ -5462,10 +4724,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/000.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/000-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/000.jpg"
   },
   {
    "id": "koyo-koyo-mini-0000",
@@ -5478,10 +4737,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/0000.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/0000-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/0000.jpg"
   },
   {
    "id": "koyo-koyo-mini-00000",
@@ -5494,10 +4750,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/00000.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/00000-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/00000.jpg"
   },
   {
    "id": "koyo-koyo-mini-00001",
@@ -5510,10 +4763,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/00001.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/00001-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/00001.jpg"
   },
   {
    "id": "koyo-koyo-mini-001",
@@ -5594,10 +4844,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/036.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/036-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/036.jpg"
   },
   {
    "id": "koyo-koyo-mini-039",
@@ -5610,10 +4857,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/039.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/039-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/039.jpg"
   },
   {
    "id": "koyo-koyo-mini-046",
@@ -5626,10 +4870,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/046.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/046-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/046.jpg"
   },
   {
    "id": "koyo-koyo-mini-069",
@@ -5642,10 +4883,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/069.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/069-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/069.jpg"
   },
   {
    "id": "koyo-koyo-mini-08",
@@ -5658,10 +4896,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/08.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/08-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/08.jpg"
   },
   {
    "id": "koyo-koyo-mini-082",
@@ -5674,10 +4909,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/082.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/082-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/082.jpg"
   },
   {
    "id": "koyo-koyo-mini-120",
@@ -5690,10 +4922,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/120.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/120-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/120.jpg"
   },
   {
    "id": "koyo-koyo-mini-137",
@@ -5706,10 +4935,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/137.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/137-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/137.jpg"
   },
   {
    "id": "koyo-koyo-mini-140",
@@ -5722,10 +4948,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/140.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/140-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/140.jpg"
   },
   {
    "id": "koyo-koyo-mini-145",
@@ -5738,10 +4961,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/145.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/145-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/145.jpg"
   },
   {
    "id": "koyo-koyo-mini-146",
@@ -5754,10 +4974,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/146.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/146-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/146.jpg"
   },
   {
    "id": "koyo-koyo-mini-148",
@@ -5770,10 +4987,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/148.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/148-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/148.jpg"
   },
   {
    "id": "koyo-koyo-mini-164",
@@ -5786,10 +5000,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/164.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/164-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/164.jpg"
   },
   {
    "id": "koyo-koyo-mini-166",
@@ -5802,10 +5013,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/166.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/166-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/166.jpg"
   },
   {
    "id": "koyo-koyo-mini-167",
@@ -5818,10 +5026,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/167.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/167-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/167.jpg"
   },
   {
    "id": "koyo-koyo-mini-172",
@@ -5834,10 +5039,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/172.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/172-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/172.jpg"
   },
   {
    "id": "koyo-koyo-mini-173",
@@ -5850,10 +5052,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/173.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/173-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/173.jpg"
   },
   {
    "id": "koyo-koyo-mini-174",
@@ -5866,10 +5065,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/174.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/174-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/174.jpg"
   },
   {
    "id": "koyo-koyo-mini-183",
@@ -5882,10 +5078,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/183.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/183-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/183.jpg"
   },
   {
    "id": "koyo-koyo-mini-185",
@@ -5898,10 +5091,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/185.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/185-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/185.jpg"
   },
   {
    "id": "koyo-koyo-mini-190",
@@ -5914,10 +5104,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/190.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/190-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/190.jpg"
   },
   {
    "id": "koyo-koyo-mini-194",
@@ -5930,10 +5117,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/194.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/194-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/194.jpg"
   },
   {
    "id": "koyo-koyo-mini-199",
@@ -5946,10 +5130,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/199.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/199-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/199.jpg"
   },
   {
    "id": "koyo-koyo-mini-200",
@@ -5962,10 +5143,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-01/200.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-01/200-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-01/200.jpg"
   },
   {
    "id": "koyo-koyo-mini-003",
@@ -5978,10 +5156,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/003.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/003-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/003.jpg"
   },
   {
    "id": "koyo-koyo-mini-004",
@@ -5994,10 +5169,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/004.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/004-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/004.jpg"
   },
   {
    "id": "koyo-koyo-mini-021",
@@ -6010,10 +5182,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/021.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/021-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/021.jpg"
   },
   {
    "id": "koyo-koyo-mini-035",
@@ -6026,10 +5195,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/035.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/035-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/035.jpg"
   },
   {
    "id": "koyo-koyo-mini-037",
@@ -6042,10 +5208,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/037.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/037-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/037.jpg"
   },
   {
    "id": "koyo-koyo-mini-040",
@@ -6058,10 +5221,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/040.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/040-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/040.jpg"
   },
   {
    "id": "koyo-koyo-mini-052",
@@ -6074,10 +5234,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/052.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/052-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/052.jpg"
   },
   {
    "id": "koyo-koyo-mini-055",
@@ -6090,10 +5247,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/055.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/055-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/055.jpg"
   },
   {
    "id": "koyo-koyo-mini-060",
@@ -6106,10 +5260,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/060.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/060-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/060.jpg"
   },
   {
    "id": "koyo-koyo-mini-064",
@@ -6122,10 +5273,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/064.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/064-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/064.jpg"
   },
   {
    "id": "koyo-koyo-mini-070",
@@ -6138,10 +5286,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/070.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/070-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/070.jpg"
   },
   {
    "id": "koyo-koyo-mini-080",
@@ -6154,10 +5299,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/080.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/080-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/080.jpg"
   },
   {
    "id": "koyo-koyo-mini-088",
@@ -6170,10 +5312,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/088.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/088-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/088.jpg"
   },
   {
    "id": "koyo-koyo-mini-092",
@@ -6186,10 +5325,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/092.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/092-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/092.jpg"
   },
   {
    "id": "koyo-koyo-mini-094",
@@ -6202,10 +5338,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/094.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/094-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/094.jpg"
   },
   {
    "id": "koyo-koyo-mini-102",
@@ -6218,10 +5351,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/102.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/102-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/102.jpg"
   },
   {
    "id": "koyo-koyo-mini-117",
@@ -6234,10 +5364,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/117.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/117-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/117.jpg"
   },
   {
    "id": "koyo-koyo-mini-125",
@@ -6250,10 +5377,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/125.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/125-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/125.jpg"
   },
   {
    "id": "koyo-koyo-mini-126",
@@ -6266,10 +5390,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/126.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/126-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/126.jpg"
   },
   {
    "id": "koyo-koyo-mini-138",
@@ -6282,10 +5403,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/138.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/138-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/138.jpg"
   },
   {
    "id": "koyo-koyo-mini-141",
@@ -6298,10 +5416,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/141.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/141-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/141.jpg"
   },
   {
    "id": "koyo-koyo-mini-149",
@@ -6314,10 +5429,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/149.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/149-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/149.jpg"
   },
   {
    "id": "koyo-koyo-mini-162",
@@ -6330,10 +5442,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/162.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/162-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/162.jpg"
   },
   {
    "id": "koyo-koyo-mini-196",
@@ -6346,10 +5455,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/196.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/196-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/196.jpg"
   },
   {
    "id": "koyo-koyo-mini-img_6952",
@@ -6362,10 +5468,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/img_6952.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/img_6952-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/img_6952.jpg"
   },
   {
    "id": "koyo-koyo-mini-组合",
@@ -6378,10 +5481,7 @@
    "price": 25,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-mini-02/组合.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-mini-02/组合-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-mini-02/组合.jpg"
   },
   {
    "id": "koyo-koyo-rubber-base-collection-1",
@@ -6428,10 +5528,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-rubber-base-01/b002.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-rubber-base-01/b002-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-rubber-base-01/b002.jpg"
   },
   {
    "id": "koyo-koyo-rubber-base-collection-b006",
@@ -6444,10 +5541,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-rubber-base-01/b006.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-rubber-base-01/b006-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-rubber-base-01/b006.jpg"
   },
   {
    "id": "koyo-koyo-rubber-base-collection-b009",
@@ -6460,10 +5554,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-rubber-base-01/b009.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-rubber-base-01/b009-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-rubber-base-01/b009.jpg"
   },
   {
    "id": "koyo-koyo-rubber-base-collection-b014",
@@ -6476,10 +5567,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-rubber-base-01/b014.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-rubber-base-01/b014-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-rubber-base-01/b014.jpg"
   },
   {
    "id": "koyo-koyo-rubber-base-collection-b018",
@@ -6492,10 +5580,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-rubber-base-01/b018.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-rubber-base-01/b018-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-rubber-base-01/b018.jpg"
   },
   {
    "id": "koyo-koyo-rubber-base-collection-组合",
@@ -6525,10 +5610,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-rubber-base-02/22.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-rubber-base-02/22-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-rubber-base-02/22.jpg"
   },
   {
    "id": "koyo-koyo-rubber-base-collection-b017",
@@ -6541,10 +5623,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-rubber-base-02/b017.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-rubber-base-02/b017-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-rubber-base-02/b017.jpg"
   },
   {
    "id": "koyo-koyo-rubber-base-collection-b019",
@@ -6557,10 +5636,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-rubber-base-02/b019.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-rubber-base-02/b019-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-rubber-base-02/b019.jpg"
   },
   {
    "id": "koyo-koyo-rubber-base-collection-b020",
@@ -6573,10 +5649,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-rubber-base-02/b020.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-rubber-base-02/b020-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-rubber-base-02/b020.jpg"
   },
   {
    "id": "koyo-koyo-rubber-base-collection-b021",
@@ -6589,10 +5662,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-rubber-base-02/b021.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-rubber-base-02/b021-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-rubber-base-02/b021.jpg"
   },
   {
    "id": "koyo-koyo-rubber-base-collection-עותק-של-1",
@@ -6605,10 +5675,7 @@
    "price": 35,
    "priceSource": "market",
    "stock": 10,
-   "image": "assets/products/koyo-מארזים-rubber-base-02/עותק-של-1.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-rubber-base-02/עותק-של-1-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-rubber-base-02/עותק-של-1.jpg"
   },
   {
    "id": "koyo-koyo-kit-valentine-koyo-kit-valentine-kit",
@@ -6638,10 +5705,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 5,
-   "image": "assets/products/koyo-מארזים-valentine/080.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-valentine/080-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-valentine/080.jpg"
   },
   {
    "id": "koyo-koyo-kit-valentine-083",
@@ -6654,10 +5718,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 5,
-   "image": "assets/products/koyo-מארזים-valentine/083.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-valentine/083-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-valentine/083.jpg"
   },
   {
    "id": "koyo-koyo-kit-valentine-088",
@@ -6670,10 +5731,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 5,
-   "image": "assets/products/koyo-מארזים-valentine/088.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-valentine/088-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-valentine/088.jpg"
   },
   {
    "id": "koyo-koyo-kit-valentine-114",
@@ -6686,10 +5744,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 5,
-   "image": "assets/products/koyo-מארזים-valentine/114.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-valentine/114-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-valentine/114.jpg"
   },
   {
    "id": "koyo-koyo-kit-valentine-145",
@@ -6702,10 +5757,7 @@
    "price": 29,
    "priceSource": "market",
    "stock": 5,
-   "image": "assets/products/koyo-מארזים-valentine/145.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-מארזים-valentine/145-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-מארזים-valentine/145.jpg"
   },
   {
    "id": "koyo-koyo-polygel-clear",
@@ -6718,10 +5770,7 @@
    "price": 89,
    "priceSource": "market",
    "stock": 8,
-   "image": "assets/products/koyo-פוליג-ל-פוליג-ל-15/clear.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-פוליג-ל-פוליג-ל-15/clear-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-פוליג-ל-פוליג-ל-15/clear.jpg"
   },
   {
    "id": "koyo-koyo-polygel-clear-pink",
@@ -6734,10 +5783,7 @@
    "price": 89,
    "priceSource": "market",
    "stock": 8,
-   "image": "assets/products/koyo-פוליג-ל-פוליג-ל-15/clear-pink.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-פוליג-ל-פוליג-ל-15/clear-pink-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-פוליג-ל-פוליג-ל-15/clear-pink.jpg"
   },
   {
    "id": "koyo-koyo-polygel-dark-pink",
@@ -6750,10 +5796,7 @@
    "price": 89,
    "priceSource": "market",
    "stock": 8,
-   "image": "assets/products/koyo-פוליג-ל-פוליג-ל-15/dark-pink.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-פוליג-ל-פוליג-ל-15/dark-pink-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-פוליג-ל-פוליג-ל-15/dark-pink.jpg"
   },
   {
    "id": "koyo-koyo-polygel-funny-milk",
@@ -6766,10 +5809,7 @@
    "price": 89,
    "priceSource": "market",
    "stock": 8,
-   "image": "assets/products/koyo-פוליג-ל-פוליג-ל-15/funny-milk.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-פוליג-ל-פוליג-ל-15/funny-milk-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-פוליג-ל-פוליג-ל-15/funny-milk.jpg"
   },
   {
    "id": "koyo-koyo-polygel-light-pink",
@@ -6782,10 +5822,7 @@
    "price": 89,
    "priceSource": "market",
    "stock": 8,
-   "image": "assets/products/koyo-פוליג-ל-פוליג-ל-15/light-pink.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-פוליג-ל-פוליג-ל-15/light-pink-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-פוליג-ל-פוליג-ל-15/light-pink.jpg"
   },
   {
    "id": "koyo-koyo-polygel-natural-pink",
@@ -6798,10 +5835,7 @@
    "price": 89,
    "priceSource": "market",
    "stock": 8,
-   "image": "assets/products/koyo-פוליג-ל-פוליג-ל-15/natural-pink.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-פוליג-ל-פוליג-ל-15/natural-pink-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-פוליג-ל-פוליג-ל-15/natural-pink.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-001",
@@ -6814,10 +5848,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/001.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/001-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/001.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-002",
@@ -6830,10 +5861,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/002.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/002-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/002.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-003",
@@ -6846,10 +5874,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/003.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/003-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/003.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-004",
@@ -6862,10 +5887,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/004.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/004-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/004.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-005",
@@ -6878,10 +5900,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/005.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/005-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/005.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-006",
@@ -6894,10 +5913,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/006.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/006-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/006.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-007",
@@ -6910,10 +5926,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/007.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/007-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/007.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-008",
@@ -6926,10 +5939,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/008.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/008-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/008.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-009",
@@ -6942,10 +5952,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/009.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/009-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/009.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-010",
@@ -6958,10 +5965,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/010.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/010-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/010.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-011",
@@ -6974,10 +5978,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/011.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/011-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/011.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-012",
@@ -6990,10 +5991,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/012.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/012-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/012.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-013",
@@ -7006,10 +6004,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/013.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/013-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/013.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-018",
@@ -7022,10 +6017,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/018.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/018-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/018.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-021",
@@ -7038,10 +6030,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/021.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/021-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/021.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-022",
@@ -7054,10 +6043,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/022.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/022-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/022.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-025",
@@ -7070,10 +6056,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/025.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/025-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/025.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-029",
@@ -7086,10 +6069,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/029.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/029-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/029.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-034",
@@ -7102,10 +6082,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/034.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/034-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/034.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-035",
@@ -7118,10 +6095,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/035.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/035-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/035.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-037",
@@ -7134,10 +6108,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/037.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/037-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/037.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-038",
@@ -7150,10 +6121,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/038.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/038-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/038.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-039",
@@ -7166,10 +6134,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/039.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/039-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/039.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-042",
@@ -7182,10 +6147,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/042.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/042-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/042.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-044",
@@ -7198,10 +6160,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/044.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/044-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/044.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-045",
@@ -7214,10 +6173,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/045.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/045-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/045.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-046",
@@ -7230,10 +6186,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/046.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/046-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/046.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-053",
@@ -7246,10 +6199,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/053.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/053-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/053.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-054",
@@ -7262,10 +6212,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/054.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/054-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/054.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-055",
@@ -7278,10 +6225,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/055.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/055-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/055.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-060",
@@ -7294,10 +6238,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/060.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/060-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/060.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-063",
@@ -7310,10 +6251,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/063.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/063-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/063.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-064",
@@ -7326,10 +6264,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/064.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/064-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/064.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-066",
@@ -7342,10 +6277,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/066.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/066-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/066.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-068",
@@ -7358,10 +6290,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/068.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/068-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/068.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-069",
@@ -7374,10 +6303,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/069.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/069-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/069.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-070",
@@ -7390,10 +6316,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/070.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/070-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/070.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-071",
@@ -7406,10 +6329,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/071.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/071-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/071.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-074",
@@ -7422,10 +6342,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/074.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/074-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/074.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-078",
@@ -7438,10 +6355,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/078.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/078-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/078.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-079",
@@ -7454,10 +6368,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/079.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/079-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/079.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-080",
@@ -7470,10 +6381,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/080.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/080-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/080.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-081",
@@ -7486,10 +6394,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/081.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/081-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/081.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-082",
@@ -7502,10 +6407,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/082.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/082-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/082.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-083",
@@ -7518,10 +6420,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/083.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/083-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/083.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-084",
@@ -7534,10 +6433,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/084.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/084-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/084.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-085",
@@ -7550,10 +6446,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/085.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/085-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/085.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-086",
@@ -7566,10 +6459,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/086.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/086-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/086.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-087",
@@ -7582,10 +6472,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/087.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/087-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/087.jpg"
   },
   {
    "id": "koyo-koyo-regular-polish-088",
@@ -7598,10 +6485,7 @@
    "price": 15,
    "priceSource": "market",
    "stock": 12,
-   "image": "assets/products/koyo-לק-רגיל-גוונים/088.jpg",
-   "gallery": [
-    "assets/products/_swatch/koyo-לק-רגיל-גוונים/088-swatch.jpg"
-   ]
+   "image": "assets/products/koyo-לק-רגיל-גוונים/088.jpg"
   },
   {
    "id": "sun-sun-1s-sun-1s",

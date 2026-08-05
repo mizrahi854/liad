@@ -45,7 +45,30 @@
       "Bash(python3 tools/extract_shades.py)",
       "Bash(node --check js/shade-showcase.js)",
       "Bash(node --check js/hand.js)",
-      "Bash(node --check js/main.js)"
+      "Bash(node --check js/main.js)",
+      "Bash(sed -n '2046,2168p' liad-shop/css/style.css)",
+      "Read(//tmp/**)",
+      "Bash(cd \"/Users/yanaimizrahi/Documents/לק גל פרויקט/liad-landing\" && printf '\\\\n\\\\n' >> css/style.css && sed 's/^   20\\\\. ווידג׳ט נגישות$/   25. ווידג׳ט נגישות \\(זהה לזה שבחנות\\)/' /tmp/a11y.css >> css/style.css && tail -20 css/style.css && grep -c \"a11y__toggle\" css/style.css)",
+      "Bash(grep -n \"ellipse class=\\\\\"hand__halo\\\\\"\\\\|^</svg>\\\\`;\\\\|^}\" js/hand.js)",
+      "Bash(rm data/products.json.bak)",
+      "Bash(node --check js/store.js)",
+      "Bash(node --check js/admin-store.js)",
+      "Bash(mkdir -p liad-landing/assets/_originals)",
+      "Bash(cp \"/Users/yanaimizrahi/Desktop/db6718c3-9f10-4f3f-bd0b-800544643c77.avif\" liad-landing/assets/_originals/hand-real-original.avif)",
+      "Bash(sips -s format png liad-landing/assets/_originals/hand-real-original.avif --out \"/private/tmp/claude-501/-Users-yanaimizrahi-Documents-------------/fc1e0cbd-7bea-4f0d-9b36-52c5900b8240/scratchpad/hand-real.png\")",
+      "Bash(sips -g pixelWidth -g pixelHeight \"/private/tmp/claude-501/-Users-yanaimizrahi-Documents-------------/fc1e0cbd-7bea-4f0d-9b36-52c5900b8240/scratchpad/hand-real.png\")",
+      "Bash(.venv/bin/python -c \"import PIL; print\\('PIL', PIL.__version__\\)\")",
+      "Bash(.venv/bin/python -c \"import numpy; print\\('numpy', numpy.__version__\\)\")",
+      "Bash(python3 -c \"import PIL; print\\('sysPIL', PIL.__version__\\)\")",
+      "Bash(python3 -c \"import numpy,scipy; print\\(numpy.__version__, scipy.__version__\\)\")",
+      "Bash(python3 trace_nails.py)",
+      "Bash(sed -i '' 's/for _ in range\\(2\\):/for _ in range\\(3\\):/; s/median \\\\* 1.22/median * 1.13/' trace_nails.py)",
+      "Bash(sed -i '' 's/for _ in range\\(3\\):/for _ in range\\(5\\):/; s/median \\\\* 1.13/median * 1.06/' trace_nails.py)",
+      "Bash(python3 shade_colors.py buba-buba-color-008 koyo-koyo-gel-polish-003 koyo-koyo-mini-069 koyo-koyo-junior-080 koyo-koyo-junior-164 buba-buba-color-040 buba-buba-color-049 koyo-koyo-junior-102 koyo-koyo-junior-140 koyo-koyo-gel-polish-039)",
+      "Bash(curl -s -D- \"http://localhost:4176/liad-landing/js/main.js\" -o /tmp/served-main.js)",
+      "Bash(python3 tag_cms.py)",
+      "Bash(cp \"/private/tmp/claude-501/-Users-yanaimizrahi-Documents-------------/fc1e0cbd-7bea-4f0d-9b36-52c5900b8240/trace_nails.py\" tools/trace_nails.py)",
+      "Bash(python3 tools/trace_nails.py)"
     ]
   }
 }

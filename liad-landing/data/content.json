@@ -10,97 +10,137 @@
     {
       "brand": "BELL",
       "title": "ג׳ל בנייה בגוון BELL Color Builder — גוון 003",
-      "description": "ג׳ל בנייה בגוון של BELL בנפח 15 מ״ל. נוסחת HEMA FREE ו-T.P.O FREE, מרקם נוח לעבודה ושליטה מלאה בפיסול. מתאים לבנייה, חיזוק ומילוי.",
+      "description": "HEMA FREE · 15 מ״ל · שליטה מלאה בפיסול",
       "price": 49,
       "compareAt": null,
       "badge": "רב מכר",
       "inStock": true,
       "image": "../liad-shop/assets/products/bell-bell-builder/003.jpg",
-      "href": "../liad-shop/index.html"
+      "href": "../liad-shop/product.html?id=bell-bell-color-builder-003"
     },
     {
       "brand": "KOYO",
-      "title": "מארז KOYO Valentine's Collection — 5 גוונים",
-      "description": "מארז Valentine של KOYO — חמישה גוונים אדומים בבקבוקי 10 מ״ל, בקופסת מתנה. משתלם יותר מרכישת הגוונים בנפרד.",
+      "title": "מארז KOYO French — ערכת פתיחה",
+      "description": "מארז מוכן לעבודה בפרנץ׳ קלאסי",
       "price": 149,
       "compareAt": null,
-      "badge": "רב מכר",
+      "badge": "מארז",
       "inStock": true,
-      "image": "../liad-shop/assets/products/koyo-מארזים-valentine/1.jpg",
-      "href": "../liad-shop/index.html"
+      "image": "../liad-shop/assets/products/koyo-מארזים-french/1.jpg",
+      "href": "../liad-shop/product.html?id=koyo-koyo-kit-french-koyo-kit-french-kit"
     },
     {
       "brand": "BUBA",
-      "title": "שואב אבק שולחני BUBA",
-      "description": "שואב אבק שולחני של BUBA עם מפוח טורבינה, צג LCD ומסנן בצפיפות גבוהה נשלף. שומר על שולחן העבודה ועל הנשימה נקיים.",
-      "price": 790,
+      "title": "מכונת שיוף BUBA",
+      "description": "מקצועית · שקטה · לעבודה יומיומית",
+      "price": 690,
       "compareAt": null,
       "badge": "רב מכר",
       "inStock": true,
-      "image": "../liad-shop/assets/products/אביזרים-שואב-בובה/copy-of-3b66d88b-fda9-4604-86ff-f44628f62c39.jpg",
-      "href": "../liad-shop/index.html"
+      "image": "../liad-shop/assets/products/אביזרים-מכונת-שיוף-בובה/1000120459-scaled.jpg",
+      "href": "../liad-shop/product.html?id=buba-buba-drill-buba-drill"
+    },
+    {
+      "brand": "SUN",
+      "title": "מנורת ייבוש SUN 1S",
+      "description": "ייבוש מהיר ואחיד לכל היד",
+      "price": 149,
+      "compareAt": null,
+      "badge": null,
+      "inStock": true,
+      "image": "../liad-shop/assets/products/אביזרים-sun-1s/copy-of-1000095814.jpg",
+      "href": "../liad-shop/product.html?id=sun-sun-1s-sun-1s"
+    },
+    {
+      "brand": "BELL",
+      "title": "ראבר בייס בגוון BELL — גוון 001",
+      "description": "אחיזה חזקה וגימור נקי מהשכבה הראשונה",
+      "price": 49,
+      "compareAt": null,
+      "badge": null,
+      "inStock": true,
+      "image": "../liad-shop/assets/products/bell-גוונים-סגנון-3/001.jpg",
+      "href": "../liad-shop/product.html?id=bell-bell-rubber-base-001"
+    },
+    {
+      "brand": "KOYO",
+      "title": "פוליג׳ל KOYO — CLEAR",
+      "description": "מרקם נוח לפיסול, בלי נזילות",
+      "price": 89,
+      "compareAt": null,
+      "badge": null,
+      "inStock": true,
+      "image": "../liad-shop/assets/products/koyo-פוליג-ל-פוליג-ל-15/clear.jpg",
+      "href": "../liad-shop/product.html?id=koyo-koyo-polygel-clear"
+    },
+    {
+      "brand": "KOYO",
+      "title": "סט ג׳ל ציור KOYO — 6 גוונים",
+      "description": "פיגמנט עשיר לעבודות אומנות מדויקות",
+      "price": 35,
+      "compareAt": null,
+      "badge": "חדש",
+      "inStock": true,
+      "image": "../liad-shop/assets/products/koyo-ג-ל-ציור/סט-גל-לציור-6-גוונים-koyo-optimized.jpg",
+      "href": "../liad-shop/product.html?id=koyo-koyo-paint-gel-סט-גל-לציור-6-גוונים-koyo-optimized"
+    },
+    {
+      "brand": "LIAD",
+      "title": "כוס סטריליזטור",
+      "description": "היגיינה מלאה בעמדת העבודה",
+      "price": 35,
+      "compareAt": null,
+      "badge": null,
+      "inStock": true,
+      "image": "../liad-shop/assets/products/אביזרים-כוס-סטרליזטור/copy-of-whatsapp-image-2023-06-09-at-16-45-20.jpg",
+      "href": "../liad-shop/product.html?id=liad-sterilizer-cup-sterilizer-cup"
     }
   ],
   "chips": [
-    {
-      "label": "בנייה וחיזוק",
-      "href": "#shop"
-    },
-    {
-      "label": "צבע וגימור",
-      "href": "#shop"
-    },
-    {
-      "label": "מכונות ומנורות",
-      "href": "#shop"
-    },
-    {
-      "label": "ראשי שיוף",
-      "href": "#shop"
-    },
-    {
-      "label": "מברשות וכלים",
-      "href": "#shop"
-    },
-    {
-      "label": "טיפוח ציפורן",
-      "href": "#shop"
-    },
-    {
-      "label": "ערכות פתיחה",
-      "href": "#shop"
-    }
+    { "label": "בנייה וחיזוק", "href": "../liad-shop/index.html?category=builder-gel" },
+    { "label": "צבע וגימור", "href": "../liad-shop/index.html?category=gel-polish" },
+    { "label": "מכונות ומנורות", "href": "../liad-shop/index.html?category=machines" },
+    { "label": "פצירות ובאפרים", "href": "../liad-shop/index.html?category=files" },
+    { "label": "כלי עבודה", "href": "../liad-shop/index.html?category=tools" },
+    { "label": "חיטוי ועיקור", "href": "../liad-shop/index.html?category=hygiene" },
+    { "label": "ערכות פתיחה", "href": "../liad-shop/index.html?category=starter-kits" }
   ],
   "categories": [
     {
       "title": "לק ג׳ל",
+      "count": "232 גוונים",
       "image": "assets/img/gel-polish.jpg",
-      "href": "#shop"
-    },
-    {
-      "title": "בסיסים",
-      "image": null,
-      "href": "#shop"
-    },
-    {
-      "title": "טופים",
-      "image": null,
-      "href": "#shop"
+      "href": "../liad-shop/index.html?category=gel-polish"
     },
     {
       "title": "ג׳ל בנייה",
+      "count": "47 מוצרים",
       "image": "assets/img/gel-builder.jpg",
-      "href": "#shop"
+      "href": "../liad-shop/index.html?category=builder-gel"
+    },
+    {
+      "title": "בייסים וטופים",
+      "count": "124 מוצרים",
+      "image": "../liad-shop/assets/products/bell-גוונים-סגנון-3/001.jpg",
+      "href": "../liad-shop/index.html?category=bases"
     },
     {
       "title": "פוליג׳ל",
-      "image": null,
-      "href": "#shop"
+      "count": "6 מוצרים",
+      "image": "../liad-shop/assets/products/koyo-פוליג-ל-פוליג-ל-15/clear.jpg",
+      "href": "../liad-shop/index.html?category=polygel"
     },
     {
-      "title": "סטמפינג",
+      "title": "מכונות ומנורות",
+      "count": "5 מוצרים",
+      "image": "assets/img/buba-drill-main.jpg",
+      "href": "../liad-shop/index.html?category=machines"
+    },
+    {
+      "title": "פצירות ובאפרים",
+      "count": "2 מוצרים",
       "image": "assets/img/nail-files.jpg",
-      "href": "#shop"
+      "href": "../liad-shop/index.html?category=files"
     }
   ],
   "testimonials": [
@@ -176,6 +216,7 @@
   "locations": [
     {
       "name": "LIAD בנימינה\nמתחם \"הפיל\"",
+      "city": "בנימינה",
       "address": "מתחם הפיל, בנימינה",
       "hours": "א׳– ה׳ 08:00–19:00\nו׳ 08:00–12:00",
       "note": "איסוף עצמי זמין",
@@ -184,6 +225,7 @@
     },
     {
       "name": "LIAD נתניה",
+      "city": "נתניה",
       "address": "שדרות בן צבי 18, נתניה",
       "hours": "בתיאום מראש בלבד",
       "note": null,

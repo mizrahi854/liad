@@ -1,0 +1,598 @@
+/* ==========================================================================
+   LIAD — מערכת ניהול
+   נטען אחרי css/style.css ומשתמש באותם טוקנים של המותג.
+
+   עקרון העיצוב: זה כלי עבודה, לא ויטרינה. שקט, קריא, בלי אנימציות
+   מיותרות — אבל באותה שפה של המותג, כדי שלא יישבר הרושם.
+
+   תוכן עניינים:
+   01. מסגרת ופריסה
+   02. מסך הבחירה הראשי
+   03. ניווט צד
+   04. כרטיסים וסטטיסטיקות
+   05. סרגל כלים, שדות וטפסים
+   06. טבלאות
+   07. מודאל
+   08. הודעות ותגיות
+   09. רספונסיביות
+   ========================================================================== */
+
+/* ==========================================================================
+   01. מסגרת ופריסה
+   ========================================================================== */
+
+.admin {
+  --admin-gap: 1.5rem;
+  min-height: 100vh;
+  background-color: var(--background);
+}
+
+.admin__bar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem var(--container-pad, 1.25rem);
+  border-bottom: 1px solid var(--border);
+  background-color: color-mix(in oklab, var(--background) 92%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.admin__bar-side {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.admin__logo img {
+  height: 2.25rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.admin__crumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+
+.admin__crumbs button {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.admin__body {
+  display: grid;
+  gap: var(--admin-gap);
+  padding: 1.5rem var(--container-pad, 1.25rem) 4rem;
+}
+
+.admin__main { min-width: 0; }
+
+.admin__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.375rem, 3vw, 1.75rem);
+  letter-spacing: -0.02em;
+}
+
+.admin__subtitle {
+  margin-top: 0.375rem;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+
+.admin__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
+   02. מסך הבחירה הראשי
+   ========================================================================== */
+
+.admin-home {
+  max-width: 60rem;
+  margin-inline: auto;
+  padding-block: clamp(2rem, 8vh, 5rem);
+  text-align: center;
+}
+
+.admin-home__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+  letter-spacing: -0.02em;
+}
+
+.admin-home__lead {
+  margin-top: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.admin-home__grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+  text-align: start;
+}
+
+.admin-choice {
+  display: block;
+  padding: 1.75rem;
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  text-align: start;
+  transition:
+    transform 0.4s var(--ease-luxe),
+    border-color 0.4s var(--ease-luxe),
+    box-shadow 0.4s var(--ease-luxe);
+}
+
+.admin-choice:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in oklab, var(--gold) 45%, transparent);
+  box-shadow: var(--shadow-soft);
+}
+
+.admin-choice__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+  color: var(--charcoal);
+  background-image: linear-gradient(105deg, var(--gold-soft), var(--gold));
+}
+
+.admin-choice__icon svg { width: 1.5rem; height: 1.5rem; }
+
+/* הכרטיס בנוי מ-span-ים (הוא כפתור), ולכן צריך להפוך אותם לבלוקים */
+.admin-choice__title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.admin-choice__text {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}
+
+.admin-choice__list {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.admin-choice__list span {
+  padding: 0.1875rem 0.625rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  color: var(--muted-foreground);
+  background-color: color-mix(in oklab, var(--muted) 70%, transparent);
+}
+
+/* ==========================================================================
+   03. ניווט צד
+   ========================================================================== */
+
+.admin-nav {
+  display: flex;
+  gap: 0.375rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  scrollbar-width: none;
+}
+
+.admin-nav::-webkit-scrollbar { display: none; }
+
+.admin-nav__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+  padding: 0.625rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background-color: var(--card);
+  font-size: 0.8125rem;
+  white-space: nowrap;
+  transition:
+    color var(--dur-fast) var(--ease-luxe),
+    border-color var(--dur-fast) var(--ease-luxe),
+    background-color var(--dur-fast) var(--ease-luxe);
+}
+
+.admin-nav__item:hover { border-color: var(--gold); color: var(--gold); }
+
+.admin-nav__item[aria-current="true"] {
+  background-image: linear-gradient(105deg, var(--gold-soft), var(--gold));
+  border-color: transparent;
+  color: var(--charcoal);
+  font-weight: 600;
+}
+
+.admin-nav__count {
+  padding-inline: 0.375rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+  background-color: color-mix(in oklab, var(--charcoal) 10%, transparent);
+}
+
+/* ==========================================================================
+   04. כרטיסים וסטטיסטיקות
+   ========================================================================== */
+
+.admin-card {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  box-shadow: var(--shadow-card);
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat {
+  padding: 1rem 1.125rem;
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  box-shadow: var(--shadow-card);
+}
+
+.stat__label {
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.stat__value {
+  margin-top: 0.25rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   05. סרגל כלים, שדות וטפסים
+   ========================================================================== */
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.toolbar__spacer { flex: 1 1 auto; }
+
+.admin-field {
+  display: block;
+  min-width: 0;
+}
+
+.admin-field__label {
+  display: block;
+  margin-bottom: 0.3125rem;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.admin-input,
+.admin-select,
+.admin-textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background-color: var(--background);
+  font: inherit;
+  font-size: 0.875rem;
+  color: inherit;
+  outline: none;
+  transition: border-color var(--dur-fast) var(--ease-luxe);
+}
+
+.admin-input:focus,
+.admin-select:focus,
+.admin-textarea:focus { border-color: var(--gold); }
+
+.admin-textarea { min-height: 5.5rem; resize: vertical; line-height: 1.6; }
+
+.admin-input--sm { width: 5rem; padding: 0.375rem 0.5rem; text-align: center; font-variant-numeric: tabular-nums; }
+.admin-input--zero { border-color: oklch(57.7% 0.245 27.325); color: oklch(57.7% 0.245 27.325); }
+
+.admin-grid {
+  display: grid;
+  gap: 0.875rem;
+}
+
+.admin-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.admin-check input {
+  width: 1.0625rem;
+  height: 1.0625rem;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+
+/* אזור העלאת תמונה */
+.image-drop {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.75rem;
+  border: 1px dashed var(--border);
+  border-radius: 0.625rem;
+  background-color: color-mix(in oklab, var(--muted) 45%, transparent);
+}
+
+.image-drop__preview {
+  width: 4rem;
+  height: 4rem;
+  flex-shrink: 0;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  background-color: var(--secondary);
+}
+
+.image-drop__body { flex: 1; min-width: 0; }
+
+.image-drop__hint {
+  margin-top: 0.25rem;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+
+/* ==========================================================================
+   06. טבלאות
+   ========================================================================== */
+
+.table-wrap {
+  max-height: 36rem;
+  overflow: auto;
+  border: 1px solid var(--border);
+  background-color: var(--card);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.admin-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 0.75rem 0.625rem;
+  text-align: start;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+  color: var(--muted-foreground);
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border);
+}
+
+.admin-table td {
+  padding: 0.5rem 0.625rem;
+  border-bottom: 1px solid color-mix(in oklab, var(--border) 50%, transparent);
+  vertical-align: middle;
+}
+
+.admin-table tbody tr:hover {
+  background-color: color-mix(in oklab, var(--muted) 40%, transparent);
+}
+
+.admin-table__empty {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--muted-foreground);
+}
+
+/*
+ * min-width חיוני: התמונה יושבת בתא טבלה שנדחס, ו-max-width:100%
+ * הגלובלי היה מכווץ אותה לכמה פיקסלים.
+ */
+.thumb {
+  width: 2.75rem;
+  min-width: 2.75rem;
+  max-width: none;
+  height: 2.75rem;
+  object-fit: cover;
+  background-color: var(--secondary);
+  border: 1px solid var(--border);
+}
+
+.row-title {
+  display: block;
+  max-width: 22rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.row-actions {
+  display: flex;
+  gap: 0.375rem;
+  justify-content: flex-end;
+}
+
+.icon-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  color: var(--muted-foreground);
+  transition:
+    color var(--dur-fast) var(--ease-luxe),
+    border-color var(--dur-fast) var(--ease-luxe);
+}
+
+.icon-action:hover { color: var(--gold); border-color: var(--gold); }
+.icon-action--danger:hover { color: oklch(57.7% 0.245 27.325); border-color: oklch(57.7% 0.245 27.325); }
+.icon-action svg { width: 1rem; height: 1rem; }
+
+/* ==========================================================================
+   07. מודאל
+   ========================================================================== */
+
+.admin-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1.25rem;
+  overflow-y: auto;
+  background-color: color-mix(in oklab, var(--charcoal) 45%, transparent);
+  backdrop-filter: blur(4px);
+}
+
+.admin-modal[hidden] { display: none; }
+
+.admin-modal__card {
+  position: relative;
+  width: 100%;
+  max-width: 40rem;
+  margin-block: auto;
+  padding: 1.75rem;
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  box-shadow: var(--shadow-luxe);
+}
+
+.admin-modal__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.admin-modal__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.admin-modal__close {
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--muted-foreground);
+}
+
+.admin-modal__foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.625rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ==========================================================================
+   08. הודעות ותגיות
+   ========================================================================== */
+
+.notice {
+  padding: 0.875rem 1.125rem;
+  border: 1px dashed var(--gold);
+  background-color: color-mix(in oklab, var(--gold) 8%, transparent);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.notice--danger {
+  border-color: oklch(57.7% 0.245 27.325);
+  background-color: color-mix(in oklab, oklch(57.7% 0.245 27.325) 8%, transparent);
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.1875rem 0.625rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  white-space: nowrap;
+}
+
+.pill--ok { background-color: color-mix(in oklab, var(--gold) 22%, transparent); }
+.pill--out { background-color: color-mix(in oklab, var(--charcoal) 12%, transparent); }
+.pill--new { background-image: linear-gradient(105deg, var(--gold-soft), var(--gold)); color: var(--charcoal); }
+.pill--off { background-color: color-mix(in oklab, var(--charcoal) 8%, transparent); color: var(--muted-foreground); }
+
+.muted { color: var(--muted-foreground); }
+.nowrap { white-space: nowrap; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* ==========================================================================
+   09. רספונסיביות
+   ========================================================================== */
+
+@media (min-width: 640px) {
+  .stat-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .admin-home__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .admin-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+  .admin__body {
+    grid-template-columns: 13rem minmax(0, 1fr);
+    align-items: start;
+    max-width: 84rem;
+    margin-inline: auto;
+  }
+
+  .admin-nav {
+    flex-direction: column;
+    position: sticky;
+    top: 5rem;
+  }
+
+  .admin-nav__item { justify-content: flex-start; }
+}

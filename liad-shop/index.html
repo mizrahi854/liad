@@ -81,13 +81,43 @@
 <main>
 
   <section class="shop-hero">
+    <!-- הילות אור שנעות בקצב אחר מהטקסט — זה מה שיוצר את תחושת העומק -->
+    <div class="shop-hero__depth" aria-hidden="true">
+      <span class="shop-hero__glow shop-hero__glow--a" data-parallax="0.12"></span>
+      <span class="shop-hero__glow shop-hero__glow--b" data-parallax="-0.08"></span>
+    </div>
     <div class="container">
-      <p class="eyebrow">החנות של LIAD</p>
-      <h1>כל מה שצריך לעבודה מקצועית</h1>
-      <p>חומרי פרמיום שנבחרו אחד-אחד — ג׳ל בנייה, לק ג׳ל, בייסים, פוליג׳ל, מכשור ואביזרים.
+      <p class="eyebrow" data-reveal="fade">החנות של LIAD</p>
+      <h1 data-reveal="up">כל מה שצריך לעבודה מקצועית</h1>
+      <p data-reveal="up" data-reveal-delay="0.08">חומרי פרמיום שנבחרו אחד-אחד — ג׳ל בנייה, לק ג׳ל, בייסים, פוליג׳ל, מכשור ואביזרים.
          הרכישה מהירה ובלי להירשם.</p>
     </div>
   </section>
+
+  <!-- ======================================================================
+       ניווט קטגוריות — ריבועים קטנים בראש החנות.
+       נבנה ב-js/shop.js מהקטלוג עצמו, ולכן תמיד מסונכרן עם המלאי האמיתי.
+       ====================================================================== -->
+  <nav class="category-rail" aria-label="ניווט לפי קטגוריה">
+    <div class="container">
+      <div class="category-rail__head">
+        <p class="eyebrow">קנייה לפי קטגוריה</p>
+        <div class="category-rail__nav">
+          <button class="category-rail__arrow" type="button" data-rail-prev aria-label="הקטגוריה הקודמת">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
+          </button>
+          <button class="category-rail__arrow" type="button" data-rail-next aria-label="הקטגוריה הבאה">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="category-rail__track" id="categoryRail" data-native-scroll></div>
+    </div>
+  </nav>
 
   <div class="container">
     <div class="shop-layout">

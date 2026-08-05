@@ -1,8 +1,16 @@
 import { initShadeShowcase } from './shade-showcase.js';
+import { initMotion, refreshMotion } from './motion.js';
+import { initHero } from './hero.js';
+import { createCarousel } from './carousel.js';
+import { initAccessibility } from './accessibility.js';
+import { initCms, featuredIds, recordLead, activePopups } from './cms.js';
 
 /* ==========================================================================
    LIAD — דף כניסה
    כל הלוגיקה של הדף. ללא ספריות חיצוניות.
+
+   האנימציות והגלילה יושבות ב-js/motion.js, ה-Hero ב-js/hero.js
+   והקרוסלה ב-js/carousel.js. כאן נשארת רק לוגיקת התוכן והממשק.
 
    תוכן עניינים:
    01. הגדרות
@@ -14,8 +22,7 @@ import { initShadeShowcase } from './shade-showcase.js';
    07. קרוסלת סרטונים
    08. טפסים — ניוזלטר + מתנה דיגיטלית
    09. פופאפ הנחה
-   10. חשיפה בגלילה
-   11. הפעלה
+   10. הפעלה
    ========================================================================== */
 
 /* ==========================================================================
@@ -36,6 +43,7 @@ const LEAD_ENDPOINT = null;
 
 const STORAGE_KEYS = {
   promoSeen: "liad:promo-dismissed-at",
+  popupsSeen: "liad:popups-dismissed",
   subscribed: "liad:subscribed",
 };
 
@@ -98,10 +106,10 @@ async function loadContent() {
 
 /** מוצג רק אם הקובץ נכשל בטעינה — בדרך כלל כי פתחו את index.html ישירות (file://) */
 function showLoadError() {
-  const grid = $("#productGrid");
-  if (!grid) return;
-  grid.append(html`
-    <div style="grid-column:1/-1;padding:2rem;border:1px dashed var(--border);border-radius:1rem;text-align:center;color:var(--muted-foreground)">
+  const track = $("#productTrack");
+  if (!track) return;
+  track.append(html`
+    <div style="padding:2rem;border:1px dashed var(--border);text-align:center;color:var(--muted-foreground)">
       <p style="font-weight:600;color:var(--foreground)">התוכן לא נטען</p>
       <p style="margin-top:.5rem;font-size:.875rem">
         צריך להריץ את הדף דרך שרת מקומי (ולא לפתוח את הקובץ ישירות).<br>
@@ -123,39 +131,142 @@ function applySiteLinks(links = {}) {
   if (links.booking) $$("[data-site-booking]").forEach((a) => (a.href = links.booking));
 }
 
-function renderProducts(products = []) {
-  const grid = $("#productGrid");
-  if (!grid) return;
+/* ==========================================================================
+   קרוסלת המוצרים
 
-  products.forEach((p, i) => {
+   שני מקורות, בכוונה:
+     1. content.json — המוצרים שנבחרו ידנית, עם תגית ("רב מכר") ומחיר מבצע.
+        הם תמיד ראשונים, כי הם מה שהלקוחה רוצה לדחוף.
+     2. קטלוג החנות — עוד מוצרים, כדי שהרצועה תמשיך להתחלף ולא תציג
+        את אותם שמונה מוצרים לנצח.
+
+   הבחירה מהקטלוג מסתובבת לפי היום בשנה, כך שמי שנכנסת מחר רואה
+   מוצרים אחרים — בלי שרת ובלי אקראיות שמקפיצה את הדף בכל רענון.
+   ========================================================================== */
+
+/** כמה מוצרים נוספים לשלוף מהקטלוג אל הקרוסלה */
+const CAROUSEL_EXTRA = 16;
+
+/** טוען את קטלוג החנות. נכשל בשקט — הקרוסלה עובדת גם בלעדיו. */
+async function loadShopProducts() {
+  try {
+    const res = await fetch("../liad-shop/data/products.json", { cache: "no-cache" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    return Array.isArray(data.products) ? data.products : [];
+  } catch {
+    // הדף רץ לבדו (בלי תיקיית החנות לצדו) — ממשיכים עם המוצרים הידניים
+    return [];
+  }
+}
+
+/** מספר יציב שמתחלף פעם ביום, לסבב המוצרים */
+function daySeed() {
+  return Math.floor(Date.now() / 864e5);
+}
+
+/** ממיר מוצר מהקטלוג לצורת הכרטיס שהקרוסלה מציגה */
+function toCard(p) {
+  return {
+    brand: p.brand,
+    title: p.title,
+    description: p.shade ? `גוון ${p.shade}` : (p.line ?? ""),
+    price: p.price,
+    compareAt: null,
+    badge: null,
+    inStock: (p.stock ?? 0) > 0,
+    image: `../liad-shop/${p.image}`,
+    href: `../liad-shop/product.html?id=${encodeURIComponent(p.id)}`,
+  };
+}
+
+/**
+ * בונה את רשימת הקרוסלה: המוצרים הידניים קודם, ואחריהם מוצרים
+ * מהקטלוג — מגוונים בין מותגים, כדי שלא ייווצר רצף של אותו קו.
+ *
+ * אם נבחרו מוצרים במערכת הניהול, הם מחליפים את הרשימה הידנית.
+ */
+function buildCarouselList(curated = [], catalog = []) {
+  const chosen = featuredIds();
+  if (chosen?.length) {
+    const byId = new Map(catalog.map((p) => [p.id, p]));
+    const picked = chosen.map((id) => byId.get(id)).filter(Boolean).map(toCard);
+    if (picked.length) curated = picked;
+  }
+
+  const seen = new Set(curated.map((p) => p.href));
+  const seed = daySeed();
+
+  // מקבצים לפי מותג ושולפים לסירוגין, כך שהרצועה נראית מגוונת
+  const byBrand = new Map();
+  catalog
+    .filter((p) => (p.stock ?? 0) > 0 && p.image && p.price)
+    .forEach((p) => {
+      const list = byBrand.get(p.brand) || [];
+      list.push(p);
+      byBrand.set(p.brand, list);
+    });
+
+  const brands = [...byBrand.keys()].sort();
+  const extra = [];
+  let round = 0;
+
+  while (extra.length < CAROUSEL_EXTRA && round < 200) {
+    let added = false;
+    for (const brand of brands) {
+      const list = byBrand.get(brand);
+      if (!list.length) continue;
+      const p = list[(seed * 7 + round * 13) % list.length];
+      list.splice(list.indexOf(p), 1);
+      const card = toCard(p);
+      if (seen.has(card.href)) continue;
+      seen.add(card.href);
+      extra.push(card);
+      added = true;
+      if (extra.length >= CAROUSEL_EXTRA) break;
+    }
+    if (!added) break;
+    round += 1;
+  }
+
+  return [...curated, ...extra];
+}
+
+/*
+ * כרטיס המוצר בקרוסלה: קטן, מלבני ונקי — התמונה למעלה, שלוש שורות טקסט
+ * למטה, וכל הכרטיס הוא קישור לדף המוצר עצמו.
+ */
+function renderProducts(products = []) {
+  const track = $("#productTrack");
+  if (!track) return;
+
+  products.forEach((p) => {
     const badge = p.badge
-      ? `<span class="badge${p.compareAt ? " badge--gold" : ""}">${esc(p.badge)}</span>`
+      ? `<span class="pcard__badge">${esc(p.badge)}</span>`
       : "";
 
     const stock = p.inStock
       ? ""
-      : `<span class="product-card__stock">אזל מהמלאי</span>`;
+      : `<span class="pcard__stock">אזל מהמלאי</span>`;
 
     const compareAt = p.compareAt
       ? ` <del>${formatPrice(p.compareAt)}</del>`
       : "";
 
-    grid.append(html`
-      <article style="--reveal-delay:${i * 0.06}s">
-        <a class="product-card" href="${esc(p.href)}" data-site-shop>
-          <div class="product-card__media">
-            <img src="${esc(p.image)}" alt="${esc(p.title)}" width="900" height="1125" loading="lazy" decoding="async">
-            <div class="product-card__badges">${badge}</div>
-            ${stock}
-          </div>
-          <div class="product-card__body">
-            <p class="product-card__brand">${esc(p.brand)}</p>
-            <h3 class="product-card__title">${esc(p.title)}</h3>
-            <p class="product-card__desc">${esc(p.description)}</p>
-            <p class="product-card__price">${formatPrice(p.price)}${compareAt}</p>
-          </div>
-        </a>
-      </article>
+    track.append(html`
+      <a class="pcard" href="${esc(p.href)}">
+        <span class="pcard__media media-frame">
+          <img src="${esc(p.image)}" alt="${esc(p.title)}" width="600" height="600" loading="lazy" decoding="async">
+          ${badge}
+          ${stock}
+        </span>
+        <span class="pcard__body">
+          <span class="pcard__brand">${esc(p.brand)}</span>
+          <span class="pcard__title">${esc(p.title)}</span>
+          <span class="pcard__desc">${esc(p.description)}</span>
+          <span class="pcard__price">${formatPrice(p.price)}${compareAt}</span>
+        </span>
+      </a>
     `);
   });
 }
@@ -164,7 +275,7 @@ function renderChips(chips = []) {
   const list = $("#chipList");
   if (!list) return;
   chips.forEach((c) => {
-    list.append(html`<a class="chip" href="${esc(c.href)}" data-site-shop>${esc(c.label)}</a>`);
+    list.append(html`<a class="chip" href="${esc(c.href)}">${esc(c.label)}</a>`);
   });
 }
 
@@ -172,21 +283,29 @@ function renderCategories(categories = []) {
   const grid = $("#categoryGrid");
   if (!grid) return;
 
-  categories.forEach((c) => {
+  categories.forEach((c, i) => {
     // אין תמונה לקטגוריה? מציגים רקע זהב עדין במקום תמונה שבורה.
     const media = c.image
-      ? `<img src="${esc(c.image)}" alt="${esc(c.title)}" loading="lazy" decoding="async">`
-      : `<div style="width:100%;height:100%;background:linear-gradient(140deg,
-           color-mix(in oklab, var(--gold-soft) 55%, white),
-           color-mix(in oklab, var(--powder) 80%, white))"></div>`;
+      ? `<img src="${esc(c.image)}" alt="${esc(c.title)}" loading="lazy" decoding="async" data-parallax="-0.04">`
+      : `<span class="category-card__blank"></span>`;
+
+    const count = c.count
+      ? `<span class="category-card__count">${esc(c.count)}</span>`
+      : "";
 
     grid.append(html`
-      <a class="category-card" href="${esc(c.href)}" data-site-shop>
-        ${media}
+      <a class="category-card" href="${esc(c.href)}"
+         data-reveal="deep" data-reveal-delay="${(i % 3) * 0.08}" data-tilt="6">
+        <span class="category-card__media media-frame">${media}</span>
         <span class="category-card__overlay"></span>
         <span class="category-card__body">
-          <span class="category-card__label">קטגוריה</span>
           <span class="category-card__title">${esc(c.title)}</span>
+          ${count}
+        </span>
+        <span class="category-card__arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>
+          </svg>
         </span>
       </a>
     `);
@@ -199,13 +318,20 @@ function renderJournal(posts = []) {
 
   posts.forEach((post, i) => {
     grid.append(html`
-      <a class="journal-card" href="${esc(post.href)}" style="--reveal-delay:${i * 0.08}s">
-        <div class="journal-card__media">
-          <img src="${esc(post.image)}" alt="${esc(post.title)}" loading="lazy" decoding="async">
-        </div>
-        <p class="journal-card__meta">${esc(post.category)} · ${esc(post.readTime)}</p>
-        <h3 class="journal-card__title">${esc(post.title)}</h3>
-        <p class="journal-card__excerpt">${esc(post.excerpt)}</p>
+      <a class="journal-card" href="${esc(post.href)}" data-reveal="up" data-reveal-delay="${i * 0.1}" data-tilt="4">
+        <span class="journal-card__media media-frame">
+          <img src="${esc(post.image)}" alt="${esc(post.title)}" loading="lazy" decoding="async" data-parallax="-0.05">
+          <span class="journal-card__index">0${i + 1}</span>
+        </span>
+        <span class="journal-card__meta">${esc(post.category)} · ${esc(post.readTime)}</span>
+        <span class="journal-card__title">${esc(post.title)}</span>
+        <span class="journal-card__excerpt">${esc(post.excerpt)}</span>
+        <span class="journal-card__more">
+          לקריאה
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>
+          </svg>
+        </span>
       </a>
     `);
   });
@@ -246,11 +372,15 @@ function renderLocations(locations = []) {
   locations.forEach((loc, i) => {
     const note = loc.note ? `<p class="location__note">${esc(loc.note)}</p>` : "";
     list.append(html`
-      <div class="location" style="--reveal-delay:${i * 0.1}s">
-        <h3>${esc(loc.name)}</h3>
-        <p class="location__row">${pin}${esc(loc.address)}</p>
-        <p class="location__row">${clock}${esc(loc.hours)}</p>
-        ${note}
+      <div class="location" data-reveal="up" data-reveal-delay="${i * 0.12}" data-tilt="4">
+        <span class="location__number" aria-hidden="true">0${i + 1}</span>
+        <p class="location__city">${esc(loc.city ?? "")}</p>
+        <h3 class="location__name">${esc(loc.name)}</h3>
+        <div class="location__details">
+          <p class="location__row">${pin}${esc(loc.address)}</p>
+          <p class="location__row">${clock}${esc(loc.hours)}</p>
+          ${note}
+        </div>
         <div class="location__actions">
           <a class="location__link location__link--solid" href="${esc(loc.waze)}" target="_blank" rel="noopener noreferrer">${nav} ניווט ב-Waze</a>
           <a class="location__link location__link--outline" href="${esc(loc.googleMaps)}" target="_blank" rel="noopener noreferrer">${pin} Google Maps</a>
@@ -500,16 +630,26 @@ function wireLeadForm({ form, status, source, onSuccess }) {
     // מלכודת בוטים — אם השדה מלא, זה בוט. יוצאים בשקט.
     if (form.querySelector('input[name="company"]')?.value) return;
 
-    const input = form.querySelector('input[type="email"]');
     const button = form.querySelector('button[type="submit"]');
-    const email = input?.value.trim() ?? "";
+    const emailInput = form.querySelector('input[type="email"]');
+    const phoneInput = form.querySelector('input[type="tel"]');
+    const nameInput = form.querySelector('input[name="name"]');
 
-    if (!isValidEmail(email)) {
+    const email = emailInput?.value.trim() ?? "";
+    const phone = phoneInput?.value.trim() ?? "";
+    const name = nameInput?.value.trim() ?? "";
+
+    const fail = (message, input) => {
       status.dataset.state = "error";
-      status.textContent = "נראה שכתובת האימייל לא תקינה";
+      status.textContent = message;
       input?.focus();
-      return;
+    };
+
+    if (emailInput && !isValidEmail(email)) return fail("נראה שכתובת האימייל לא תקינה", emailInput);
+    if (phoneInput && !/^0\d{8,9}$/.test(phone.replace(/[\s-]/g, ""))) {
+      return fail("נראה שמספר הטלפון לא תקין", phoneInput);
     }
+    if (nameInput && name.length < 2) return fail("צריך שם", nameInput);
 
     const original = button.textContent;
     button.disabled = true;
@@ -519,9 +659,11 @@ function wireLeadForm({ form, status, source, onSuccess }) {
 
     try {
       await submitLead(email, source);
+      // הרשומה נכנסת לרשימת הלקוחות שרואים במערכת הניהול
+      recordLead({ name, email, phone, source });
       localStorage.setItem(STORAGE_KEYS.subscribed, "1");
       status.dataset.state = "success";
-      status.textContent = "נרשמת! המתנה והקוד בדרך אלייך למייל.";
+      status.textContent = "נרשמת! המתנה והקוד בדרך אלייך.";
       form.reset();
       onSuccess?.();
     } catch (err) {
@@ -548,15 +690,60 @@ function initNewsletter() {
    09. פופאפ הנחה
    ========================================================================== */
 
+/**
+ * ההודעה הבאה שצריך להציג.
+ *
+ * במערכת הניהול אפשר להגדיר עד חמש הודעות פעילות. אנחנו לא מציגים
+ * את כולן באותו ביקור — זה היה מרגיש כמו ספאם. במקום זה מציגים את
+ * הראשונה שהלקוחה עוד לא סגרה, כך שהן מתחלפות לאורך זמן.
+ */
+function pickPopup() {
+  const list = activePopups();
+  if (!list) return null;
+  const dismissed = new Set(
+    (localStorage.getItem(STORAGE_KEYS.popupsSeen) || "").split(",").filter(Boolean)
+  );
+  return list.find((p) => !dismissed.has(p.id)) ?? null;
+}
+
+/** בונה מחדש את תוכן הפופאפ לפי מה שהוגדר בניהול. העיצוב נשאר זהה. */
+function paintPopup(popup) {
+  $("#promoValue").textContent = popup.value ?? "";
+  $("#promoValue").hidden = !popup.value;
+  $("#promoTitle").textContent = popup.title;
+  $("#promoText").textContent = popup.text ?? "";
+
+  const fields = [];
+  if (popup.fields?.name) {
+    fields.push('<input class="field" type="text" name="name" placeholder="שם מלא" autocomplete="name" aria-label="שם מלא">');
+  }
+  if (popup.fields?.email) {
+    fields.push('<input class="field" type="email" name="email" placeholder="כתובת אימייל" required autocomplete="email" aria-label="כתובת אימייל">');
+  }
+  if (popup.fields?.phone) {
+    fields.push('<input class="field" type="tel" name="phone" placeholder="טלפון" autocomplete="tel" aria-label="טלפון">');
+  }
+
+  $("#promoFields").innerHTML = fields.join("");
+  $("#promoSubmit").textContent = popup.buttonText || "שליחה";
+
+  const codeBox = $("#promoCode");
+  codeBox.hidden = !popup.code;
+  if (popup.code) $("#promoCodeValue").textContent = popup.code;
+}
+
 function initPromo(config = {}) {
   const promo = $("#promo");
   if (!promo || config.enabled === false) return;
 
-  const delay = (config.delaySeconds ?? 45) * 1000;
+  const managed = pickPopup();
+  const delay = ((managed?.delaySeconds ?? config.delaySeconds) ?? 45) * 1000;
   const repeatAfterDays = config.repeatAfterDays ?? 7;
-  const code = config.discountCode ?? "LIAD10";
+  const code = managed?.code ?? config.discountCode ?? "LIAD10";
+  const source = managed ? `popup:${managed.id}` : "promo-popup";
 
-  $("#promoCodeValue").textContent = code;
+  if (managed) paintPopup(managed);
+  else $("#promoCodeValue").textContent = code;
 
   // מי שכבר נרשם, או שסגר לאחרונה — לא רואה שוב
   if (localStorage.getItem(STORAGE_KEYS.subscribed)) return;
@@ -578,6 +765,13 @@ function initPromo(config = {}) {
     promo.classList.remove("is-open");
     promo.setAttribute("aria-hidden", "true");
     localStorage.setItem(STORAGE_KEYS.promoSeen, String(Date.now()));
+    // מסמנים את ההודעה הזו כנראתה, כדי שבפעם הבאה תוצג הבאה בתור
+    if (managed) {
+      const seen = (localStorage.getItem(STORAGE_KEYS.popupsSeen) || "").split(",").filter(Boolean);
+      if (!seen.includes(managed.id)) {
+        localStorage.setItem(STORAGE_KEYS.popupsSeen, [...seen, managed.id].join(","));
+      }
+    }
   };
 
   // א. פתיחה אוטומטית אחרי X שניות
@@ -599,7 +793,7 @@ function initPromo(config = {}) {
   wireLeadForm({
     form: $("#promoForm"),
     status: $("#promoStatus"),
-    source: "promo-popup",
+    source,
     onSuccess: () => {
       $("#promoCode")?.classList.add("is-visible");
       $("#promoForm")?.remove();
@@ -610,63 +804,30 @@ function initPromo(config = {}) {
 
 
 /* ==========================================================================
-   10. חשיפה בגלילה
-   ========================================================================== */
-
-function initReveal() {
-  const targets = $$(".reveal");
-  if (!targets.length) return;
-
-  const revealAll = () => targets.forEach((el) => el.classList.add("is-revealed"));
-
-  // ללא IntersectionObserver, או בחלון בגובה 0 (טאב מוסתר) — פשוט מציגים הכול.
-  if (!("IntersectionObserver" in window) || !window.innerHeight) {
-    revealAll();
-    return;
-  }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-revealed");
-        observer.unobserve(entry.target);
-      });
-    },
-    { threshold: 0.08, rootMargin: "0px 0px -60px 0px" }
-  );
-
-  targets.forEach((el) => {
-    // מה שכבר גלוי במסך הראשון — מציגים מיד, בלי להמתין לגלילה
-    if (el.getBoundingClientRect().top < window.innerHeight) {
-      el.classList.add("is-revealed");
-    } else {
-      observer.observe(el);
-    }
-  });
-
-  // רשת ביטחון: אם משום מה משהו נשאר מוסתר — מציגים אותו בכל מקרה.
-  // עדיף אנימציה שלא רצה מאשר תוכן שלא נראה.
-  setTimeout(revealAll, 3000);
-}
-
-
-/* ==========================================================================
-   11. הפעלה
+   10. הפעלה
    ========================================================================== */
 
 async function init() {
+  /*
+   * שינויי מערכת הניהול מוחלים לפני הכול. חשוב שזה יקרה לפני initHero:
+   * ה-Hero מפרק את הכותרת למילים, ואם הטקסט יתחלף אחרי הפירוק —
+   * האנימציה תרוץ על טקסט שכבר לא קיים.
+   */
+  initCms();
+
   // דברים שלא תלויים בתוכן — מיד
+  initAccessibility();
   initHeader();
   initMobileNav();
   initAnnouncement();
+  initHero();
   $("#copyrightYear").textContent = new Date().getFullYear();
 
   // תוכן מה-JSON
-  const content = await loadContent();
+  const [content, catalog] = await Promise.all([loadContent(), loadShopProducts()]);
   if (content) {
     applySiteLinks(content.links);
-    renderProducts(content.products);
+    renderProducts(buildCarouselList(content.products, catalog));
     renderChips(content.chips);
     renderCategories(content.categories);
     renderJournal(content.journal);
@@ -680,12 +841,28 @@ async function init() {
     initFaq();
     initReels();
     initPromo(content.promo);
+
+    createCarousel($("#productCarousel"), {
+      prev: $("[data-carousel-prev]"),
+      next: $("[data-carousel-next]"),
+    });
   }
 
   initNewsletter();
-  initShadeShowcase();
-  initReveal();
+
+  // סקשן הגוונים בונה את עצמו, ולכן חייב לרוץ לפני מנוע התנועה —
+  // אחרת הפרלקסה תמדוד דף שעדיין חסר בו האזור הכי גבוה שיש.
+  await initShadeShowcase();
+
+  // עכשיו כל התוכן על הדף: מחשבים מדידות ומפעילים את כל האנימציות
+  initMotion();
 }
+
+/*
+ * תמונות שנטענות מאוחר מזיזות את כל מה שמתחתיהן.
+ * מדידה נוספת אחרי הטעינה המלאה שומרת על הפרלקסה מדויקת.
+ */
+window.addEventListener("load", () => refreshMotion());
 
 // main.js נטען כמודול, כלומר הוא deferred ורץ לפני DOMContentLoaded.
 // אם בכל זאת האירוע כבר קרה (למשל בטעינה מהקאש) — מפעילים מיד.

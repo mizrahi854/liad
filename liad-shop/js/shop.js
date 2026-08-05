@@ -10,6 +10,8 @@ import {
 import { initCartDrawer, updateCartCount } from "./cart-ui.js";
 import { initShared } from "./shared.js";
 import { productCard, CATEGORY_LABELS } from "./product-card.js";
+import { listCategories, ADMIN_EVENT } from "./admin-store.js";
+import { initMotion, refreshMotion } from "./motion.js";
 
 const PAGE_SIZE = 24;
 
@@ -46,7 +48,18 @@ async function init() {
 
   state.all = products;
   buildFilterOptions();
+  buildCategoryRail();
   wireControls();
+
+  // עריכה במערכת הניהול (שם קטגוריה, הסתרה, מלאי) משתקפת מיד בחנות
+  document.addEventListener(ADMIN_EVENT, () => {
+    loadCatalog().then((fresh) => {
+      if (!fresh) return;
+      state.all = fresh;
+      buildCategoryRail();
+      applyFilters();
+    });
+  });
 
   const initialCategory = new URLSearchParams(location.search).get("category");
   if (initialCategory) {
@@ -56,28 +69,28 @@ async function init() {
   }
 
   applyFilters();
+
+  // התוכן כבר על הדף — עכשיו אפשר למדוד ולהפעיל את התנועה
+  initMotion();
 }
 
 /* ---------------------------------------------------------------- סינון */
 
 function buildFilterOptions() {
-  const catCounts = new Map();
   const brandCounts = new Map();
+  state.all.forEach((p) => brandCounts.set(p.brand, (brandCounts.get(p.brand) || 0) + 1));
 
-  state.all.forEach((p) => {
-    catCounts.set(p.category, (catCounts.get(p.category) || 0) + 1);
-    brandCounts.set(p.brand, (brandCounts.get(p.brand) || 0) + 1);
-  });
-
+  // הקטגוריות מגיעות דרך שכבת הניהול, כדי שהשם והסדר יהיו זהים לכל מקום באתר
   const catBox = $("#categoryFilters");
-  [...catCounts.entries()]
-    .sort((a, b) => b[1] - a[1])
-    .forEach(([cat, count]) => {
+  catBox.innerHTML = "";
+  listCategories(state.all, CATEGORY_LABELS)
+    .filter((c) => !c.hidden)
+    .forEach((c) => {
       catBox.append(html`
         <label class="filter-option">
-          <input type="checkbox" name="category" value="${esc(cat)}">
-          <span>${esc(CATEGORY_LABELS[cat] || cat)}</span>
-          <span class="filter-option__count">${count}</span>
+          <input type="checkbox" name="category" value="${esc(c.slug)}">
+          <span>${esc(c.label)}</span>
+          <span class="filter-option__count">${c.count}</span>
         </label>
       `);
     });
@@ -94,6 +107,51 @@ function buildFilterOptions() {
         </label>
       `);
     });
+}
+
+/* ---------------------------------------------------------------- ניווט קטגוריות */
+
+/*
+ * ריבועי הקטגוריות בראש החנות. הם נבנים מהקטלוג עצמו — כך אף פעם לא
+ * תופיע קטגוריה ריקה — ומכבדים את מה שהוגדר במערכת הניהול: שם התצוגה,
+ * הסדר, ואילו קטגוריות מוסתרות מהתפריט.
+ *
+ * התמונה של כל ריבוע היא הצילום של המוצר הראשון בקטגוריה. אין כאן
+ * נכס חדש לתחזק, והריבוע תמיד מייצג משהו שבאמת קיים במלאי.
+ */
+function buildCategoryRail() {
+  const rail = $("#categoryRail");
+  if (!rail) return;
+
+  const cats = listCategories(state.all, CATEGORY_LABELS).filter((c) => !c.hidden);
+  const cover = (slug) => state.all.find((p) => p.category === slug && p.image)?.image ?? "";
+
+  rail.innerHTML = "";
+  rail.append(html`
+    <a class="category-card category-card--all" href="#" data-filter-shortcut="all"
+       data-reveal="up" data-tilt="4">
+      <span class="category-card__media">
+        <span class="category-card__blank"></span>
+      </span>
+      <span class="category-card__body">
+        <span class="category-card__title">כל המוצרים</span>
+        <span class="category-card__count">${state.all.length}</span>
+      </span>
+    </a>`);
+
+  cats.forEach((c) => {
+    rail.append(html`
+      <a class="category-card" href="index.html?category=${encodeURIComponent(c.slug)}"
+         data-filter-shortcut="${esc(c.slug)}" data-reveal="up" data-tilt="4">
+        <span class="category-card__media">
+          <img src="${esc(cover(c.slug))}" alt="" loading="lazy" decoding="async" width="300" height="300">
+        </span>
+        <span class="category-card__body">
+          <span class="category-card__title">${esc(c.label)}</span>
+          <span class="category-card__count">${c.count}</span>
+        </span>
+      </a>`);
+  });
 }
 
 function wireControls() {
@@ -132,6 +190,14 @@ function wireControls() {
     state.shown += PAGE_SIZE;
     renderGrid();
   });
+
+  // חצי ניווט הקטגוריות — ב-RTL הכיוונים הפוכים
+  const rail = $("#categoryRail");
+  if (rail) {
+    const step = () => rail.clientWidth * 0.7;
+    $("[data-rail-prev]")?.addEventListener("click", () => rail.scrollBy({ left: step(), behavior: "smooth" }));
+    $("[data-rail-next]")?.addEventListener("click", () => rail.scrollBy({ left: -step(), behavior: "smooth" }));
+  }
 
   // פתיחת הסינון במובייל
   const toggle = $("#filtersToggle");
@@ -242,6 +308,9 @@ function renderGrid() {
 
   grid.innerHTML = "";
   list.forEach((p) => grid.append(productCard(p, cart)));
+
+  // הכרטיסים נוצרו עכשיו — מכניסים אותם למנוע התנועה
+  refreshMotion(grid);
 
   $("#loadMore").hidden = state.shown >= state.filtered.length;
 }

@@ -3,8 +3,9 @@
    מציג את סיכום ההזמנה ומאפשר שמירה כ-PDF דרך הדפדפן.
    ========================================================================== */
 
-import { $, html, esc, money, getOrder, CONFIG } from "./store.js";
+import { $, html, esc, money, getOrder, CONFIG, toast } from "./store.js";
 import { initShared } from "./shared.js";
+import { sendInvoice, downloadInvoice } from "./invoice.js";
 
 function init() {
   initShared();
@@ -55,20 +56,25 @@ function init() {
 
     <h1>תודה, ${esc(order.customer.firstName)}!</h1>
     <p style="margin-top:1rem;color:var(--muted-foreground)">
-      ההזמנה התקבלה ונשמרה. שלחנו את הפרטים גם למייל שהשארת.
+      ההזמנה התקבלה ונשמרה. אפשר לשלוח את החשבונית כקובץ PDF למייל או לוואטסאפ.
     </p>
     <p class="confirmation__order">${esc(order.id)}</p>
 
-    <div class="no-print" style="margin-top:1.5rem;padding:1rem;border:1px dashed var(--border);border-radius:.75rem;background:color-mix(in oklab,var(--muted) 45%,transparent);text-align:start">
+    <div class="no-print" style="margin-top:1.5rem;padding:1rem;border:1px dashed var(--border);background:color-mix(in oklab,var(--muted) 45%,transparent);text-align:start">
       <p style="font-size:.875rem;line-height:1.6;color:var(--muted-foreground)">
         <strong style="color:var(--foreground)">שימו לב:</strong>
-        הסליקה עדיין לא חוברה, ולכן <strong>לא בוצע חיוב</strong> ולא נשלח מייל אוטומטי.
+        הסליקה עדיין לא חוברה, ולכן <strong>לא בוצע חיוב</strong>.
         ההזמנה נשמרה בדפדפן בלבד. ראו את ה-README לפירוט מה נדרש להפעלה מלאה.
       </p>
     </div>
 
     <div class="confirmation__actions">
-      <button class="btn btn--gold" id="printInvoice">שמירת החשבונית כ-PDF</button>
+      <button class="btn btn--gold" id="mailSend">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/>
+        </svg>
+        שליחת החשבונית למייל
+      </button>
       <button class="btn btn--whatsapp" id="waSend">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.48s1.06 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/>
@@ -76,8 +82,11 @@ function init() {
         </svg>
         שליחה בוואטסאפ
       </button>
+      <button class="btn btn--outline" id="savePdf">הורדת ה-PDF</button>
       <a class="btn btn--outline" href="index.html">המשך קנייה</a>
     </div>
+
+    <p class="confirmation__hint no-print" id="sendHint" role="status" aria-live="polite"></p>
 
     <div class="receipt" id="receipt">
       <div class="receipt__head">
@@ -141,59 +150,65 @@ function init() {
       </p>
     </div>`;
 
-  $("#printInvoice").addEventListener("click", () => window.print());
-  $("#waSend").addEventListener("click", () => sendToWhatsApp(order));
+  wireSending(order);
 }
 
-/* ---------------------------------------------------------------- וואטסאפ */
+/* ---------------------------------------------------------------- שליחה */
 
-/**
- * פותח את וואטסאפ עם סיכום ההזמנה, אל מספר הטלפון שהלקוחה מילאה בצ׳קאאוט.
- *
- * הערה חשובה: זה לא שולח בשם האתר — זה פותח את וואטסאפ עם ההודעה מוכנה,
- * והלקוחה לוחצת "שלח". שליחה אוטומטית דורשת WhatsApp Business API בצד שרת.
+/*
+ * שלושת הכפתורים עובדים על אותו קובץ PDF אמיתי שנבנה ב-js/invoice.js.
+ * ההודעה שמתחת לכפתורים אומרת בדיוק מה קרה, כי התוצאה שונה בין מכשירים:
+ * בנייד הקובץ עובר ישירות לוואטסאפ/למייל, ובדסקטופ הוא יורד והאפליקציה
+ * נפתחת עם ההודעה מוכנה לצידו.
  */
-function sendToWhatsApp(order) {
-  const phone = normalizePhone(order.customer.phone);
-  if (!phone) {
-    alert("מספר הטלפון בהזמנה אינו תקין, ולכן אי אפשר לפתוח וואטסאפ.");
-    return;
-  }
+function wireSending(order) {
+  const hint = $("#sendHint");
 
-  const lines = [
-    `*LIAD — אסתטיקה ויופי*`,
-    `חשבונית להזמנה ${order.id}`,
-    ``,
-    `שלום ${order.customer.firstName},`,
-    `תודה על ההזמנה! הנה הסיכום:`,
-    ``,
-    ...order.items.map((i) => `• ${i.title} × ${i.qty} — ${money(i.lineTotal)}`),
-    ``,
-    `סכום ביניים: ${money(order.totals.subtotal)}`,
-    ...(order.totals.discount > 0
-      ? [`הנחה (${order.totals.coupon}): −${money(order.totals.discount)}`]
-      : []),
-    `משלוח: ${order.totals.shipping === 0 ? "חינם" : money(order.totals.shipping)}`,
-    `*סה״כ: ${money(order.totals.total)}*`,
-    ``,
-    order.shipping.method === "delivery"
-      ? `משלוח אל: ${order.shipping.address.street}, ${order.shipping.address.city}`
-      : `איסוף עצמי: ${order.shipping.address.pickup}`,
-  ];
+  const run = async (button, channel, labels) => {
+    const original = button.innerHTML;
+    button.disabled = true;
+    button.textContent = "מכין את החשבונית…";
+    hint.textContent = "";
 
-  const url = `https://wa.me/${phone}?text=${encodeURIComponent(lines.join("\n"))}`;
-  window.open(url, "_blank", "noopener");
-}
+    try {
+      const { how } = await sendInvoice(order, channel);
+      hint.dataset.state = "success";
+      hint.textContent = labels[how];
+    } catch (err) {
+      console.error("[LIAD] שליחת החשבונית נכשלה:", err);
+      hint.dataset.state = "error";
+      hint.textContent = "לא הצלחנו להכין את החשבונית. אפשר לנסות שוב.";
+    } finally {
+      button.disabled = false;
+      button.innerHTML = original;
+    }
+  };
 
-/**
- * ממיר מספר ישראלי לפורמט בינלאומי שוואטסאפ מצפה לו (972…).
- * מחזיר null אם המספר לא תקין.
- */
-function normalizePhone(raw) {
-  const digits = String(raw || "").replace(/\D/g, "");
-  if (digits.startsWith("972")) return digits.length >= 12 ? digits : null;
-  if (digits.startsWith("0")) return digits.length === 10 ? `972${digits.slice(1)}` : null;
-  return digits.length === 9 ? `972${digits}` : null;
+  $("#mailSend").addEventListener("click", (e) => run(e.currentTarget, "email", {
+    server: "החשבונית נשלחה למייל שלך.",
+    share: "החשבונית הועברה לאפליקציית המייל כקובץ מצורף.",
+    download: "קובץ ה-PDF ירד ותוכנת המייל נפתחה — נשאר רק לצרף אותו ולשלוח.",
+  }));
+
+  $("#waSend").addEventListener("click", (e) => run(e.currentTarget, "whatsapp", {
+    server: "החשבונית נשלחה בוואטסאפ.",
+    share: "החשבונית הועברה לוואטסאפ כקובץ מצורף.",
+    download: "קובץ ה-PDF ירד ווואטסאפ נפתח — נשאר רק לצרף אותו ולשלוח.",
+  }));
+
+  $("#savePdf").addEventListener("click", async (e) => {
+    const button = e.currentTarget;
+    button.disabled = true;
+    try {
+      await downloadInvoice(order);
+      toast("קובץ החשבונית ירד");
+    } catch (err) {
+      console.error("[LIAD] יצירת ה-PDF נכשלה:", err);
+      toast("יצירת הקובץ נכשלה", "info");
+    } finally {
+      button.disabled = false;
+    }
+  });
 }
 
 document.addEventListener("DOMContentLoaded", init);

@@ -100,42 +100,58 @@
 <main>
 
   <!-- ======================================================================
-       Hero
+       Hero — קומפוזיציה בשכבות
+       שכבות מהרחוק לקרוב: הילות אור → פורטרט → בקבוקים מרחפים → טקסט.
+       כל שכבה זזה בקצב אחר (data-parallax) וגם מגיבה לעכבר (--pointer-x/y).
        ====================================================================== -->
-  <section class="hero">
+  <section class="hero" id="hero" data-scroll-section data-tilt="4">
+
+    <div class="hero__canvas" aria-hidden="true">
+      <span class="hero__aurora hero__aurora--a"></span>
+      <span class="hero__aurora hero__aurora--b"></span>
+      <span class="hero__aurora hero__aurora--c"></span>
+    </div>
+
     <div class="hero__media">
-      <img src="assets/img/hero-liad-portrait.jpg"
+      <img src="assets/img/hero-liad-portrait.jpg" data-cms-image="hero.portrait"
            alt="ליעד סול, מייסדת LIAD, בעיצוב ציפורניים מקצועי"
            width="1600" height="2000" loading="eager" fetchpriority="high" decoding="sync">
     </div>
     <div class="hero__fade-bottom"></div>
     <div class="hero__fade-side"></div>
 
+ 
+
+      <span class="hero__spark hero__spark--1 float" style="--float-dur:6s"></span>
+      <span class="hero__spark hero__spark--2 float" style="--float-dur:7.5s;--float-delay:-2s"></span>
+      <span class="hero__spark hero__spark--3 float" style="--float-dur:8.8s;--float-delay:-4s"></span>
+    </div>
+
     <div class="container">
       <div class="hero__inner">
         <div class="hero__content">
 
-          <div class="eyebrow-row" style="margin-bottom:1.75rem">
+          <div class="eyebrow-row hero__eyebrow">
             <span class="rule-gold"></span>
-            <p class="eyebrow">חנות מוצרי ציפורניים · אקדמיה בוטיקית</p>
+            <p class="eyebrow" data-cms-text="hero.eyebrow">חנות מוצרי ציפורניים · אקדמיה בוטיקית</p>
           </div>
 
-          <h1 class="hero__title">
-            כל עולם<br>
-            הציפורניים של<br>
-            <span class="wordmark text-gold-gradient">LIAD SOL</span><br>
-            במקום אחד
+          <h1 class="hero__title" data-split data-cms-text="hero.title" data-cms-lines>
+            <span class="split-line">כל עולם</span>
+            <span class="split-line">הציפורניים של</span>
+            <span class="split-line"><span class="wordmark text-gold-gradient">LIAD SOL</span></span>
+            <span class="split-line">במקום אחד</span>
           </h1>
 
-          <p class="hero__lead">
+          <p class="hero__lead" data-cms-text="hero.lead">
             חנות מקצועית למוצרי ציפורניים למתחילות וקרייריסטיות כאחד,
             לצד אקדמיה בוטיקית לקורסי ציפורניים פרונטליים.
             <strong>ידע מדויק. חומרי פרמיום. הקריירה החדשה שלך.</strong>
           </p>
 
           <div class="hero__actions">
-            <a class="btn btn--gold" href="#shop" data-site-shop>לרכישה בחנות</a>
-            <a class="btn btn--outline" href="#academy" data-site-academy>לקורסים באקדמיה</a>
+            <a class="btn btn--gold btn--sheen" href="#shop" data-site-shop data-cms-text="hero.ctaShop">לרכישה בחנות</a>
+            <a class="btn btn--outline" href="#academy" data-site-academy data-cms-text="hero.ctaAcademy">לקורסים באקדמיה</a>
           </div>
 
           <div class="hero__badges">
@@ -174,6 +190,11 @@
         </div>
       </div>
     </div>
+
+    <a class="hero__scroll" href="#choose" aria-label="גלילה לתוכן">
+      <span class="hero__scroll-label">גללי למטה</span>
+      <span class="hero__scroll-rail"><span class="hero__scroll-dot"></span></span>
+    </a>
   </section>
 
 
@@ -181,24 +202,26 @@
        שתי הדלתות — חנות / אקדמיה
        זה הלב של דף הכניסה: מכאן הלקוחה בוחרת לאן להמשיך.
        ====================================================================== -->
-  <section class="section section--bordered" id="choose">
+  <section class="section section--flush-top" id="choose" data-scroll-section data-cms-section="choose">
     <div class="container">
 
-      <div class="section-head section-head--center reveal">
-        <p class="eyebrow">לאן ממשיכים מכאן</p>
-        <h2 class="section-title">שני עולמות. מותג אחד.</h2>
-        <p class="section-lead">בחרו את הדלת שמתאימה לכן היום — לרכוש חומרים מקצועיים, או להתחיל קריירה חדשה.</p>
+      <div class="section-head section-head--center">
+        <p class="eyebrow" data-reveal="fade" data-cms-text="choose.eyebrow">לאן ממשיכים מכאן</p>
+        <h2 class="section-title" data-reveal="up" data-cms-text="choose.title">שני עולמות. מותג אחד.</h2>
+        <p class="section-lead" data-reveal="up" data-reveal-delay="0.08" data-cms-text="choose.lead">בחרו את הדלת שמתאימה לכן היום — לרכוש חומרים מקצועיים, או להתחיל קריירה חדשה.</p>
       </div>
 
       <div class="doors">
 
-        <a class="door reveal" href="#shop" data-site-shop>
-          <img class="door__img" src="assets/img/buba-drill-main.jpg" alt="חנות מוצרי הציפורניים של LIAD" loading="lazy">
+        <a class="door" href="#shop" data-site-shop data-reveal="deep" data-tilt="5">
+          <span class="door__frame media-frame">
+            <img class="door__img" data-cms-image="doors.shop" src="assets/img/buba-drill-main.jpg" alt="חנות מוצרי הציפורניים של LIAD" loading="lazy" decoding="async" data-parallax="-0.05">
+          </span>
           <span class="door__overlay"></span>
           <span class="door__body">
             <span class="door__eyebrow">THE SHOP</span>
-            <span class="door__title">החנות</span>
-            <span class="door__text">ג׳ל, לק ג׳ל, מכונות, ראשי שיוף וכלים — חומרי פרמיום שנבחרו אחד־אחד. רכישה מהירה, ללא הרשמה.</span>
+            <span class="door__title" data-cms-text="doors.shopTitle">החנות</span>
+            <span class="door__text" data-cms-text="doors.shopText">ג׳ל, לק ג׳ל, מכונות, ראשי שיוף וכלים — חומרי פרמיום שנבחרו אחד־אחד. רכישה מהירה, ללא הרשמה.</span>
             <span class="door__cta">
               לכניסה לחנות
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -208,13 +231,15 @@
           </span>
         </a>
 
-        <a class="door reveal" href="#academy" data-site-academy style="--reveal-delay:.1s">
-          <img class="door__img" src="assets/img/academy-liad-new.jpg" alt="האקדמיה של LIAD — קורסי ציפורניים פרונטליים" loading="lazy">
+        <a class="door" href="#academy" data-site-academy data-reveal="deep" data-reveal-delay="0.12" data-tilt="5">
+          <span class="door__frame media-frame">
+            <img class="door__img" data-cms-image="doors.academy" src="assets/img/academy-liad-new.jpg" alt="האקדמיה של LIAD — קורסי ציפורניים פרונטליים" loading="lazy" decoding="async" data-parallax="-0.05">
+          </span>
           <span class="door__overlay"></span>
           <span class="door__body">
             <span class="door__eyebrow">THE ACADEMY</span>
-            <span class="door__title">האקדמיה</span>
-            <span class="door__text">קורסים פרונטליים בקבוצות קטנות, תרגול מהיום הראשון וליווי אישי לכל החיים.</span>
+            <span class="door__title" data-cms-text="doors.academyTitle">האקדמיה</span>
+            <span class="door__text" data-cms-text="doors.academyText">קורסים פרונטליים בקבוצות קטנות, תרגול מהיום הראשון וליווי אישי לכל החיים.</span>
             <span class="door__cta">
               לכניסה לאקדמיה
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -233,38 +258,49 @@
        חוויית הגוונים — הלק מתחלף בגלילה
        הסקשן כולו נבנה ב-js/shade-showcase.js מתוך data/shades.json
        ====================================================================== -->
-  <section class="showcase" id="shadeShowcase" aria-label="הגוונים של LIAD">
-
-    
-  </section>
+  <section class="showcase" id="shadeShowcase" aria-label="הגוונים של LIAD" data-cms-section="shadeShowcase"></section>
 
 
   <!-- ======================================================================
-       מוצרים מומלצים — טיזר לחנות
-       המוצרים נטענים מ- data/products.json דרך js/main.js
+       מוצרים מומלצים — קרוסלה
+       המוצרים נטענים מ- data/content.json דרך js/main.js,
+       והתנועה מנוהלת ב-js/carousel.js
        ====================================================================== -->
-  <section class="section section--secondary" id="bestsellers">
+  <section class="section section--secondary" id="bestsellers" data-scroll-section data-cms-section="bestsellers">
     <div class="container">
 
-      <div class="section-head section-head--split reveal">
+      <div class="section-head section-head--split">
         <div>
-          <p class="eyebrow">רבי המכר של LIAD</p>
-          <h2 class="section-title">המוצרים שבחרו בהם המקצועניות</h2>
-          <p class="section-lead">איכות עקבית, גימור נקי ועמידות אמיתית.<br>המוצרים שתמיד חוזרים אליהם שוב ושוב אצלנו.</p>
+          <p class="eyebrow" data-reveal="fade" data-cms-text="bestsellers.eyebrow">רבי המכר של LIAD</p>
+          <h2 class="section-title" data-reveal="up" data-cms-text="bestsellers.title">המוצרים שבחרו בהם המקצועניות</h2>
+          <p class="section-lead" data-reveal="up" data-reveal-delay="0.08" data-cms-text="bestsellers.lead">איכות עקבית, גימור נקי ועמידות אמיתית.<br>המוצרים שתמיד חוזרים אליהם שוב ושוב אצלנו.</p>
         </div>
-        <a class="link-arrow" href="#shop" data-site-shop>
-          לכל המוצרים
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>
-          </svg>
-        </a>
+
+        <div class="carousel__controls" data-reveal="fade" data-reveal-delay="0.16">
+          <button class="carousel__nav" type="button" data-carousel-prev aria-label="המוצר הקודם">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
+          </button>
+          <button class="carousel__nav" type="button" data-carousel-next aria-label="המוצר הבא">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>
+            </svg>
+          </button>
+        </div>
       </div>
 
-      <!-- המוצרים מוזרקים לכאן אוטומטית -->
-      <div class="product-grid reveal" id="productGrid"></div>
+      <!-- הכרטיסים מוזרקים לכאן אוטומטית -->
+      <div class="carousel" id="productCarousel" data-reveal="fade">
+        <div class="carousel__viewport" data-native-scroll>
+          <div class="carousel__track" id="productTrack"></div>
+        </div>
+        <span class="carousel__edge carousel__edge--start" aria-hidden="true"></span>
+        <span class="carousel__edge carousel__edge--end" aria-hidden="true"></span>
+      </div>
 
-      <div style="margin-top:2.5rem;text-align:center" class="reveal">
-        <a class="btn btn--gold" href="#shop" data-site-shop>לכל המוצרים בחנות</a>
+      <div class="section-foot" data-reveal="up">
+        <a class="btn btn--gold btn--sheen" href="#shop" data-site-shop data-cms-text="bestsellers.cta">לכל המוצרים בחנות</a>
       </div>
 
     </div>
@@ -272,65 +308,25 @@
 
 
   <!-- ======================================================================
-       קנייה לפי צורך — צ'יפים
+       מה את מחפשת היום — צ'יפים וקטגוריות באזור אחד
        ====================================================================== -->
-  <section class="section section--tight section--secondary" style="border-block:1px solid var(--border)">
+  <section class="section discover" id="discover" data-scroll-section data-cms-section="discover">
     <div class="container">
-      <div class="section-head section-head--center reveal" style="margin-bottom:0">
-        <p class="eyebrow">קנייה לפי צורך</p>
-        <h2 class="section-title">מה את מחפשת היום?</h2>
-        <p class="section-lead">דלגו ישר למה שחשוב<br>בחרו תחום והגיעו למוצרים הנכונים בכמה שניות.</p>
-        <!-- הצ'יפים מוזרקים לכאן -->
-        <div class="chips" id="chipList"></div>
-      </div>
-    </div>
-  </section>
 
-
-  <!-- ======================================================================
-       קטגוריות
-       ====================================================================== -->
-  <section class="section" id="categories">
-    <div class="container">
-      <div class="section-head section-head--center reveal">
-        <p class="eyebrow">קטגוריות</p>
-        <h2 class="section-title">כל מה שצריך במקום אחד</h2>
+      <div class="section-head section-head--center">
+        <p class="eyebrow" data-reveal="fade" data-cms-text="discover.eyebrow">קנייה לפי צורך</p>
+        <h2 class="section-title" data-reveal="up" data-cms-text="discover.title">מה את מחפשת היום?</h2>
+        <p class="section-lead" data-reveal="up" data-reveal-delay="0.08" data-cms-text="discover.lead">
+          דלגו ישר למה שחשוב — בחרו תחום, והגיעו למוצרים הנכונים בכמה שניות.
+        </p>
       </div>
+
+      <!-- הצ'יפים מוזרקים לכאן -->
+      <div class="chips" id="chipList" data-reveal-stagger="0.05"></div>
+
       <!-- הקטגוריות מוזרקות לכאן -->
-      <div class="category-grid reveal" id="categoryGrid"></div>
-    </div>
-  </section>
+      <div class="category-grid" id="categoryGrid"></div>
 
-
-  <!-- ======================================================================
-       אודות
-       ====================================================================== -->
-  <section class="section section--cream section--bordered" id="about">
-    <div class="container">
-      <div class="about">
-
-        <div class="about__media reveal">
-          <span class="about__frame"></span>
-          <img src="assets/img/liad-portrait.png" alt="ליעד סולומוביץ' — מייסדת המותג" width="1000" height="1200" loading="lazy">
-          <span class="about__badge">FOUNDER</span>
-        </div>
-
-        <div class="reveal" style="--reveal-delay:.1s">
-          <div class="eyebrow-row">
-            <span class="rule-gold"></span>
-            <p class="eyebrow">מי אנחנו</p>
-          </div>
-          <h2 class="about__title">
-            נעים להכיר,<br>
-            <span class="text-gold-gradient">ליעד סולומוביץ'</span>
-          </h2>
-          <p class="about__text">
-            ליעד הקימה את LIAD aesthetics and beauty מתוך אהבה למקצוע ונכונות לעזור לך להיות הכי טובה בתחום.<br>
-            חנות מקצועית למוצרי ציפורניים יחד עם אקדמיה בוטיקית, כדי ללוות כל אשת מקצוע באיכות אחת שלא מתפשרת.
-          </p>
-        </div>
-
-      </div>
     </div>
   </section>
 
@@ -338,34 +334,36 @@
   <!-- ======================================================================
        אקדמיה — טיזר
        ====================================================================== -->
-  <section class="section section--powder" id="academy">
+  <section class="section section--powder" id="academy" data-scroll-section data-cms-section="academy">
     <div class="container">
       <div class="academy">
 
-        <div class="academy__media reveal">
-          <img src="assets/img/academy-liad-new.jpg" alt="LIAD Academy — קורסי ציפורניים פרונטליים" width="1400" height="1050" loading="lazy">
+        <div class="academy__media" data-reveal="mask" data-tilt="4">
+          <span class="media-frame academy__frame">
+            <img src="assets/img/academy-liad-new.jpg" data-cms-image="academy.media" alt="LIAD Academy — קורסי ציפורניים פרונטליים" width="1400" height="1050" loading="lazy" decoding="async" data-parallax="-0.06">
+          </span>
           <div class="academy__stamp">
             <p class="academy__stamp-mark text-gold-gradient">LIAD</p>
             <p class="academy__stamp-sub">ACADEMY</p>
           </div>
         </div>
 
-        <div class="reveal" style="--reveal-delay:.12s">
-          <p class="eyebrow" style="display:flex;align-items:center;gap:.5rem">
+        <div class="academy__body">
+          <p class="eyebrow academy__eyebrow" data-reveal="fade" data-cms-text="academy.eyebrow">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/>
               <path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>
             </svg>
             LIAD ACADEMY
           </p>
-          <h2 class="academy__title">קורסי ציפורניים <span class="text-gold-gradient">פרונטליים</span></h2>
-          <p class="section-lead" style="max-width:28rem">
-            רוצה ללמוד את התחום בצורה מקצועית, מסודרת ואישית?<br>
-            האקדמיה שלנו מציעה הכשרות פרונטליות בקבוצות קטנות, עם יחס אישי, תרגול מעשי ותהליך למידה שנבנה כדי לעזור לך להתקדם באמת.<br>
-            בין אם את בתחילת הדרך ובין אם את רוצה לעלות רמה.
+          <h2 class="academy__title" data-reveal="up" data-cms-text="academy.title">קורסי ציפורניים <span class="text-gold-gradient">פרונטליים</span></h2>
+          <p class="section-lead academy__lead" data-reveal="up" data-reveal-delay="0.08" data-cms-text="academy.lead">
+            רוצה ללמוד את התחום בצורה מקצועית, מסודרת ואישית?
+            האקדמיה שלנו מציעה הכשרות פרונטליות בקבוצות קטנות, עם יחס אישי, תרגול מעשי ותהליך למידה
+            שנבנה כדי לעזור לך להתקדם באמת — בין אם את בתחילת הדרך ובין אם את רוצה לעלות רמה.
           </p>
 
-          <div class="academy__features">
+          <div class="academy__features" data-reveal-stagger="0.09">
             <div class="academy__feature">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/>
@@ -398,27 +396,27 @@
             </div>
           </div>
 
-          <div style="margin-top:2rem">
-            <a class="btn btn--dark" href="#academy" data-site-academy>בואי לבנות לעצמך קריירה!</a>
+          <div class="academy__cta" data-reveal="up">
+            <a class="btn btn--dark" href="#academy" data-site-academy data-cms-text="academy.cta">בואי לבנות לעצמך קריירה!</a>
           </div>
         </div>
 
       </div>
 
       <!-- המלצות וידאו של בוגרות -->
-      <div class="reveal" style="margin-top:5rem">
-        <div class="section-head section-head--center" style="display:flex;flex-direction:column;align-items:center;gap:.75rem">
-          <span class="rule-gold"></span>
-          <p class="eyebrow">בוגרות מספרות</p>
-          <h3 class="section-title" style="margin-top:0">
+      <div class="academy__voices">
+        <div class="section-head section-head--center section-head--stacked">
+          <span class="rule-gold" data-reveal="fade"></span>
+          <p class="eyebrow" data-reveal="fade" data-cms-text="academy.voicesEyebrow">בוגרות מספרות</p>
+          <h3 class="section-title" data-reveal="up" data-cms-text="academy.voicesTitle">
             מה מחכה לך באקדמיה של LIAD<br>
-            <span style="color:color-mix(in oklab, var(--foreground) 70%, transparent)">מנקודת המבט של התלמידות</span>
+            <span class="section-title__muted">מנקודת המבט של התלמידות</span>
           </h3>
         </div>
 
-        <div class="reels">
+        <div class="reels" data-reveal="fade">
           <!-- הסרטונים מוזרקים לכאן -->
-          <div class="reels__track" id="reelsTrack"></div>
+          <div class="reels__track" id="reelsTrack" data-native-scroll></div>
 
           <button class="reels__nav reels__nav--prev" id="reelPrev" aria-label="הסרטון הקודם">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -438,17 +436,52 @@
 
 
   <!-- ======================================================================
+       אודות
+       ====================================================================== -->
+  <section class="section section--cream" id="about" data-scroll-section data-cms-section="about">
+    <div class="container">
+      <div class="about">
+
+        <div class="about__media" data-reveal="mask" data-tilt="4">
+          <span class="about__frame"></span>
+          <span class="media-frame about__shot">
+            <img src="assets/img/liad-portrait.png" data-cms-image="about.portrait" alt="ליעד סולומוביץ' — מייסדת המותג" width="1000" height="1200" loading="lazy" decoding="async" data-parallax="-0.05">
+          </span>
+          <span class="about__badge">FOUNDER</span>
+        </div>
+
+        <div class="about__body">
+          <div class="eyebrow-row" data-reveal="fade">
+            <span class="rule-gold"></span>
+            <p class="eyebrow" data-cms-text="about.eyebrow">מי אנחנו</p>
+          </div>
+          <h2 class="about__title" data-reveal="up" data-cms-text="about.title">
+            נעים להכיר,<br>
+            <span class="text-gold-gradient">ליעד סולומוביץ'</span>
+          </h2>
+          <p class="about__text" data-reveal="up" data-reveal-delay="0.08" data-cms-text="about.text">
+            ליעד הקימה את LIAD aesthetics and beauty מתוך אהבה למקצוע ונכונות לעזור לך להיות הכי טובה בתחום.<br>
+            חנות מקצועית למוצרי ציפורניים יחד עם אקדמיה בוטיקית, כדי ללוות כל אשת מקצוע באיכות אחת שלא מתפשרת.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ======================================================================
        יומן / טיפים
        ====================================================================== -->
-  <section class="section" id="journal">
+  <section class="section" id="journal" data-scroll-section data-cms-section="journal">
     <div class="container">
-      <div class="section-head section-head--split reveal">
+      <div class="section-head section-head--split">
         <div>
-          <p class="eyebrow">LIAD JOURNAL</p>
-          <h2 class="section-title">טיפים ותוכן מקצועי<br>מעולם הציפורניים</h2>
-          <p class="section-lead">מדריכים, טיפים והמלצות שיעזרו לך לעבוד נכון יותר, לבחור מוצרים חכם יותר ולהעמיק את הידע המקצועי שלך.</p>
+          <p class="eyebrow" data-reveal="fade" data-cms-text="journal.eyebrow">LIAD JOURNAL</p>
+          <h2 class="section-title" data-reveal="up" data-cms-text="journal.title">טיפים ותוכן מקצועי<br>מעולם הציפורניים</h2>
+          <p class="section-lead" data-reveal="up" data-reveal-delay="0.08" data-cms-text="journal.lead">מדריכים, טיפים והמלצות שיעזרו לך לעבוד נכון יותר, לבחור מוצרים חכם יותר ולהעמיק את הידע המקצועי שלך.</p>
         </div>
-        <a class="link-arrow" href="#journal">
+        <a class="link-arrow" href="#journal" data-reveal="fade" data-reveal-delay="0.16">
           לכל הטיפים
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>
@@ -457,22 +490,7 @@
       </div>
 
       <!-- הפוסטים מוזרקים לכאן -->
-      <div class="journal-grid reveal" id="journalGrid"></div>
-    </div>
-  </section>
-
-
-  <!-- ======================================================================
-       שאלות נפוצות
-       ====================================================================== -->
-  <section class="section section--secondary section--bordered" id="faq">
-    <div class="container">
-      <div class="section-head section-head--center reveal">
-        <p class="eyebrow">שאלות נפוצות</p>
-        <h2 class="section-title">כל מה שרציתן לדעת</h2>
-      </div>
-      <!-- השאלות מוזרקות לכאן -->
-      <div class="faq reveal" id="faqList"></div>
+      <div class="journal-grid" id="journalGrid"></div>
     </div>
   </section>
 
@@ -480,14 +498,30 @@
   <!-- ======================================================================
        סניפים
        ====================================================================== -->
-  <section class="section section--powder section--bordered" id="locations">
+  <section class="section section--powder" id="locations" data-scroll-section data-cms-section="locations">
     <div class="container">
-      <div class="section-head section-head--center reveal">
-        <p class="eyebrow">בואו לבקר</p>
-        <h2 class="section-title">הסניפים של LIAD</h2>
+      <div class="section-head section-head--center">
+        <p class="eyebrow" data-reveal="fade" data-cms-text="locations.eyebrow">בואו לבקר</p>
+        <h2 class="section-title" data-reveal="up" data-cms-text="locations.title">הסניפים של LIAD</h2>
+        <p class="section-lead" data-reveal="up" data-reveal-delay="0.08" data-cms-text="locations.lead">שני מרחבים, אותה תשומת לב. מוזמנות לקפוץ, להתייעץ ולאסוף את ההזמנה.</p>
       </div>
       <!-- הסניפים מוזרקים לכאן -->
-      <div class="locations reveal" id="locationList"></div>
+      <div class="locations" id="locationList"></div>
+    </div>
+  </section>
+
+
+  <!-- ======================================================================
+       שאלות נפוצות
+       ====================================================================== -->
+  <section class="section section--secondary" id="faq" data-scroll-section data-cms-section="faq">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <p class="eyebrow" data-reveal="fade" data-cms-text="faq.eyebrow">שאלות נפוצות</p>
+        <h2 class="section-title" data-reveal="up" data-cms-text="faq.title">כל מה שרציתן לדעת</h2>
+      </div>
+      <!-- השאלות מוזרקות לכאן -->
+      <div class="faq" id="faqList" data-reveal-stagger="0.06"></div>
     </div>
   </section>
 
@@ -497,9 +531,9 @@
        אוטומציה: השארת מייל -> קובץ PDF במתנה + קוד הנחה לרכישה ראשונה.
        השליחה בפועל דורשת שרת/שירות דיוור — ראו הערה ב-js/main.js
        ====================================================================== -->
-  <section class="section section--secondary section--bordered" id="newsletter">
+  <section class="section" id="newsletter" data-scroll-section data-cms-section="newsletter">
     <div class="container">
-      <div class="newsletter reveal">
+      <div class="newsletter" data-reveal="scale">
 
         <span class="newsletter__gift">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -507,12 +541,12 @@
             <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/>
             <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/>
           </svg>
-          מתנה דיגיטלית + 10% לרכישה הראשונה
+          <span data-cms-text="newsletter.gift">מתנה דיגיטלית + 10% לרכישה הראשונה</span>
         </span>
 
-        <p class="eyebrow">רשימת התפוצה של LIAD</p>
-        <h2 class="section-title">להישאר צעד לפני כולן</h2>
-        <p class="section-lead" style="margin-inline:auto">
+        <p class="eyebrow" data-cms-text="newsletter.eyebrow">רשימת התפוצה של LIAD</p>
+        <h2 class="section-title" data-cms-text="newsletter.title">להישאר צעד לפני כולן</h2>
+        <p class="section-lead" style="margin-inline:auto" data-cms-text="newsletter.lead">
           השאירו אימייל וקבלו את המדריך הדיגיטלי שלנו במתנה, יחד עם קוד הנחה של 10%
           לרכישה הראשונה — ואחריהם עדכוני קולקציות, טיפים מקצועיים והטבות בלעדיות.
         </p>
@@ -521,7 +555,7 @@
           <input type="text" class="honeypot" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="field-row">
             <input class="field" type="email" name="email" placeholder="כתובת אימייל" required autocomplete="email" aria-label="כתובת אימייל">
-            <button class="field-submit" type="submit">שלחו לי את המתנה</button>
+            <button class="field-submit" type="submit" data-cms-text="newsletter.cta">שלחו לי את המתנה</button>
           </div>
           <p class="form-status" id="newsletterStatus" role="status" aria-live="polite"></p>
           <p class="form-note">לא שולחים ספאם. אפשר להסיר את עצמך בכל רגע.</p>
@@ -602,17 +636,23 @@
   <div class="promo__card">
     <button class="promo__close" id="promoClose" aria-label="סגירה">&times;</button>
 
-    <p class="promo__value text-gold-gradient">10%</p>
+    <!--
+      התוכן כאן הוא ברירת המחדל. אם הוגדרו הודעות במערכת הניהול,
+      js/main.js מחליף את הכיתובים ואת השדות — העיצוב נשאר זהה.
+    -->
+    <p class="promo__value text-gold-gradient" id="promoValue">10%</p>
     <h2 class="promo__title" id="promoTitle">הנחה לרכישה הראשונה</h2>
-    <p class="promo__text">
+    <p class="promo__text" id="promoText">
       השאירו אימייל וקבלו קוד הנחה חד־פעמי של 10% — ואיתו גם המדריך הדיגיטלי שלנו במתנה.
     </p>
 
     <form class="promo__form" id="promoForm" novalidate>
       <input type="text" class="honeypot" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="field-row">
-        <input class="field" type="email" name="email" placeholder="כתובת אימייל" required autocomplete="email" aria-label="כתובת אימייל">
-        <button class="field-submit" type="submit">קבלו את הקוד</button>
+        <div class="promo__fields" id="promoFields">
+          <input class="field" type="email" name="email" placeholder="כתובת אימייל" required autocomplete="email" aria-label="כתובת אימייל">
+        </div>
+        <button class="field-submit" type="submit" id="promoSubmit">קבלו את הקוד</button>
       </div>
       <p class="form-status" id="promoStatus" role="status" aria-live="polite"></p>
     </form>

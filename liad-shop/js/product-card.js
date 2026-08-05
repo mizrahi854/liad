@@ -45,7 +45,7 @@ export function productCard(product, cart = []) {
   const href = `product.html?id=${encodeURIComponent(product.id)}`;
 
   return html`
-    <article class="card" data-id="${esc(product.id)}">
+    <article class="card" data-id="${esc(product.id)}" data-reveal="up" data-tilt="5">
       <a class="card__link" href="${href}" aria-label="${esc(product.title)}">
         <div class="card__media">
           <img class="card__img card__img--primary"

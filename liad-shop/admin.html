@@ -3,149 +3,106 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LIAD | אסתטיקה ויופי</title>
+  <title>LIAD | מערכת ניהול</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="assets/favicon.ico">
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    .admin-tabs { display: flex; gap: .5rem; margin-bottom: 2rem; flex-wrap: wrap; }
-    .admin-tab {
-      padding: .625rem 1.25rem; border: 1px solid var(--border); border-radius: 999px;
-      background: var(--card); font-size: .875rem; transition: all var(--dur-fast) var(--ease-luxe);
-    }
-    .admin-tab[aria-selected="true"] {
-      background-image: linear-gradient(105deg, var(--gold-soft), var(--gold));
-      color: var(--charcoal); border-color: transparent; font-weight: 500;
-    }
-    .stat-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2rem; }
-    .stat {
-      padding: 1.25rem; border: 1px solid var(--border); border-radius: 1rem;
-      background: var(--card); box-shadow: var(--shadow-card);
-    }
-    .stat__label { font-size: .6875rem; letter-spacing: .2em; color: var(--muted-foreground); text-transform: uppercase; }
-    .stat__value { margin-top: .375rem; font-family: var(--font-display); font-weight: 700; font-size: 1.75rem; }
-    .admin-table { width: 100%; border-collapse: collapse; font-size: .875rem; }
-    .admin-table th {
-      padding: .75rem .5rem; text-align: start; font-weight: 400; font-size: .6875rem;
-      letter-spacing: .15em; color: var(--muted-foreground); border-bottom: 1px solid var(--border);
-      position: sticky; top: 0; background: var(--background);
-    }
-    .admin-table td { padding: .625rem .5rem; border-bottom: 1px solid color-mix(in oklab, var(--border) 50%, transparent); }
-    .admin-table tbody tr:hover { background: color-mix(in oklab, var(--muted) 40%, transparent); }
-    .thumb { width: 2.75rem; height: 2.75rem; border-radius: .5rem; object-fit: cover; background: var(--secondary); }
-    .stock-input {
-      width: 4.5rem; padding: .375rem .5rem; border: 1px solid var(--border);
-      border-radius: .5rem; text-align: center; font-variant-numeric: tabular-nums;
-    }
-    .stock-input.is-zero { border-color: oklch(57.7% .245 27.325); color: oklch(57.7% .245 27.325); }
-    .pill { padding: .1875rem .625rem; border-radius: 999px; font-size: .6875rem; }
-    .pill--ok { background: color-mix(in oklab, var(--gold) 20%, transparent); }
-    .pill--out { background: color-mix(in oklab, var(--charcoal) 12%, transparent); }
-    .toolbar { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; margin-bottom: 1.25rem; }
-    .toolbar input[type="search"], .toolbar select { flex: 0 1 auto; }
-    .table-wrap { max-height: 34rem; overflow: auto; border: 1px solid var(--border); border-radius: 1rem; background: var(--card); }
-    .warn {
-      padding: 1rem 1.25rem; border: 1px dashed var(--gold); border-radius: .875rem;
-      background: color-mix(in oklab, var(--gold) 8%, transparent); font-size: .875rem;
-      line-height: 1.6; margin-bottom: 2rem;
-    }
-    @media (min-width: 768px) { .stat-row { grid-template-columns: repeat(4, 1fr); } }
-  </style>
+  <link rel="stylesheet" href="css/admin.css">
 </head>
 
-<body>
+<body class="admin">
 
-<header class="site-header">
-  <div class="container">
-    <div class="site-header__inner">
-      <div class="site-header__side">
-        <a class="link-arrow" href="index.html">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+<!-- ==========================================================================
+     סרגל עליון — קבוע בכל המסכים
+     ========================================================================== -->
+<div class="admin__bar">
+  <div class="admin__bar-side">
+    <a class="admin__logo" href="admin.html" aria-label="מערכת הניהול של LIAD">
+      <img src="assets/liad-logo.png" alt="LIAD" width="200" height="52">
+    </a>
+    <nav class="admin__crumbs" id="crumbs" aria-label="מיקום במערכת"></nav>
+  </div>
+
+  <div class="admin__bar-side">
+    <a class="btn btn--outline btn--sm" href="index.html" target="_blank" rel="noopener">צפייה בחנות</a>
+    <a class="btn btn--outline btn--sm" href="../liad-landing/index.html" target="_blank" rel="noopener">צפייה בדף הבית</a>
+  </div>
+</div>
+
+
+<!-- ==========================================================================
+     מסך הבחירה הראשי
+     ========================================================================== -->
+<main id="screenHome" class="container">
+  <div class="admin-home">
+    <p class="eyebrow">מערכת ניהול</p>
+    <h1 class="admin-home__title">מה נעדכן היום?</h1>
+    <p class="admin-home__lead">כל שינוי שתשמרי כאן מופיע באתר מיד. אין צורך בידע טכני.</p>
+
+    <div class="admin-home__grid">
+      <button class="admin-choice" type="button" data-goto="shop">
+        <span class="admin-choice__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 10a4 4 0 0 1-8 0"/><path d="M3.1 6h17.8"/>
+            <path d="M3.4 5.5a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.7a2 2 0 0 0-.4-1.2l-2-2.7A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"/>
           </svg>
-          לחנות
-        </a>
-      </div>
-      <a class="site-logo" href="index.html" aria-label="LIAD">
-        <img src="assets/liad-logo.png" alt="LIAD" width="200" height="52">
-      </a>
-      <div class="site-header__side site-header__side--end"></div>
-    </div>
-  </div>
-</header>
+        </span>
+        <span class="admin-choice__title">ניהול החנות</span>
+        <span class="admin-choice__text">מוצרים, מלאי, גוונים, קטגוריות, קופונים, הזמנות ורשימת הלקוחות.</span>
+        <span class="admin-choice__list">
+          <span>מוצרים</span><span>מלאי</span><span>גוונים</span><span>קטגוריות</span>
+          <span>קופונים</span><span>הזמנות</span><span>לידים</span>
+        </span>
+      </button>
 
-<main class="container" style="padding-block:2.5rem 5rem">
-
-  <p class="eyebrow">ניהול</p>
-  <h1 style="margin-top:.5rem;margin-bottom:2rem;font-family:var(--font-display);font-weight:700;font-size:clamp(1.75rem,4vw,2.25rem)">
-    לוח הבקרה של LIAD
-  </h1>
-
-  <div class="warn">
-    <strong>הדף הזה עובד מקומית בלבד.</strong>
-    שינויי המלאי נשמרים בדפדפן הזה, וההזמנות שמוצגות הן אלו שבוצעו בדפדפן הזה.
-    כדי שזה יעבוד באמת — מלאי משותף, הזמנות מכל הלקוחות וגישה מוגנת בסיסמה — צריך שרת ומסד נתונים.
-    בינתיים אפשר לעדכן מלאי כאן וללחוץ <strong>ייצוא products.json</strong> כדי לשמור את הקובץ המעודכן.
-  </div>
-
-  <div class="stat-row">
-    <div class="stat"><p class="stat__label">מוצרים</p><p class="stat__value" id="statProducts">—</p></div>
-    <div class="stat"><p class="stat__label">אזלו מהמלאי</p><p class="stat__value" id="statOut">—</p></div>
-    <div class="stat"><p class="stat__label">הזמנות</p><p class="stat__value" id="statOrders">—</p></div>
-    <div class="stat"><p class="stat__label">סך מכירות</p><p class="stat__value" id="statRevenue">—</p></div>
-  </div>
-
-  <div class="admin-tabs" role="tablist">
-    <button class="admin-tab" role="tab" aria-selected="true" data-tab="stock">מלאי</button>
-    <button class="admin-tab" role="tab" aria-selected="false" data-tab="orders">הזמנות</button>
-  </div>
-
-  <!-- מלאי -->
-  <section id="tabStock">
-    <div class="toolbar">
-      <input class="search-input" type="search" id="stockSearch" placeholder="חיפוש מוצר…" aria-label="חיפוש מוצר">
-      <select class="select" id="stockFilter">
-        <option value="all">כל המוצרים</option>
-        <option value="out">אזלו מהמלאי</option>
-        <option value="low">מלאי נמוך (≤3)</option>
-      </select>
-      <button class="btn btn--outline btn--sm" id="exportBtn">ייצוא products.json</button>
-      <button class="btn btn--outline btn--sm" id="resetStockBtn">איפוס שינויים</button>
+      <button class="admin-choice" type="button" data-goto="home">
+        <span class="admin-choice__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/>
+            <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          </svg>
+        </span>
+        <span class="admin-choice__title">ניהול דף הבית</span>
+        <span class="admin-choice__text">טקסטים, תמונות, סדר הסקשנים, המוצרים המוצגים, הבאנרים וההודעות הקופצות.</span>
+        <span class="admin-choice__list">
+          <span>טקסטים</span><span>תמונות</span><span>סדר סקשנים</span>
+          <span>מוצרים מוצגים</span><span>באנרים</span><span>פופאפים</span>
+        </span>
+      </button>
     </div>
 
-    <div class="table-wrap">
-      <table class="admin-table">
-        <thead>
-          <tr>
-            <th style="width:3.5rem"></th>
-            <th>מוצר</th>
-            <th style="width:6rem">מותג</th>
-            <th style="width:6rem">מחיר</th>
-            <th style="width:7rem">מלאי</th>
-            <th style="width:6rem">סטטוס</th>
-          </tr>
-        </thead>
-        <tbody id="stockBody"></tbody>
-      </table>
+    <div class="notice" style="margin-top:2.5rem;text-align:start">
+      <strong>איך זה עובד:</strong>
+      השינויים נשמרים בדפדפן הזה ומופיעים באתר מיד. כדי שהם יופיעו גם אצל
+      הלקוחות — לחצי על <strong>פרסום</strong> בסוף כל מסך, והעלי את הקובץ שיורד לשרת.
+      <button class="btn btn--outline btn--sm" id="openBackup" style="margin-top:.75rem">גיבוי ושחזור</button>
     </div>
-  </section>
-
-  <!-- הזמנות -->
-  <section id="tabOrders" hidden>
-    <div class="toolbar">
-      <button class="btn btn--outline btn--sm" id="exportOrdersBtn">ייצוא הזמנות (CSV)</button>
-      <button class="btn btn--outline btn--sm" id="clearOrdersBtn">מחיקת כל ההזמנות</button>
-    </div>
-    <div id="ordersList"></div>
-  </section>
-
+  </div>
 </main>
 
-<footer class="site-footer">
-  <div class="site-footer__bottom">© <span id="copyrightYear">2026</span> LIAD</div>
-</footer>
+
+<!-- ==========================================================================
+     מסך עבודה — ניווט צד + אזור התוכן. נבנה ב-js/admin.js
+     ========================================================================== -->
+<main id="screenWork" class="admin__body" hidden>
+  <nav class="admin-nav" id="adminNav" aria-label="אזורי ניהול"></nav>
+  <div class="admin__main" id="adminMain"></div>
+</main>
+
+
+<!-- מודאל כללי — טפסי עריכה נטענים לתוכו -->
+<div class="admin-modal" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="admin-modal__card">
+    <div class="admin-modal__head">
+      <h2 class="admin-modal__title" id="modalTitle"></h2>
+      <button class="admin-modal__close" id="modalClose" type="button" aria-label="סגירה">&times;</button>
+    </div>
+    <div id="modalBody"></div>
+    <div class="admin-modal__foot" id="modalFoot"></div>
+  </div>
+</div>
 
 <script type="module" src="js/admin.js"></script>
 </body>

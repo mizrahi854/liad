@@ -11,6 +11,7 @@ import { createGallery } from "./gallery.js";
 import { initCartDrawer, updateCartCount } from "./cart-ui.js";
 import { initShared } from "./shared.js";
 import { productCard, CATEGORY_LABELS } from "./product-card.js";
+import { initMotion, refreshMotion } from "./motion.js";
 
 const MAX_RELATED = 8;
 
@@ -37,6 +38,9 @@ async function init() {
   document.title = `${product.title} | LIAD`;
   renderProduct();
   renderRelated(catalog);
+
+  // התוכן כבר על הדף — עכשיו אפשר למדוד ולהפעיל את התנועה
+  initMotion();
 
   document.addEventListener("cart:change", syncStockUI);
 }
@@ -78,10 +82,10 @@ function renderProduct() {
       <span aria-current="page">${esc(product.title)}</span>
     </nav>
 
-    <div class="pdp__media" id="pdpGallery"></div>
+    <div class="pdp__media" id="pdpGallery" data-reveal="scale"></div>
 
     <div class="pdp__panel">
-      <div class="pdp__sticky">
+      <div class="pdp__sticky" data-reveal-stagger="0.06">
         <p class="pdp__brand">${esc(product.brand)}</p>
         <h1 class="pdp__title">${esc(product.title)}</h1>
 
@@ -268,6 +272,7 @@ function renderRelated(catalog) {
   const cart = getCart();
   related.forEach((p) => grid.append(productCard(p, cart)));
   $("#relatedSection").hidden = false;
+  refreshMotion(grid);
 }
 
 /* מאפשר הוספה לסל מכרטיסי המוצרים הקשורים */

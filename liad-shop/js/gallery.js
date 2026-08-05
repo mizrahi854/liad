@@ -5,8 +5,10 @@
    יכולות:
      • מחוות מגע (swipe)                • ניווט מקלדת (חצים, Home/End)
      • גרירה בעכבר                      • תמונות ממוזערות
-     • זום בדסקטופ (hover + לחיצה)      • מעברי fade חלקים
-     • טעינה עצלה + blur placeholder    • prefetch לתמונה הסמוכה
+     • מעברי fade חלקים                 • prefetch לתמונה הסמוכה
+     • טעינה עצלה + blur placeholder
+
+   מוצר עם תמונה אחת מקבל תצוגה נקייה: בלי חצים, בלי מונה ובלי ממוזערות.
 
    שימוש:
      const gallery = createGallery(rootEl, { images, alt });
@@ -33,9 +35,12 @@ export function createGallery(root, { images, alt }) {
   let index = 0;
   let destroyed = false;
 
+  // תמונה אחת = תצוגה שקטה. כל הפקדים קיימים רק כשיש באמת בין מה לנווט.
+  const multi = images.length > 1;
+
   root.innerHTML = `
-    <div class="gallery">
-      <div class="gallery__stage" tabindex="0" role="group"
+    <div class="gallery${multi ? "" : " gallery--single"}">
+      <div class="gallery__stage" tabindex="${multi ? "0" : "-1"}" role="group"
            aria-roledescription="גלריית תמונות" aria-label="${escapeAttr(alt)}">
         ${images.map((img, i) => `
           <figure class="gallery__slide${i === 0 ? " is-active" : ""}"
@@ -48,6 +53,7 @@ export function createGallery(root, { images, alt }) {
                  fetchpriority="${i === 0 ? "high" : "auto"}">
           </figure>`).join("")}
 
+        ${multi ? `
         <button class="gallery__nav gallery__nav--prev" type="button" aria-label="התמונה הקודמת">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -63,10 +69,10 @@ export function createGallery(root, { images, alt }) {
 
         <p class="gallery__counter" aria-hidden="true">
           <span class="gallery__counter-current">1</span> / ${images.length}
-        </p>
+        </p>` : ""}
       </div>
 
-      ${images.length > 1 ? `
+      ${multi ? `
       <div class="gallery__thumbs" role="tablist" aria-label="בחירת תמונה">
         ${images.map((img, i) => `
           <button class="gallery__thumb${i === 0 ? " is-active" : ""}" type="button"
@@ -139,6 +145,7 @@ export function createGallery(root, { images, alt }) {
 
   /** מוריד מראש את התמונה הבאה והקודמת, כדי שהמעבר יהיה מיידי */
   function prefetchNeighbours() {
+    if (!multi) return;
     [index + 1, index - 1].forEach((i) => {
       const img = images[(i + images.length) % images.length];
       if (!img) return;
@@ -183,11 +190,13 @@ export function createGallery(root, { images, alt }) {
     dragDx > 0 ? prev() : next();
   };
 
-  stage.addEventListener("pointerdown", pointerDown);
-  stage.addEventListener("pointermove", pointerMove);
-  stage.addEventListener("pointerup", pointerUp);
-  stage.addEventListener("pointercancel", pointerUp);
-  stage.addEventListener("pointerleave", pointerUp);
+  if (multi) {
+    stage.addEventListener("pointerdown", pointerDown);
+    stage.addEventListener("pointermove", pointerMove);
+    stage.addEventListener("pointerup", pointerUp);
+    stage.addEventListener("pointercancel", pointerUp);
+    stage.addEventListener("pointerleave", pointerUp);
+  }
   stage.addEventListener("dragstart", (e) => e.preventDefault());
 
   /* ------------------------------------------------------------ מקלדת */
@@ -199,23 +208,14 @@ export function createGallery(root, { images, alt }) {
       case "ArrowRight": e.preventDefault(); prev(); break;
       case "Home":       e.preventDefault(); goTo(0); break;
       case "End":        e.preventDefault(); goTo(images.length - 1); break;
-      case "Escape":     if (stage.classList.contains("is-zoomed")) toggleZoom(false); break;
     }
   };
-  stage.addEventListener("keydown", onKey);
+  if (multi) stage.addEventListener("keydown", onKey);
 
   /* ------------------------------------------------------------ כפתורים */
 
-  // עצירת הבעבוע חיונית: בלעדיה הלחיצה על החץ מגיעה גם למאזין של הבמה
-  // ומפעילה זום בטעות — כלומר כל מעבר תמונה היה נכנס למצב זום.
-  root.querySelector(".gallery__nav--next").addEventListener("click", (e) => {
-    e.stopPropagation();
-    next();
-  });
-  root.querySelector(".gallery__nav--prev").addEventListener("click", (e) => {
-    e.stopPropagation();
-    prev();
-  });
+  root.querySelector(".gallery__nav--next")?.addEventListener("click", next);
+  root.querySelector(".gallery__nav--prev")?.addEventListener("click", prev);
 
   thumbs.forEach((thumb) => {
     thumb.addEventListener("click", () => goTo(Number(thumb.dataset.index)));
@@ -224,33 +224,6 @@ export function createGallery(root, { images, alt }) {
       if (e.key === "ArrowRight") { e.preventDefault(); thumbs[(Number(thumb.dataset.index)-1+thumbs.length) % thumbs.length]?.focus(); }
     });
   });
-
-  /* ------------------------------------------------------------ זום (דסקטופ) */
-
-  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
-
-  function toggleZoom(on) {
-    stage.classList.toggle("is-zoomed", on);
-    if (!on) slides[index].querySelector("img").style.transformOrigin = "";
-  }
-
-  const onZoomMove = (e) => {
-    if (!stage.classList.contains("is-zoomed")) return;
-    const rect = stage.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    slides[index].querySelector("img").style.transformOrigin = `${x}% ${y}%`;
-  };
-
-  const onZoomClick = () => {
-    // גרירה לא אמורה להפעיל זום
-    if (Math.abs(dragDx) >= SWIPE_THRESHOLD) return;
-    if (finePointer.matches) toggleZoom(!stage.classList.contains("is-zoomed"));
-  };
-
-  stage.addEventListener("mousemove", onZoomMove);
-  stage.addEventListener("click", onZoomClick);
-  stage.addEventListener("mouseleave", () => toggleZoom(false));
 
   /* ------------------------------------------------------------ ניקוי */
 
