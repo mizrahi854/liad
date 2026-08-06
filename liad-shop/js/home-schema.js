@@ -125,11 +125,11 @@ export const HOME_IMAGES = [
 /** הסקשנים של דף הבית, לפי סדר ברירת המחדל */
 export const HOME_SECTIONS = [
   { id: "choose", label: "שתי הדלתות — חנות ואקדמיה" },
-  { id: "shadeShowcase", label: "חוויית הגוונים (היד)" },
+  { id: "about", label: "אודות" },
   { id: "bestsellers", label: "מוצרים מומלצים" },
   { id: "discover", label: "מה את מחפשת היום" },
   { id: "academy", label: "האקדמיה והקורסים" },
-  { id: "about", label: "אודות" },
+  { id: "shadeShowcase", label: "חוויית הגוונים (היד)" },
   { id: "journal", label: "טיפים ותוכן" },
   { id: "locations", label: "סניפים" },
   { id: "faq", label: "שאלות נפוצות" },

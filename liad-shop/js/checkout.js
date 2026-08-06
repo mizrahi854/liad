@@ -231,6 +231,9 @@ function onSubmit(e) {
     },
     // מסמן בבירור שלא בוצע חיוב — כדי שלא ייווצר רושם מוטעה בדף הניהול
     payment: { status: "unpaid", provider: null, note: "סליקה טרם חוברה" },
+    // נקודת ההתחלה של מעקב ההזמנה (order.html)
+    status: "received",
+    statusHistory: [{ status: "received", note: "", at: new Date().toISOString() }],
   };
 
   saveOrder(order);

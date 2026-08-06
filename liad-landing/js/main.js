@@ -135,17 +135,13 @@ function applySiteLinks(links = {}) {
    קרוסלת המוצרים
 
    שני מקורות, בכוונה:
-     1. content.json — המוצרים שנבחרו ידנית, עם תגית ("רב מכר") ומחיר מבצע.
-        הם תמיד ראשונים, כי הם מה שהלקוחה רוצה לדחוף.
-     2. קטלוג החנות — עוד מוצרים, כדי שהרצועה תמשיך להתחלף ולא תציג
-        את אותם שמונה מוצרים לנצח.
+     1. content.json או מערכת הניהול — המוצרים שנבחרו ידנית, עם תגית
+        ("רב מכר") ומחיר מבצע. הם ראשונים במאגר, כי הם מה שרוצים לדחוף.
+     2. כל שאר הקטלוג — כדי שהרצועה תמשיך להתחלף ולא תחזור על עצמה.
 
-   הבחירה מהקטלוג מסתובבת לפי היום בשנה, כך שמי שנכנסת מחר רואה
-   מוצרים אחרים — בלי שרת ובלי אקראיות שמקפיצה את הדף בכל רענון.
+   הערבוב עצמו נעשה ב-js/carousel.js, שהיא גם זו שמחליטה מתי כרטיס
+   נולד ומתי הוא נמחק. כאן רק מכינים לה את המאגר ואת צורת הכרטיס.
    ========================================================================== */
-
-/** כמה מוצרים נוספים לשלוף מהקטלוג אל הקרוסלה */
-const CAROUSEL_EXTRA = 16;
 
 /** טוען את קטלוג החנות. נכשל בשקט — הקרוסלה עובדת גם בלעדיו. */
 async function loadShopProducts() {
@@ -160,14 +156,10 @@ async function loadShopProducts() {
   }
 }
 
-/** מספר יציב שמתחלף פעם ביום, לסבב המוצרים */
-function daySeed() {
-  return Math.floor(Date.now() / 864e5);
-}
-
 /** ממיר מוצר מהקטלוג לצורת הכרטיס שהקרוסלה מציגה */
 function toCard(p) {
   return {
+    id: p.id,
     brand: p.brand,
     title: p.title,
     description: p.shade ? `גוון ${p.shade}` : (p.line ?? ""),
@@ -181,94 +173,63 @@ function toCard(p) {
 }
 
 /**
- * בונה את רשימת הקרוסלה: המוצרים הידניים קודם, ואחריהם מוצרים
- * מהקטלוג — מגוונים בין מותגים, כדי שלא ייווצר רצף של אותו קו.
+ * המאגר שממנו הקרוסלה שולפת. ככל שהוא גדול יותר, כך הרצועה מרגישה
+ * אינסופית יותר — ולכן נכנס אליו כל הקטלוג, ולא רשימה קצרה.
  *
- * אם נבחרו מוצרים במערכת הניהול, הם מחליפים את הרשימה הידנית.
+ * הסדר: קודם מה שנבחר ידנית (ב-content.json או במערכת הניהול), ואחריו
+ * שאר הקטלוג. הקרוסלה מערבבת בעצמה, אבל היא שולפת מהתחלה — כך שהמוצרים
+ * שהלקוחה רוצה לדחוף עדיין מקבלים עדיפות.
  */
-function buildCarouselList(curated = [], catalog = []) {
+function buildCarouselPool(curated = [], catalog = []) {
   const chosen = featuredIds();
+  const byId = new Map(catalog.map((p) => [p.id, p]));
+
   if (chosen?.length) {
-    const byId = new Map(catalog.map((p) => [p.id, p]));
     const picked = chosen.map((id) => byId.get(id)).filter(Boolean).map(toCard);
     if (picked.length) curated = picked;
   }
 
-  const seen = new Set(curated.map((p) => p.href));
-  const seed = daySeed();
+  // המוצרים הידניים מגיעים מ-content.json ואין להם id — נגזר מהקישור
+  const withIds = curated.map((p) => ({
+    ...p,
+    id: p.id ?? decodeURIComponent(String(p.href).split("id=")[1] ?? p.title),
+  }));
 
-  // מקבצים לפי מותג ושולפים לסירוגין, כך שהרצועה נראית מגוונת
-  const byBrand = new Map();
-  catalog
-    .filter((p) => (p.stock ?? 0) > 0 && p.image && p.price)
-    .forEach((p) => {
-      const list = byBrand.get(p.brand) || [];
-      list.push(p);
-      byBrand.set(p.brand, list);
-    });
+  const seen = new Set(withIds.map((p) => String(p.id)));
+  const rest = catalog
+    .filter((p) => (p.stock ?? 0) > 0 && p.image && p.price && !seen.has(String(p.id)))
+    .map(toCard);
 
-  const brands = [...byBrand.keys()].sort();
-  const extra = [];
-  let round = 0;
-
-  while (extra.length < CAROUSEL_EXTRA && round < 200) {
-    let added = false;
-    for (const brand of brands) {
-      const list = byBrand.get(brand);
-      if (!list.length) continue;
-      const p = list[(seed * 7 + round * 13) % list.length];
-      list.splice(list.indexOf(p), 1);
-      const card = toCard(p);
-      if (seen.has(card.href)) continue;
-      seen.add(card.href);
-      extra.push(card);
-      added = true;
-      if (extra.length >= CAROUSEL_EXTRA) break;
-    }
-    if (!added) break;
-    round += 1;
-  }
-
-  return [...curated, ...extra];
+  return [...withIds, ...rest];
 }
 
 /*
  * כרטיס המוצר בקרוסלה: קטן, מלבני ונקי — התמונה למעלה, שלוש שורות טקסט
  * למטה, וכל הכרטיס הוא קישור לדף המוצר עצמו.
+ *
+ * מחזיר אלמנט (ולא מזריק לרצועה), כי הקרוסלה היא זו שמחליטה מתי כרטיס
+ * נולד ומתי הוא נמחק.
  */
-function renderProducts(products = []) {
-  const track = $("#productTrack");
-  if (!track) return;
+function productCard(p) {
+  const badge = p.badge ? `<span class="pcard__badge">${esc(p.badge)}</span>` : "";
+  const stock = p.inStock ? "" : `<span class="pcard__stock">אזל מהמלאי</span>`;
+  const compareAt = p.compareAt ? ` <del>${formatPrice(p.compareAt)}</del>` : "";
 
-  products.forEach((p) => {
-    const badge = p.badge
-      ? `<span class="pcard__badge">${esc(p.badge)}</span>`
-      : "";
-
-    const stock = p.inStock
-      ? ""
-      : `<span class="pcard__stock">אזל מהמלאי</span>`;
-
-    const compareAt = p.compareAt
-      ? ` <del>${formatPrice(p.compareAt)}</del>`
-      : "";
-
-    track.append(html`
-      <a class="pcard" href="${esc(p.href)}">
-        <span class="pcard__media media-frame">
-          <img src="${esc(p.image)}" alt="${esc(p.title)}" width="600" height="600" loading="lazy" decoding="async">
-          ${badge}
-          ${stock}
-        </span>
-        <span class="pcard__body">
-          <span class="pcard__brand">${esc(p.brand)}</span>
-          <span class="pcard__title">${esc(p.title)}</span>
-          <span class="pcard__desc">${esc(p.description)}</span>
-          <span class="pcard__price">${formatPrice(p.price)}${compareAt}</span>
-        </span>
-      </a>
-    `);
-  });
+  return html`
+    <a class="pcard" href="${esc(p.href)}">
+      <span class="pcard__media media-frame">
+        <img src="${esc(p.image)}" alt="${esc(p.title)}" width="600" height="600" loading="lazy" decoding="async">
+        ${badge}
+        ${stock}
+      </span>
+      <span class="pcard__body">
+        <span class="pcard__brand">${esc(p.brand)}</span>
+        <span class="pcard__title">${esc(p.title)}</span>
+        <span class="pcard__desc">${esc(p.description)}</span>
+        <span class="pcard__price">${formatPrice(p.price)}${compareAt}</span>
+      </span>
+    </a>
+  `.firstElementChild;
 }
 
 function renderChips(chips = []) {
@@ -827,7 +788,6 @@ async function init() {
   const [content, catalog] = await Promise.all([loadContent(), loadShopProducts()]);
   if (content) {
     applySiteLinks(content.links);
-    renderProducts(buildCarouselList(content.products, catalog));
     renderChips(content.chips);
     renderCategories(content.categories);
     renderJournal(content.journal);
@@ -845,6 +805,8 @@ async function init() {
     createCarousel($("#productCarousel"), {
       prev: $("[data-carousel-prev]"),
       next: $("[data-carousel-next]"),
+      pool: buildCarouselPool(content.products, catalog),
+      render: productCard,
     });
   }
 

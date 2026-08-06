@@ -351,19 +351,17 @@ function saveFile(blob, name) {
   setTimeout(() => URL.revokeObjectURL(url), 4000);
 }
 
-/** ההודעה שמלווה את הקובץ */
+/**
+ * ההודעה שמלווה את הקובץ.
+ *
+ * קצרה בכוונה: החשבונית עצמה היא הקובץ המצורף, ולא טקסט בגוף ההודעה.
+ * הודעה ארוכה עם פירוט הפריטים הייתה מייתרת את הקובץ ומבלבלת.
+ */
 function summaryText(order) {
   return [
     `שלום ${order.customer.firstName},`,
-    `תודה על ההזמנה מ-${STUDIO.name}!`,
-    "",
-    `מספר הזמנה: ${order.id}`,
-    `סה״כ: ${money(order.totals.total)}`,
-    order.shipping.method === "delivery"
-      ? `משלוח אל: ${order.shipping.address.street}, ${order.shipping.address.city}`
-      : `איסוף עצמי: ${order.shipping.address.pickup}`,
-    "",
-    "החשבונית מצורפת כקובץ PDF.",
+    `תודה על ההזמנה מ-${STUDIO.name}.`,
+    `מצורפת החשבונית להזמנה ${order.id} על סך ${money(order.totals.total)}.`,
   ].join("\n");
 }
 
@@ -389,6 +387,17 @@ async function sendViaServer(order, file, channel) {
 /**
  * שולח את החשבונית כקובץ PDF.
  *
+ * שלושה מסלולים, לפי סדר עדיפות:
+ *
+ *   server   — השרת שולח בעצמו. הלקוחה לא עושה כלום.
+ *   share    — Web Share API. בנייד זה פותח את וואטסאפ או את המייל
+ *              כשקובץ ה-PDF כבר מצורף, והלקוחה רק לוחצת "שלח".
+ *              זה בדיוק המסלול שרצינו, והוא עובד בכל טלפון מודרני.
+ *   download — דסקטופ. אין שום דרך לצרף קובץ לוואטסאפ או ל-mailto
+ *              דרך כתובת URL — זו מגבלה של הדפדפן, לא של האתר. לכן
+ *              הקובץ יורד, הצ׳אט או המייל נפתחים אל הכתובת הנכונה עם
+ *              הודעה קצרה, והמשתמשת גוררת את הקובץ פנימה.
+ *
  * @param {Object} order
  * @param {"email"|"whatsapp"} channel
  * @returns {Promise<{how:"server"|"share"|"download"}>}
@@ -396,10 +405,8 @@ async function sendViaServer(order, file, channel) {
 export async function sendInvoice(order, channel) {
   const { blob, name, file } = await buildInvoicePdf(order);
 
-  // 1. שרת — השליחה האמיתית, בלי שהלקוחה צריכה לעשות דבר
   if (await sendViaServer(order, file, channel)) return { how: "server" };
 
-  // 2. שיתוף מקורי — בנייד זה מעביר את קובץ ה-PDF עצמו לוואטסאפ או למייל
   if (navigator.canShare?.({ files: [file] })) {
     try {
       await navigator.share({
@@ -414,12 +421,12 @@ export async function sendInvoice(order, channel) {
     }
   }
 
-  // 3. גיבוי בדסקטופ: הקובץ יורד, והאפליקציה נפתחת עם ההודעה מוכנה
   saveFile(blob, name);
 
   if (channel === "whatsapp") {
     const phone = normalizePhone(order.customer.phone);
     const text = encodeURIComponent(summaryText(order));
+    // הצ׳אט נפתח מול המספר שהלקוחה מילאה בצ׳קאאוט
     window.open(phone ? `https://wa.me/${phone}?text=${text}` : `https://wa.me/?text=${text}`,
       "_blank", "noopener");
   } else {
@@ -429,6 +436,14 @@ export async function sendInvoice(order, channel) {
   }
 
   return { how: "download" };
+}
+
+/** פותח את החשבונית בלשונית חדשה — לצפייה, בלי להוריד */
+export async function openInvoice(order) {
+  const { blob } = await buildInvoicePdf(order);
+  const url = URL.createObjectURL(blob);
+  window.open(url, "_blank", "noopener");
+  setTimeout(() => URL.revokeObjectURL(url), 60_000);
 }
 
 /** שומר את החשבונית כקובץ, בלי לשלוח לאף אחד */

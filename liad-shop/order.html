@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LIAD | מעקב הזמנה</title>
+  <meta name="description" content="מעקב אחר הזמנה בחנות LIAD — הזינו את מספר ההזמנה כדי לראות איפה היא נמצאת.">
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<a class="skip-link" href="#trackMain">דילוג לתוכן הראשי</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="site-header__inner">
+      <div class="site-header__side">
+        <a class="link-arrow" href="index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+          לחנות
+        </a>
+      </div>
+      <a class="site-logo" href="index.html" aria-label="LIAD">
+        <img src="assets/liad-logo.png" alt="LIAD" width="200" height="52">
+      </a>
+      <div class="site-header__side site-header__side--end"></div>
+    </div>
+  </div>
+</header>
+
+
+<main id="trackMain">
+  <section class="shop-hero">
+    <div class="shop-hero__depth" aria-hidden="true">
+      <span class="shop-hero__glow shop-hero__glow--a" data-parallax="0.12"></span>
+      <span class="shop-hero__glow shop-hero__glow--b" data-parallax="-0.08"></span>
+    </div>
+    <div class="container">
+      <p class="eyebrow" data-reveal="fade">מעקב הזמנה</p>
+      <h1 data-reveal="up">איפה ההזמנה שלי?</h1>
+      <p data-reveal="up" data-reveal-delay="0.08">
+        הזיני את מספר ההזמנה שקיבלת (משהו בסגנון <strong>LIAD-260805-A4K9</strong>)
+        ותראי בדיוק באיזה שלב היא נמצאת.
+      </p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="track">
+
+      <form class="track__form" id="trackForm" novalidate data-reveal="up">
+        <div class="field-row">
+          <input class="field" type="text" id="orderInput" name="order"
+                 placeholder="מספר הזמנה" autocomplete="off" spellcheck="false"
+                 aria-label="מספר הזמנה" required>
+          <button class="field-submit" type="submit">בדיקת סטטוס</button>
+        </div>
+        <p class="form-status" id="trackStatus" role="status" aria-live="polite"></p>
+      </form>
+
+      <!-- התוצאה נבנית ב-js/order.js -->
+      <div id="trackResult"></div>
+
+    </div>
+  </div>
+</main>
+
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__inner">
+      <img src="assets/liad-logo.png" alt="LIAD" style="height:2.75rem;width:auto" loading="lazy">
+      <nav class="site-footer__links">
+        <a href="index.html">החנות</a>
+        <a href="order.html">מעקב הזמנה</a>
+        <a href="../liad-landing/index.html">הבית</a>
+        <a href="mailto:rubinliad@gmail.com">צור קשר</a>
+      </nav>
+    </div>
+  </div>
+  <div class="site-footer__bottom">© <span id="copyrightYear">2026</span> LIAD. כל הזכויות שמורות</div>
+</footer>
+
+<script type="module" src="js/order.js"></script>
+</body>
+</html>

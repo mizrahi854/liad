@@ -596,3 +596,11 @@
 
   .admin-nav__item { justify-content: flex-start; }
 }
+
+/* שורת פקדים בתוך כרטיס הזמנה — סטטוס, חשבונית, שליחה */
+.order-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.625rem;
+}

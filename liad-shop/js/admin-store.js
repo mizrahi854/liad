@@ -404,6 +404,68 @@ export function deletePopup(id) {
 }
 
 /* ==========================================================================
+   סטטוס הזמנה
+
+   הלקוחה של החנות משנה את הסטטוס במערכת הניהול, והקונה עוקבת אחריו
+   בעמוד המעקב (order.html) לפי מספר ההזמנה.
+
+   הסטטוסים מסודרים לפי סדר ההתקדמות הטבעי, ולכן אפשר לגזור מהם גם את
+   שלבי הציר בעמוד המעקב — בלי לתחזק שתי רשימות.
+   ========================================================================== */
+
+const ORDERS_KEY = "liad:orders";
+
+/** @type {{id:string,label:string,note:string,icon:string}[]} */
+export const ORDER_STATUSES = [
+  { id: "received",  label: "ההזמנה התקבלה", note: "קיבלנו את ההזמנה והיא ממתינה לטיפול." },
+  { id: "preparing", label: "בהכנה",          note: "אורזים את המוצרים שלך." },
+  { id: "ready",     label: "מוכנה",          note: "ההזמנה ארוזה וממתינה ליציאה." },
+  { id: "shipped",   label: "יצאה למשלוח",    note: "ההזמנה בדרך אלייך." },
+  { id: "delivered", label: "נמסרה",          note: "ההזמנה הגיעה. תודה!" },
+];
+
+/** סטטוס סיום שאינו חלק מהציר הרגיל */
+export const ORDER_CANCELLED = { id: "cancelled", label: "בוטלה", note: "ההזמנה בוטלה." };
+
+export function orderStatusMeta(id) {
+  return ORDER_STATUSES.find((s) => s.id === id)
+    ?? (id === ORDER_CANCELLED.id ? ORDER_CANCELLED : ORDER_STATUSES[0]);
+}
+
+export function getOrders() {
+  const list = read(ORDERS_KEY, []);
+  return Array.isArray(list) ? list : [];
+}
+
+/**
+ * מחפש הזמנה לפי מספר. מתעלם מרווחים ומאותיות גדולות/קטנות, כי הקונה
+ * מקלידה את המספר ביד מתוך הודעה או מסך.
+ */
+export function findOrder(id) {
+  const wanted = String(id || "").trim().toUpperCase().replace(/\s+/g, "");
+  if (!wanted) return null;
+  return getOrders().find((o) => String(o.id).toUpperCase().replace(/\s+/g, "") === wanted) ?? null;
+}
+
+/**
+ * מעדכן סטטוס ושומר את ההיסטוריה, כדי שעמוד המעקב יוכל להראות
+ * *מתי* כל שלב קרה ולא רק איפה ההזמנה נמצאת עכשיו.
+ */
+export function setOrderStatus(id, status, { note = "" } = {}) {
+  const orders = getOrders();
+  const order = orders.find((o) => o.id === id);
+  if (!order) return null;
+
+  order.status = status;
+  order.statusHistory = Array.isArray(order.statusHistory) ? order.statusHistory : [];
+  order.statusHistory.push({ status, note, at: new Date().toISOString() });
+  order.updatedAt = new Date().toISOString();
+
+  write(ORDERS_KEY, orders);
+  return order;
+}
+
+/* ==========================================================================
    לידים
    ========================================================================== */
 

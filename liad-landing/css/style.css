@@ -1512,16 +1512,21 @@ ul {
 
 .chip:hover::before { transform: scaleX(1); }
 
+/*
+ * ריבועים קטנים ורבים במקום כמה גדולים: בסקשן הזה המטרה היא לראות את
+ * כל האפשרויות במבט אחד ולבחור, ולא להתרשם מתמונה גדולה. הרשת נקבעת
+ * לפי רוחב מינימלי, ולכן היא מתמלאת מעצמה בכל גודל מסך.
+ */
 .category-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.875rem;
+  grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+  gap: 0.625rem;
 }
 
 .category-card {
   position: relative;
   display: block;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
   background-color: var(--secondary);
@@ -1595,7 +1600,7 @@ ul {
   position: absolute;
   inset-inline: 0;
   bottom: 0;
-  padding: 1rem 1.125rem 1.125rem;
+  padding: 0.625rem 0.75rem 0.75rem;
   color: var(--cream);
   transform: translateZ(30px);
 }
@@ -1604,7 +1609,7 @@ ul {
   display: block;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 1.0625rem;
+  font-size: 0.875rem;
   line-height: 1.2;
   transition: color var(--dur-base) var(--ease-luxe);
 }
@@ -1615,9 +1620,9 @@ ul {
 
 .category-card__count {
   display: block;
-  margin-top: 0.1875rem;
-  font-size: 0.6875rem;
-  letter-spacing: 0.18em;
+  margin-top: 0.125rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
   color: color-mix(in oklab, var(--cream) 70%, transparent);
 }
 
@@ -2694,7 +2699,7 @@ ul {
   .hero__badges { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
   .hero__badges span { justify-content: center; }
   .carousel__track { column-gap: 1.25rem; }
-  .category-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .category-grid { grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); gap: 0.75rem; }
   .journal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .locations { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .academy__stamp { display: block; }

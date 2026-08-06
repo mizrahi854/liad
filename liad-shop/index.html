@@ -80,19 +80,88 @@
 
 <main>
 
+  <!-- ======================================================================
+       Hero — קמפיין, לא כותרת.
+       טקסט בצד אחד וצילום בצד השני, עם הילות אור שנעות בקצב אחר ממנו.
+       ====================================================================== -->
   <section class="shop-hero">
-    <!-- הילות אור שנעות בקצב אחר מהטקסט — זה מה שיוצר את תחושת העומק -->
     <div class="shop-hero__depth" aria-hidden="true">
       <span class="shop-hero__glow shop-hero__glow--a" data-parallax="0.12"></span>
       <span class="shop-hero__glow shop-hero__glow--b" data-parallax="-0.08"></span>
     </div>
+
     <div class="container">
-      <p class="eyebrow" data-reveal="fade">החנות של LIAD</p>
-      <h1 data-reveal="up">כל מה שצריך לעבודה מקצועית</h1>
-      <p data-reveal="up" data-reveal-delay="0.08">חומרי פרמיום שנבחרו אחד-אחד — ג׳ל בנייה, לק ג׳ל, בייסים, פוליג׳ל, מכשור ואביזרים.
-         הרכישה מהירה ובלי להירשם.</p>
+      <div class="shop-hero__grid">
+
+        <div class="shop-hero__copy">
+          <div class="eyebrow-row" data-reveal="fade">
+            <span class="rule-gold"></span>
+            <p class="eyebrow">החנות של LIAD</p>
+          </div>
+          <h1 data-reveal="up">כל מה שצריך<br>לעבודה מקצועית</h1>
+          <p data-reveal="up" data-reveal-delay="0.08">
+            חומרי פרמיום שנבחרו אחד־אחד — ג׳ל בנייה, לק ג׳ל, בייסים, פוליג׳ל,
+            מכשור ואביזרים. הרכישה מהירה, ובלי להירשם.
+          </p>
+          <div class="shop-hero__actions" data-reveal="up" data-reveal-delay="0.14">
+            <a class="btn btn--gold btn--sheen" href="#productGrid">לכל המוצרים</a>
+            <a class="btn btn--outline" href="order.html">מעקב אחר הזמנה</a>
+          </div>
+        </div>
+
+        <div class="shop-hero__media" data-reveal="scale" data-tilt="5">
+          <span class="shop-hero__frame">
+            <img src="../liad-landing/assets/img/hand-real.jpg"
+                 alt="מניקור ג׳ל מקצועי בגוון עדין"
+                 width="800" height="800" loading="eager" fetchpriority="high" decoding="async">
+          </span>
+          <span class="shop-hero__tag">
+            <span class="shop-hero__tag-num" id="heroCount">—</span>
+            <span class="shop-hero__tag-label">מוצרים בחנות</span>
+          </span>
+        </div>
+
+      </div>
     </div>
   </section>
+
+  <!-- ======================================================================
+       פס ההבטחות — מה שהלקוחה צריכה לדעת לפני שהיא מתחילה לבחור
+       ====================================================================== -->
+  <div class="promise-strip">
+    <div class="container">
+      <ul class="promise-strip__list" data-reveal-stagger="0.06">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/>
+            <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/>
+            <circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/>
+          </svg>
+          <span><strong>משלוח חינם</strong>מעל ₪329.90</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+          <span><strong>רכישה מאובטחת</strong>בלי הרשמה ובלי חשבון</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/>
+          </svg>
+          <span><strong>חומרים מקצועיים</strong>אותם מוצרים שבסטודיו</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span><strong>איסוף עצמי</strong>מתחם הפיל, בנימינה</span>
+        </li>
+      </ul>
+    </div>
+  </div>
 
   <!-- ======================================================================
        ניווט קטגוריות — ריבועים קטנים בראש החנות.
@@ -229,6 +298,7 @@
       <img src="assets/liad-logo.png" alt="LIAD" style="height:2.75rem;width:auto" loading="lazy">
       <nav class="site-footer__links">
         <a href="../liad-landing/index.html" data-site-home>הבית</a>
+        <a href="order.html">מעקב הזמנה</a>
         <a href="#">מדיניות משלוחים</a>
         <a href="#">החזרות</a>
         <a href="#">תקנון</a>

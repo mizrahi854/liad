@@ -37,8 +37,10 @@ import {
   getHomepagePatch, saveHomepage, resetHomepage,
   getPopups, savePopup, deletePopup,
   getLeads, deleteLead,
+  getOrders, setOrderStatus, orderStatusMeta, ORDER_STATUSES, ORDER_CANCELLED,
   exportAll, importAll,
 } from "./admin-store.js";
+import { openInvoice, downloadInvoice, sendInvoice } from "./invoice.js";
 import { HOME_TEXT_GROUPS, HOME_IMAGES, HOME_SECTIONS, MAX_BANNERS } from "./home-schema.js";
 
 /** כמה שורות להציג בטבלת המוצרים בכל פעם */
@@ -77,8 +79,6 @@ function readJSON(key, fallback) {
     return raw ? JSON.parse(raw) : fallback;
   } catch { return fallback; }
 }
-
-const getOrders = () => readJSON(CONFIG.storageKeys.orders, []);
 
 /**
  * קורא תמונה שהמשתמשת בחרה, מקטין אותה ומחזיר data URL.
@@ -808,6 +808,8 @@ function renderOrders() {
     renderOrders();
     toast("ההזמנות נמחקו");
   });
+
+  wireOrderCards();
 }
 
 function orderCard(o) {
@@ -815,8 +817,12 @@ function orderCard(o) {
     ? `${o.shipping.address.street}, ${o.shipping.address.city}`
     : `איסוף — ${o.shipping.address.pickup}`;
 
+  const status = o.status ?? "received";
+  const meta = orderStatusMeta(status);
+  const options = [...ORDER_STATUSES, ORDER_CANCELLED];
+
   return `
-    <details class="admin-card" style="margin-bottom:.625rem;padding:0">
+    <details class="admin-card" style="margin-bottom:.625rem;padding:0" data-order="${esc(o.id)}">
       <summary style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;padding:.875rem 1.125rem;cursor:pointer">
         <span>
           <strong style="font-family:var(--font-wordmark);letter-spacing:.05em">${esc(o.id)}</strong>
@@ -825,32 +831,103 @@ function orderCard(o) {
           </span>
         </span>
         <span style="display:flex;align-items:center;gap:.75rem">
-          <span class="pill ${o.payment?.status === "paid" ? "pill--ok" : "pill--out"}">
-            ${o.payment?.status === "paid" ? "שולם" : "לא שולם"}
-          </span>
+          <span class="pill ${status === ORDER_CANCELLED.id ? "pill--off" : "pill--ok"}">${esc(meta.label)}</span>
           <strong class="num">${money(o.totals.total)}</strong>
         </span>
       </summary>
+
       <div style="padding:0 1.125rem 1.125rem;font-size:.875rem">
+
+        <!-- סטטוס: מה שהלקוחה רואה בעמוד המעקב -->
+        <div class="order-row" style="padding:.875rem 0;border-top:1px solid var(--border)">
+          <label class="admin-field" style="max-width:16rem">
+            <span class="admin-field__label">סטטוס ההזמנה</span>
+            <select class="admin-select" data-status>
+              ${options.map((s) =>
+                `<option value="${esc(s.id)}"${s.id === status ? " selected" : ""}>${esc(s.label)}</option>`).join("")}
+            </select>
+          </label>
+          <a class="btn btn--outline btn--sm" href="order.html?id=${encodeURIComponent(o.id)}"
+             target="_blank" rel="noopener">מה שהלקוחה רואה</a>
+        </div>
+
         <div class="muted" style="display:grid;gap:.375rem;padding:.875rem 0;border-top:1px solid var(--border)">
           <div>טלפון: <a href="tel:${esc(o.customer.phone)}" style="color:var(--foreground)">${esc(o.customer.phone)}</a></div>
           <div>אימייל: <a href="mailto:${esc(o.customer.email)}" style="color:var(--foreground)">${esc(o.customer.email)}</a></div>
           <div>${o.shipping.method === "delivery" ? "משלוח" : "איסוף"}: <span style="color:var(--foreground)">${esc(address)}</span></div>
           ${o.notes ? `<div>הערות: <span style="color:var(--foreground)">${esc(o.notes)}</span></div>` : ""}
         </div>
+
         <ul style="padding-top:.625rem;border-top:1px solid var(--border)">
           ${o.items.map((i) => `
             <li style="display:flex;justify-content:space-between;gap:1rem;padding:.1875rem 0">
               <span>${esc(i.title)} × ${i.qty}</span><span class="num">${money(i.lineTotal)}</span>
             </li>`).join("")}
         </ul>
-        <p style="margin-top:.75rem">
-          <a class="btn btn--outline btn--sm" href="confirmation.html?order=${encodeURIComponent(o.id)}" target="_blank" rel="noopener">
-            פתיחת החשבונית
-          </a>
-        </p>
+
+        <!-- החשבונית של ההזמנה הזו, ישירות מכאן -->
+        <div class="order-row" style="margin-top:.875rem;padding-top:.875rem;border-top:1px solid var(--border)">
+          <button class="btn btn--gold btn--sm" type="button" data-invoice-open>פתיחת החשבונית</button>
+          <button class="btn btn--outline btn--sm" type="button" data-invoice-save>הורדת PDF</button>
+          <button class="btn btn--outline btn--sm" type="button" data-invoice-wa>שליחה בוואטסאפ</button>
+          <button class="btn btn--outline btn--sm" type="button" data-invoice-mail>שליחה למייל</button>
+        </div>
+        <p class="muted" style="margin-top:.5rem;font-size:.75rem" data-invoice-hint></p>
       </div>
     </details>`;
+}
+
+/* מחבר את פקדי הסטטוס והחשבונית שבתוך כרטיסי ההזמנות */
+function wireOrderCards() {
+  const list = $("#ordersList");
+  if (!list) return;
+
+  list.addEventListener("change", (e) => {
+    const select = e.target.closest("[data-status]");
+    if (!select) return;
+    const id = select.closest("[data-order]").dataset.order;
+    setOrderStatus(id, select.value);
+    renderOrders();
+    toast(`הסטטוס עודכן ל"${orderStatusMeta(select.value).label}"`);
+  });
+
+  list.addEventListener("click", async (e) => {
+    const card = e.target.closest("[data-order]");
+    if (!card) return;
+    const order = getOrders().find((o) => o.id === card.dataset.order);
+    if (!order) return;
+
+    const hint = card.querySelector("[data-invoice-hint]");
+    const run = async (action, done) => {
+      hint.textContent = "מכין את החשבונית…";
+      try {
+        await action();
+        hint.textContent = done;
+      } catch (err) {
+        console.error("[LIAD] החשבונית נכשלה:", err);
+        hint.textContent = "לא הצלחנו להכין את החשבונית.";
+      }
+    };
+
+    if (e.target.closest("[data-invoice-open]")) {
+      await run(() => openInvoice(order), "החשבונית נפתחה בלשונית חדשה.");
+    }
+    if (e.target.closest("[data-invoice-save]")) {
+      await run(() => downloadInvoice(order), "הקובץ ירד.");
+    }
+    if (e.target.closest("[data-invoice-wa]")) {
+      await run(async () => {
+        const { how } = await sendInvoice(order, "whatsapp");
+        hint.dataset.how = how;
+      }, "וואטסאפ נפתח מול מספר הלקוחה. אם הקובץ לא צורף אוטומטית — הוא ירד למחשב, נשאר לגרור אותו לצ׳אט.");
+    }
+    if (e.target.closest("[data-invoice-mail]")) {
+      await run(async () => {
+        const { how } = await sendInvoice(order, "email");
+        hint.dataset.how = how;
+      }, "המייל נפתח מול כתובת הלקוחה. אם הקובץ לא צורף אוטומטית — הוא ירד למחשב, נשאר לצרף אותו.");
+    }
+  });
 }
 
 function exportOrdersCsv() {

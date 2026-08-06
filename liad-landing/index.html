@@ -120,8 +120,8 @@
     <div class="hero__fade-bottom"></div>
     <div class="hero__fade-side"></div>
 
- 
-
+    <!-- ניצוצות אור מרחפים -->
+    <div class="hero__floaters" aria-hidden="true">
       <span class="hero__spark hero__spark--1 float" style="--float-dur:6s"></span>
       <span class="hero__spark hero__spark--2 float" style="--float-dur:7.5s;--float-delay:-2s"></span>
       <span class="hero__spark hero__spark--3 float" style="--float-dur:8.8s;--float-delay:-4s"></span>
@@ -255,10 +255,38 @@
 
 
   <!-- ======================================================================
-       חוויית הגוונים — הלק מתחלף בגלילה
-       הסקשן כולו נבנה ב-js/shade-showcase.js מתוך data/shades.json
+       אודות
        ====================================================================== -->
-  <section class="showcase" id="shadeShowcase" aria-label="הגוונים של LIAD" data-cms-section="shadeShowcase"></section>
+  <section class="section section--cream" id="about" data-scroll-section data-cms-section="about">
+    <div class="container">
+      <div class="about">
+
+        <div class="about__media" data-reveal="mask" data-tilt="4">
+          <span class="about__frame"></span>
+          <span class="media-frame about__shot">
+            <img src="assets/img/liad-portrait.png" data-cms-image="about.portrait" alt="ליעד סולומוביץ' — מייסדת המותג" width="1000" height="1200" loading="lazy" decoding="async" data-parallax="-0.05">
+          </span>
+          <span class="about__badge">FOUNDER</span>
+        </div>
+
+        <div class="about__body">
+          <div class="eyebrow-row" data-reveal="fade">
+            <span class="rule-gold"></span>
+            <p class="eyebrow" data-cms-text="about.eyebrow">מי אנחנו</p>
+          </div>
+          <h2 class="about__title" data-reveal="up" data-cms-text="about.title">
+            נעים להכיר,<br>
+            <span class="text-gold-gradient">ליעד סולומוביץ'</span>
+          </h2>
+          <p class="about__text" data-reveal="up" data-reveal-delay="0.08" data-cms-text="about.text">
+            ליעד הקימה את LIAD aesthetics and beauty מתוך אהבה למקצוע ונכונות לעזור לך להיות הכי טובה בתחום.<br>
+            חנות מקצועית למוצרי ציפורניים יחד עם אקדמיה בוטיקית, כדי ללוות כל אשת מקצוע באיכות אחת שלא מתפשרת.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
 
   <!-- ======================================================================
@@ -436,38 +464,10 @@
 
 
   <!-- ======================================================================
-       אודות
+       חוויית הגוונים — הלק מתחלף בגלילה
+       הסקשן כולו נבנה ב-js/shade-showcase.js מתוך data/shades.json
        ====================================================================== -->
-  <section class="section section--cream" id="about" data-scroll-section data-cms-section="about">
-    <div class="container">
-      <div class="about">
-
-        <div class="about__media" data-reveal="mask" data-tilt="4">
-          <span class="about__frame"></span>
-          <span class="media-frame about__shot">
-            <img src="assets/img/liad-portrait.png" data-cms-image="about.portrait" alt="ליעד סולומוביץ' — מייסדת המותג" width="1000" height="1200" loading="lazy" decoding="async" data-parallax="-0.05">
-          </span>
-          <span class="about__badge">FOUNDER</span>
-        </div>
-
-        <div class="about__body">
-          <div class="eyebrow-row" data-reveal="fade">
-            <span class="rule-gold"></span>
-            <p class="eyebrow" data-cms-text="about.eyebrow">מי אנחנו</p>
-          </div>
-          <h2 class="about__title" data-reveal="up" data-cms-text="about.title">
-            נעים להכיר,<br>
-            <span class="text-gold-gradient">ליעד סולומוביץ'</span>
-          </h2>
-          <p class="about__text" data-reveal="up" data-reveal-delay="0.08" data-cms-text="about.text">
-            ליעד הקימה את LIAD aesthetics and beauty מתוך אהבה למקצוע ונכונות לעזור לך להיות הכי טובה בתחום.<br>
-            חנות מקצועית למוצרי ציפורניים יחד עם אקדמיה בוטיקית, כדי ללוות כל אשת מקצוע באיכות אחת שלא מתפשרת.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  <section class="showcase" id="shadeShowcase" aria-label="הגוונים של LIAD" data-cms-section="shadeShowcase"></section>
 
 
   <!-- ======================================================================

@@ -158,28 +158,47 @@ export function createGallery(root, { images, alt }) {
 
   /* ------------------------------------------------------------ מגע וגרירה */
 
+  /*
+   * תפיסת המצביע נעשית רק אחרי תנועה אמיתית, ולא כבר ב-pointerdown.
+   *
+   * למה: חצי הניווט יושבים בתוך ה-stage. תפיסה מנתבת מחדש את ה-pointerup
+   * אל ה-stage, ואז יעד ה-click הוא ה-stage ולא הכפתור — ולכן החצים
+   * פשוט לא הגיבו. עכשיו לחיצה נקייה לעולם לא נתפסת, והגרירה נשארה.
+   */
+  const DRAG_THRESHOLD = 6;
+
   let dragStartX = null;
   let dragDx = 0;
+  let pressing = false;
   let dragging = false;
 
   const pointerDown = (e) => {
     if (e.pointerType === "mouse" && e.button !== 0) return;
+    // לחיצה על חץ או על ממוזערת אינה גרירה
+    if (e.target.closest(".gallery__nav")) return;
     dragStartX = e.clientX;
     dragDx = 0;
-    dragging = true;
-    stage.setPointerCapture?.(e.pointerId);
-    stage.classList.add("is-dragging");
+    pressing = true;
+    dragging = false;
   };
 
   const pointerMove = (e) => {
-    if (!dragging || dragStartX === null) return;
+    if (!pressing || dragStartX === null) return;
     dragDx = e.clientX - dragStartX;
+
+    if (!dragging) {
+      if (Math.abs(dragDx) < DRAG_THRESHOLD) return;
+      dragging = true;
+      stage.setPointerCapture?.(e.pointerId);
+      stage.classList.add("is-dragging");
+    }
+
     // התנגדות בקצוות כדי שהגרירה תרגיש פיזית
-    const resisted = dragDx * DRAG_RESISTANCE;
-    slides[index].style.transform = `translateX(${resisted}px)`;
+    slides[index].style.transform = `translateX(${(dragDx * DRAG_RESISTANCE).toFixed(1)}px)`;
   };
 
   const pointerUp = () => {
+    pressing = false;
     if (!dragging) return;
     dragging = false;
     stage.classList.remove("is-dragging");

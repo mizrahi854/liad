@@ -83,6 +83,7 @@ function init() {
         שליחה בוואטסאפ
       </button>
       <button class="btn btn--outline" id="savePdf">הורדת ה-PDF</button>
+      <a class="btn btn--outline" href="order.html?id=${encodeURIComponent(order.id)}">מעקב אחר ההזמנה</a>
       <a class="btn btn--outline" href="index.html">המשך קנייה</a>
     </div>
 

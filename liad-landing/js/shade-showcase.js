@@ -151,7 +151,7 @@ function render(root, shades, hand) {
           <p class="sr-only" aria-live="polite" id="shadeAnnounce"></p>
         </div>
 
-        <a class="showcase__scroll" href="#bestsellers">
+        <a class="showcase__scroll" href="#journal">
           <span>המשך למטה</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

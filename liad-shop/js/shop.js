@@ -47,6 +47,9 @@ async function init() {
   }
 
   state.all = products;
+  const heroCount = $("#heroCount");
+  if (heroCount) heroCount.textContent = products.length;
+
   buildFilterOptions();
   buildCategoryRail();
   wireControls();
@@ -126,12 +129,21 @@ function buildCategoryRail() {
   const cats = listCategories(state.all, CATEGORY_LABELS).filter((c) => !c.hidden);
   const cover = (slug) => state.all.find((p) => p.category === slug && p.image)?.image ?? "";
 
+  /*
+   * "כל המוצרים" מקבל פסיפס של ארבעה צילומים מקטגוריות שונות, במקום
+   * ריבוע ריק. זה מייצג בדיוק את מה שהוא מבטיח — את כל החנות — ולא
+   * דורש נכס חדש לתחזוקה.
+   */
+  const mosaic = cats.slice(0, 4).map((c) => cover(c.slug)).filter(Boolean);
+
   rail.innerHTML = "";
   rail.append(html`
     <a class="category-card category-card--all" href="#" data-filter-shortcut="all"
        data-reveal="up" data-tilt="4">
-      <span class="category-card__media">
-        <span class="category-card__blank"></span>
+      <span class="category-card__media category-card__media--mosaic">
+        ${mosaic.length === 4
+          ? mosaic.map((src) => `<img src="${esc(src)}" alt="" loading="lazy" decoding="async">`).join("")
+          : '<span class="category-card__blank"></span>'}
       </span>
       <span class="category-card__body">
         <span class="category-card__title">כל המוצרים</span>

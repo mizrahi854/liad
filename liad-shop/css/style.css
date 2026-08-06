@@ -725,20 +725,46 @@ ul {
 }
 
 .category-card__media {
-  display: block;
-  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  padding: 0.5rem;
   overflow: hidden;
-  background-color: var(--secondary);
+  background-color: #fff;
 }
 
+/*
+ * contain ולא cover: צילומי המוצרים הם בקבוק על רקע לבן, ו-cover היה
+ * חותך לו את הראש או את הבסיס. כאן התמונה נכנסת שלמה וממורכזת, והרקע
+ * הלבן שלה מתמזג עם רקע הריבוע.
+ */
 .category-card__media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   transition: transform 0.7s var(--ease-luxe);
 }
 
 .category-card:hover .category-card__media img { transform: scale(1.06); }
+
+/* פסיפס ארבעת הצילומים של "כל המוצרים" */
+.category-card__media--mosaic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+  padding: 0;
+}
+
+.category-card__media--mosaic img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.25rem;
+  background-color: #fff;
+}
 
 .category-card__blank {
   display: block;
@@ -782,9 +808,127 @@ ul {
 .shop-hero {
   position: relative;
   overflow: hidden;
-  padding-block: 3rem 2rem;
+  padding-block: 2.75rem 3rem;
   background-color: var(--cream);
   border-bottom: 1px solid var(--border);
+}
+
+.shop-hero__grid {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.shop-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+/* ---------- הצילום ---------- */
+
+.shop-hero__media {
+  position: relative;
+  max-width: 22rem;
+  margin-inline: auto;
+}
+
+.shop-hero__frame {
+  display: block;
+  overflow: hidden;
+  border: 1px solid color-mix(in oklab, var(--gold) 30%, transparent);
+  box-shadow: 0 30px 60px -34px color-mix(in oklab, var(--charcoal) 60%, transparent);
+  /* ההטיה חלה כאן ולא על הכרטיס כולו, כדי שהתגית תישאר קריאה */
+  transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transition: transform 0.5s var(--ease-luxe);
+}
+
+.shop-hero__frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* תגית מספר המוצרים — עוגן קטן שנותן לקאדר קנה מידה */
+.shop-hero__tag {
+  position: absolute;
+  inset-inline-start: -0.75rem;
+  bottom: -0.75rem;
+  display: grid;
+  gap: 0.125rem;
+  padding: 0.75rem 1.125rem;
+  text-align: center;
+  background-color: var(--background);
+  border: 1px solid color-mix(in oklab, var(--gold) 30%, transparent);
+  box-shadow: var(--shadow-card);
+}
+
+.shop-hero__tag-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.shop-hero__tag-label {
+  font-size: 0.625rem;
+  letter-spacing: 0.18em;
+  color: var(--muted-foreground);
+}
+
+@media (min-width: 860px) {
+  .shop-hero { padding-block: 4rem 4.5rem; }
+  .shop-hero__grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 3.5rem;
+  }
+  .shop-hero__media { max-width: none; margin-inline: 0; }
+}
+
+/* ==========================================================================
+   פס ההבטחות
+   ========================================================================== */
+
+.promise-strip {
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border);
+}
+
+.promise-strip__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.25rem;
+  padding-block: 1.25rem;
+}
+
+.promise-strip__list li {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+
+.promise-strip__list svg {
+  flex-shrink: 0;
+  width: 1.375rem;
+  height: 1.375rem;
+  color: var(--gold);
+}
+
+.promise-strip__list span { display: grid; gap: 0.0625rem; }
+
+.promise-strip__list strong {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--foreground);
+}
+
+@media (min-width: 860px) {
+  .promise-strip__list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 /* שכבת העומק — מתחת לטקסט, ומחוץ לזרימה, כדי שלא תזיז דבר */
@@ -2387,3 +2531,215 @@ html[data-a11y-motion="true"] *::after {
 
 html[data-a11y-motion="true"] [data-reveal] { opacity: 1; transform: none; transition: none; }
 html[data-a11y-motion="true"] [data-parallax] { transform: none !important; }
+
+
+/* ==========================================================================
+   22. מעקב הזמנה (order.html)
+
+   הציר האנכי הוא לב העמוד: מבט אחד ואת יודעת איפה ההזמנה. השלב הנוכחי
+   הוא היחיד שמקבל צבע מלא — כל השאר שקטים, כדי שהעין תנחת עליו מיד.
+   ========================================================================== */
+
+.track {
+  max-width: 44rem;
+  margin-inline: auto;
+  padding-block: 2.5rem 4rem;
+}
+
+.track__form { margin-bottom: 2rem; }
+
+.track__form .field {
+  font-family: var(--font-wordmark);
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.track__empty {
+  padding: 2.5rem 1.5rem;
+  border: 1px dashed var(--border);
+  background-color: var(--card);
+  text-align: center;
+  color: var(--muted-foreground);
+  line-height: 1.7;
+}
+
+.track__empty-title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+}
+
+.track__empty .btn { margin-top: 1.25rem; }
+
+/* ---------- כרטיס ההזמנה ---------- */
+
+.track-card {
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  box-shadow: var(--shadow-card);
+}
+
+.track-card__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.track-card__eyebrow {
+  font-size: 0.6875rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.track-card__id {
+  margin-top: 0.25rem;
+  font-family: var(--font-wordmark);
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+}
+
+.track-card__badge {
+  padding: 0.375rem 1rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  background-image: linear-gradient(105deg, var(--gold-soft), var(--gold));
+}
+
+.track-card__badge.is-cancelled {
+  background-image: none;
+  background-color: color-mix(in oklab, var(--charcoal) 10%, transparent);
+  color: var(--muted-foreground);
+}
+
+.track-card__cancelled {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--muted-foreground);
+}
+
+/* ---------- ציר השלבים ---------- */
+
+.track-steps {
+  position: relative;
+  padding: 1.75rem 1.5rem 1.5rem;
+}
+
+/* הקו שמחבר את הנקודות — יושב מאחוריהן */
+.track-steps::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: calc(1.5rem + 0.4375rem);
+  top: 2.4rem;
+  bottom: 2.4rem;
+  width: 1px;
+  background-color: var(--border);
+}
+
+.track-step {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  padding-block: 0.5rem;
+}
+
+.track-step__dot {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 0.9375rem;
+  height: 0.9375rem;
+  margin-top: 0.1875rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background-color: var(--card);
+}
+
+.track-step--done .track-step__dot {
+  border-color: transparent;
+  background-image: linear-gradient(105deg, var(--gold-soft), var(--gold));
+}
+
+.track-step--current .track-step__dot {
+  border-color: transparent;
+  background-image: linear-gradient(105deg, var(--gold-soft), var(--gold));
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--gold) 22%, transparent);
+}
+
+.track-step__body { display: grid; gap: 0.1875rem; }
+
+.track-step__label {
+  font-size: 0.9375rem;
+  color: var(--muted-foreground);
+}
+
+.track-step--done .track-step__label { color: var(--foreground); }
+
+.track-step--current .track-step__label {
+  font-weight: 700;
+  font-size: 1.0625rem;
+  color: var(--foreground);
+}
+
+.track-step__note {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+
+.track-step__time {
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted-foreground);
+}
+
+/* ---------- פרטים ופריטים ---------- */
+
+.track-card__facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.track-card__facts dt {
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  color: var(--muted-foreground);
+}
+
+.track-card__facts dd { margin-top: 0.25rem; font-size: 0.9375rem; }
+
+.track-card__items {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--border);
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.track-card__items li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.track-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (min-width: 640px) {
+  .track-card__facts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
