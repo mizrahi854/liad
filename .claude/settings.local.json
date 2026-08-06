@@ -68,7 +68,13 @@
       "Bash(curl -s -D- \"http://localhost:4176/liad-landing/js/main.js\" -o /tmp/served-main.js)",
       "Bash(python3 tag_cms.py)",
       "Bash(cp \"/private/tmp/claude-501/-Users-yanaimizrahi-Documents-------------/fc1e0cbd-7bea-4f0d-9b36-52c5900b8240/trace_nails.py\" tools/trace_nails.py)",
-      "Bash(python3 tools/trace_nails.py)"
+      "Bash(python3 tools/trace_nails.py)",
+      "Bash(git status *)",
+      "Bash(git rev-list *)",
+      "Bash(git ls-tree *)",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git push *)"
     ]
   }
 }
