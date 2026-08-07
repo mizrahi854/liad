@@ -604,3 +604,31 @@
   align-items: flex-end;
   gap: 0.625rem;
 }
+
+/* ---------- מחוון הסנכרון ---------- */
+
+.sync-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4375rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  color: var(--muted-foreground);
+}
+
+.sync-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: var(--muted-foreground);
+}
+
+.sync-dot--ok    { background-color: oklch(72% 0.17 152); }
+.sync-dot--warn  { background-color: oklch(75% 0.15 75); }
+.sync-dot--local { background-color: color-mix(in oklab, var(--charcoal) 35%, transparent); }
+
+@media (max-width: 640px) {
+  /* בסרגל צר הטקסט נדחק את הכפתורים החוצה — הנקודה לבדה מספיקה */
+  .sync-status { font-size: 0; gap: 0; }
+}

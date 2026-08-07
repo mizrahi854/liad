@@ -21,7 +21,7 @@ let quantity = 1;
 /* ---------------------------------------------------------------- אתחול */
 
 async function init() {
-  initShared();
+  await initShared();
   initCartDrawer();
   updateCartCount();
 

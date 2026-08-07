@@ -19,8 +19,8 @@ const state = {
 
 /* ---------------------------------------------------------------- אתחול */
 
-function init() {
-  initShared();
+async function init() {
+  await initShared();
 
   const cart = getCart();
   const form = $("#checkoutForm");
@@ -169,7 +169,7 @@ function wireValidation() {
 
 /* ---------------------------------------------------------------- שליחה */
 
-function onSubmit(e) {
+async function onSubmit(e) {
   e.preventDefault();
 
   // ולידציה של כל השדות הרלוונטיים
@@ -236,7 +236,9 @@ function onSubmit(e) {
     statusHistory: [{ status: "received", note: "", at: new Date().toISOString() }],
   };
 
-  saveOrder(order);
+  // ממתינים לשמירה לפני המעבר לדף האישור, אחרת הוא ייטען לפני
+  // שההזמנה קיימת ויציג "ההזמנה לא נמצאה"
+  await saveOrder(order);
 
   // הלקוחה נכנסת לרשימת הלידים, והקופון מסמן שימוש — שניהם נצפים בניהול
   addLead({

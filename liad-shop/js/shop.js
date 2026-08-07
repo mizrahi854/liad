@@ -29,7 +29,7 @@ const state = {
 /* ---------------------------------------------------------------- אתחול */
 
 async function init() {
-  initShared();
+  await initShared();
   initCartDrawer();
   updateCartCount();
 

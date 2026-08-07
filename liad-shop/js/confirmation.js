@@ -7,11 +7,11 @@ import { $, html, esc, money, getOrder, CONFIG, toast } from "./store.js";
 import { initShared } from "./shared.js";
 import { sendInvoice, downloadInvoice } from "./invoice.js";
 
-function init() {
-  initShared();
+async function init() {
+  await initShared();
 
   const id = new URLSearchParams(location.search).get("order");
-  const order = id ? getOrder(id) : null;
+  const order = id ? await getOrder(id) : null;
   const box = $("#confirmation");
 
   if (!order) {

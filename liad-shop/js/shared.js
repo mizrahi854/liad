@@ -5,6 +5,7 @@
 
 import { $, $$, CONFIG, getCart, cartCount } from "./store.js";
 import { initAccessibility } from "./accessibility.js";
+import { initSync } from "./sync.js";
 
 /**
  * כתובת ה-API לשליחת לידים ולהזמנות.
@@ -13,6 +14,13 @@ import { initAccessibility } from "./accessibility.js";
  */
 export const LEAD_ENDPOINT = null;
 
+/**
+ * מפעיל את הרכיבים המשותפים ואת הסנכרון מול מסד הנתונים.
+ *
+ * מחזיר Promise, אבל אין חובה להמתין לו: הדף מצייר מיד מהמטמון
+ * המקומי, והמשיכה מהשרת מרעננת אותו אחריה דרך אירוע ADMIN_EVENT.
+ * מסכים שכן צריכים נתונים טריים (הניהול, המעקב) מחכים לו.
+ */
 export function initShared() {
   initAccessibility();
   initHeader();
@@ -22,6 +30,8 @@ export function initShared() {
   initAbandonedCart();
   const year = $("#copyrightYear");
   if (year) year.textContent = new Date().getFullYear();
+
+  return initSync();
 }
 
 /* ---------------------------------------------------------------- הדר */

@@ -36,11 +36,14 @@ import {
   getCoupons, saveCoupon, deleteCoupon,
   getHomepagePatch, saveHomepage, resetHomepage,
   getPopups, savePopup, deletePopup,
-  getLeads, deleteLead,
-  getOrders, setOrderStatus, orderStatusMeta, ORDER_STATUSES, ORDER_CANCELLED,
+  getLeads, loadLeads, deleteLead,
+  getOrders, setOrderStatus, clearOrders, orderStatusMeta, ORDER_STATUSES, ORDER_CANCELLED,
   exportAll, importAll,
 } from "./admin-store.js";
 import { openInvoice, downloadInvoice, sendInvoice } from "./invoice.js";
+import { initSync, pull, syncStatus, SYNC_STATUS_EVENT } from "./sync.js";
+import { signIn, signOut, isSignedIn, currentUser, ensureSession } from "./supabase.js";
+import { hasBackend } from "./config.js";
 import { HOME_TEXT_GROUPS, HOME_IMAGES, HOME_SECTIONS, MAX_BANNERS } from "./home-schema.js";
 
 /** כמה שורות להציג בטבלת המוצרים בכל פעם */
@@ -190,6 +193,97 @@ function formValues() {
     out[el.name] = el.type === "checkbox" ? el.checked : el.value;
   });
   return out;
+}
+
+
+/* ==========================================================================
+   01ב. התחברות ומצב הסנכרון
+
+   בלי מסד נתונים מחובר, הניהול עובד כמו קודם — מקומית, בלי התחברות.
+   כשיש מסד, ההרשאות נאכפות בשרת (RLS): בלי התחברות אפשר רק לקרוא,
+   ולכן כל ניסיון לשמור ייכשל. עדיף לומר את זה מראש מאשר לתת ללקוחה
+   לערוך עשר דקות ואז לגלות שכלום לא נשמר.
+   ========================================================================== */
+
+function paintSyncStatus() {
+  const box = $("#syncStatus");
+  if (!box) return;
+
+  if (!hasBackend()) {
+    box.innerHTML = `<span class="sync-dot sync-dot--local"></span>שמירה מקומית בלבד`;
+    box.title = "כדי לסנכרן בין מכשירים יש למלא את liad-shop/js/config.js";
+    return;
+  }
+
+  const { online, error, pushing } = syncStatus();
+
+  if (!isSignedIn()) {
+    box.innerHTML = `<span class="sync-dot sync-dot--warn"></span>לא מחוברת — לצפייה בלבד`;
+  } else if (error || !online) {
+    box.innerHTML = `<span class="sync-dot sync-dot--warn"></span>אין חיבור לשרת`;
+    box.title = error ?? "";
+  } else {
+    box.innerHTML = `<span class="sync-dot sync-dot--ok"></span>${pushing ? "שומר…" : "מסונכרן"}`;
+    box.title = "";
+  }
+}
+
+function wireAuth() {
+  const button = $("#authButton");
+  if (!button) return;
+
+  const paint = () => {
+    button.hidden = !hasBackend();
+    button.textContent = isSignedIn() ? "יציאה" : "התחברות";
+  };
+  paint();
+
+  button.addEventListener("click", async () => {
+    if (isSignedIn()) {
+      if (!confirm("לצאת מהמערכת?")) return;
+      await signOut();
+      paint();
+      paintSyncStatus();
+      toast("יצאת מהמערכת");
+      return;
+    }
+    loginDialog(() => { paint(); paintSyncStatus(); });
+  });
+}
+
+function loginDialog(onDone) {
+  openModal("התחברות לניהול", `
+    <div class="admin-grid">
+      <p class="muted" style="font-size:.875rem;line-height:1.6">
+        זו ההתחברות שיצרת ב-Supabase. בלעדיה אפשר רק לצפות — כל שמירה תיחסם.
+      </p>
+      ${field("אימייל", "email", "", { type: "email", autocomplete: "username" })}
+      ${field("סיסמה", "password", "", { type: "password", autocomplete: "current-password" })}
+      <p class="form-status" id="loginError" role="status" aria-live="polite"></p>
+    </div>`, {
+    saveLabel: "התחברות",
+    onSave() {
+      const { email, password } = formValues();
+      const error = $("#loginError");
+
+      // הכניסה אסינכרונית, ולכן סוגרים את המודאל רק אחרי שהיא הצליחה
+      signIn(email.trim(), password)
+        .then(async () => {
+          closeModal();
+          await initSync();
+          await loadLeads().catch(() => {});
+          onDone?.();
+          refresh();
+          toast("התחברת. השינויים יסונכרנו לכל המכשירים.");
+        })
+        .catch((err) => {
+          error.dataset.state = "error";
+          error.textContent = err.message;
+        });
+
+      return false;   // המודאל נסגר בעצמו בהצלחה
+    },
+  });
 }
 
 
@@ -802,11 +896,15 @@ function renderOrders() {
     </div>`;
 
   $("#exportOrders").addEventListener("click", exportOrdersCsv);
-  $("#clearOrders").addEventListener("click", () => {
+  $("#clearOrders").addEventListener("click", async () => {
     if (!confirm("למחוק את כל ההזמנות? הפעולה בלתי הפיכה.")) return;
-    localStorage.removeItem(CONFIG.storageKeys.orders);
-    renderOrders();
-    toast("ההזמנות נמחקו");
+    try {
+      await clearOrders();
+      renderOrders();
+      toast("ההזמנות נמחקו");
+    } catch (err) {
+      toast(err.message || "המחיקה נכשלה", "info");
+    }
   });
 
   wireOrderCards();
@@ -882,13 +980,20 @@ function wireOrderCards() {
   const list = $("#ordersList");
   if (!list) return;
 
-  list.addEventListener("change", (e) => {
+  list.addEventListener("change", async (e) => {
     const select = e.target.closest("[data-status]");
     if (!select) return;
     const id = select.closest("[data-order]").dataset.order;
-    setOrderStatus(id, select.value);
-    renderOrders();
-    toast(`הסטטוס עודכן ל"${orderStatusMeta(select.value).label}"`);
+    const label = orderStatusMeta(select.value).label;
+    try {
+      await setOrderStatus(id, select.value);
+      renderOrders();
+      toast(`הסטטוס עודכן ל"${label}"`);
+    } catch (err) {
+      // כמעט תמיד: אין התחברות, ולכן ה-RLS חסם את העדכון
+      renderOrders();
+      toast(err.message || "עדכון הסטטוס נכשל. ייתכן שצריך להתחבר.", "info");
+    }
   });
 
   list.addEventListener("click", async (e) => {
@@ -1058,8 +1163,9 @@ function renderLeads() {
     if (!e.target.closest("[data-delete]")) return;
     const id = e.target.closest("tr").dataset.id;
     if (!confirm("למחוק את הרשומה?")) return;
-    deleteLead(id);
-    toast("הרשומה נמחקה");
+    deleteLead(id)
+      .then(() => { renderLeads(); toast("הרשומה נמחקה"); })
+      .catch((err) => toast(err.message || "המחיקה נכשלה", "info"));
   });
 
   $("#exportLeads").addEventListener("click", () => {
@@ -1635,12 +1741,17 @@ async function boot() {
     $("#adminMain").innerHTML =
       `<div class="notice notice--danger">הקטלוג לא נטען. יש להריץ את הדף דרך שרת מקומי.</div>`;
   }
+
+  // רשימת הלקוחות מוגנת, ולכן נמשכת רק אחרי התחברות
+  if (isSignedIn()) await loadLeads().catch(() => {});
+
   draw();
 }
 
-function init() {
+async function init() {
   initAccessibility();
   wireModal();
+  wireAuth();
   readHash();
 
   document.addEventListener("click", (e) => {
@@ -1656,8 +1767,12 @@ function init() {
 
   // כל שמירה במערכת מרעננת את המסך, כך שמה שרואים הוא תמיד המצב האמיתי
   document.addEventListener(ADMIN_EVENT, refresh);
+  document.addEventListener(SYNC_STATUS_EVENT, paintSyncStatus);
 
-  boot();
+  await ensureSession();
+  await initSync();
+  paintSyncStatus();
+  await boot();
 }
 
 document.addEventListener("DOMContentLoaded", init);

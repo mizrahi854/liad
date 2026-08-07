@@ -20,8 +20,8 @@ import { openInvoice, downloadInvoice } from "./invoice.js";
 
 let current = null;
 
-function init() {
-  initShared();
+async function init() {
+  await initShared();
 
   const form = $("#trackForm");
   const input = $("#orderInput");
@@ -43,7 +43,7 @@ function init() {
 
 /* ---------------------------------------------------------------- חיפוש */
 
-function lookup(value) {
+async function lookup(value) {
   const status = $("#trackStatus");
   const box = $("#trackResult");
   const id = String(value || "").trim();
@@ -55,7 +55,9 @@ function lookup(value) {
     return;
   }
 
-  const order = findOrder(id);
+  status.dataset.state = "";
+  status.textContent = "מחפשים…";
+  const order = await findOrder(id);
 
   if (!order) {
     status.dataset.state = "error";

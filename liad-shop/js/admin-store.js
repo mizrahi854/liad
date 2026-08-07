@@ -3,14 +3,14 @@
    נקודת האמת היחידה לכל מה שהלקוחה משנה בממשק הניהול.
 
    למה מודול נפרד:
-     גם החנות, גם דף הבית וגם הניהול קוראים מכאן. כשיהיה שרת, רק
-     הפונקציות read/write שבתחתית הקובץ משתנות — שום קובץ אחר לא נוגע
-     בשמירה ישירות, ולכן המעבר לא ידרוש שכתוב.
+     גם החנות, גם דף הבית וגם הניהול קוראים מכאן. כל השמירה עוברת דרך
+     read/write שבתחתית הקובץ, ולכן החלפת מקום האחסון לא דרשה לגעת
+     בשום מסך.
 
-   איפה זה נשמר היום:
-     localStorage של הדפדפן. זה אומר שהשינויים נראים מיד באתר *במכשיר
-     הזה*, אבל לא אצל לקוחות אחרות. כדי לפרסם אותם באמת יש כפתור
-     "פרסום" שמייצר את קובצי ה-JSON להעלאה לשרת.
+   איפה זה נשמר:
+     ב-Supabase, דרך js/sync.js. כל שינוי מופיע בכל המכשירים.
+     אם החיבור לא הוגדר (liad-shop/js/config.js ריק) הכול נשמר
+     בדפדפן בלבד, בדיוק כמו קודם — האתר חייב לעבוד גם ככה.
 
    מבנה השכבות של הקטלוג:
      קטלוג הבסיס (data/products.json)
@@ -19,6 +19,14 @@
        − removed — מוצרים שנמחקו
      = הקטלוג שהחנות מציגה בפועל
    ========================================================================== */
+
+import {
+  stateRead, stateWrite,
+  ordersCache, saveOrderRemote, patchOrderRemote, fetchOrder as fetchOrderRemote,
+  clearOrdersRemote,
+  couponsCache, setCouponsCache, saveCouponRemote, deleteCouponRemote,
+  fetchLeads, deleteLeadRemote, recordLeadRemote,
+} from "./sync.js";
 
 export const ADMIN_KEYS = {
   catalog: "liad:admin-catalog",
@@ -203,9 +211,13 @@ export function listCategories(products = [], fallbackLabels = {}) {
  * @property {boolean} active
  */
 
+/*
+ * הקופונים יושבים בטבלה משלהם ולא ב-site_state, כי הצ׳קאאוט צריך לבדוק
+ * מולם תוקף ומכסת שימושים — וזו בדיקה שחייבת להיות אמיתית ולא מקומית.
+ */
 export function getCoupons() {
-  const list = read(ADMIN_KEYS.coupons, null);
-  if (Array.isArray(list)) return list;
+  const list = couponsCache();
+  if (list.length) return list;
 
   // ברירת מחדל: הקופון שהיה קשיח בקוד, כדי שקמפיין קיים לא ייפול
   const seed = [{
@@ -219,12 +231,12 @@ export function getCoupons() {
     active: true,
     label: "10% לרכישה ראשונה",
   }];
-  write(ADMIN_KEYS.coupons, seed);
+  setCouponsCache(seed);
   return seed;
 }
 
 export function saveCoupon(coupon) {
-  const list = getCoupons();
+  const list = [...getCoupons()];
   const code = String(coupon.code || "").trim().toUpperCase();
   if (!code) return null;
 
@@ -245,12 +257,17 @@ export function saveCoupon(coupon) {
   if (index >= 0) list[index] = { ...list[index], ...record };
   else list.push(record);
 
-  write(ADMIN_KEYS.coupons, list);
+  setCouponsCache(list);
+  saveCouponRemote(record).catch((err) => console.error("[LIAD] שמירת הקופון נכשלה:", err));
+  announce();
   return record;
 }
 
 export function deleteCoupon(code) {
-  write(ADMIN_KEYS.coupons, getCoupons().filter((c) => c.code !== String(code).toUpperCase()));
+  const wanted = String(code).toUpperCase();
+  setCouponsCache(getCoupons().filter((c) => c.code !== wanted));
+  deleteCouponRemote(wanted).catch((err) => console.error("[LIAD] מחיקת הקופון נכשלה:", err));
+  announce();
 }
 
 /**
@@ -283,11 +300,12 @@ export function validateCoupon(code, { firstOrder = false } = {}) {
 
 /** מעלה את מונה השימושים אחרי הזמנה שהושלמה */
 export function redeemCoupon(code) {
-  const list = getCoupons();
+  const list = [...getCoupons()];
   const coupon = list.find((c) => c.code === String(code || "").toUpperCase());
   if (!coupon) return;
   coupon.used = (coupon.used ?? 0) + 1;
-  write(ADMIN_KEYS.coupons, list);
+  setCouponsCache(list);
+  saveCouponRemote(coupon).catch((err) => console.error("[LIAD] עדכון מונה הקופון נכשל:", err));
 }
 
 function defaultCouponLabel(c) {
@@ -413,8 +431,6 @@ export function deletePopup(id) {
    שלבי הציר בעמוד המעקב — בלי לתחזק שתי רשימות.
    ========================================================================== */
 
-const ORDERS_KEY = "liad:orders";
-
 /** @type {{id:string,label:string,note:string,icon:string}[]} */
 export const ORDER_STATUSES = [
   { id: "received",  label: "ההזמנה התקבלה", note: "קיבלנו את ההזמנה והיא ממתינה לטיפול." },
@@ -432,37 +448,46 @@ export function orderStatusMeta(id) {
     ?? (id === ORDER_CANCELLED.id ? ORDER_CANCELLED : ORDER_STATUSES[0]);
 }
 
+/** ההזמנות שבמטמון — סינכרוני, לשימוש מסכי הניהול */
 export function getOrders() {
-  const list = read(ORDERS_KEY, []);
-  return Array.isArray(list) ? list : [];
+  return ordersCache();
 }
 
 /**
  * מחפש הזמנה לפי מספר. מתעלם מרווחים ומאותיות גדולות/קטנות, כי הקונה
  * מקלידה את המספר ביד מתוך הודעה או מסך.
+ *
+ * אסינכרוני, כי הקונה עשויה לעקוב ממכשיר אחר לגמרי — ואז ההזמנה
+ * קיימת רק בשרת.
  */
 export function findOrder(id) {
-  const wanted = String(id || "").trim().toUpperCase().replace(/\s+/g, "");
-  if (!wanted) return null;
-  return getOrders().find((o) => String(o.id).toUpperCase().replace(/\s+/g, "") === wanted) ?? null;
+  return fetchOrderRemote(id);
 }
 
 /**
  * מעדכן סטטוס ושומר את ההיסטוריה, כדי שעמוד המעקב יוכל להראות
  * *מתי* כל שלב קרה ולא רק איפה ההזמנה נמצאת עכשיו.
  */
-export function setOrderStatus(id, status, { note = "" } = {}) {
-  const orders = getOrders();
-  const order = orders.find((o) => o.id === id);
+export async function setOrderStatus(id, status, { note = "" } = {}) {
+  const order = ordersCache().find((o) => o.id === id);
   if (!order) return null;
 
-  order.status = status;
-  order.statusHistory = Array.isArray(order.statusHistory) ? order.statusHistory : [];
-  order.statusHistory.push({ status, note, at: new Date().toISOString() });
-  order.updatedAt = new Date().toISOString();
+  const statusHistory = [
+    ...(Array.isArray(order.statusHistory) ? order.statusHistory : []),
+    { status, note, at: new Date().toISOString() },
+  ];
 
-  write(ORDERS_KEY, orders);
-  return order;
+  await patchOrderRemote(id, { status, statusHistory, updatedAt: new Date().toISOString() });
+  return { ...order, status, statusHistory };
+}
+
+/** שומר הזמנה חדשה */
+export function saveOrder(order) {
+  return saveOrderRemote(order);
+}
+
+export function clearOrders() {
+  return clearOrdersRemote();
 }
 
 /* ==========================================================================
@@ -479,9 +504,23 @@ export function setOrderStatus(id, status, { note = "" } = {}) {
  * @property {string} createdAt
  */
 
+/*
+ * רשימת הלקוחות היא נכס עסקי, ולכן היא היחידה שאנונימית לא יכולה
+ * לקרוא — גם לא דרך קוד המקור של האתר. הקריאה דורשת התחברות, והכתיבה
+ * עוברת דרך פונקציה בשרת שמונעת כפילויות בלי לחשוף שום רשומה.
+ */
+
+let leadsCache = [];
+
+/** הרשימה שבמטמון. יש לקרוא ל-loadLeads() לפני, כדי למלא אותה. */
 export function getLeads() {
-  const list = read(ADMIN_KEYS.leads, []);
-  return Array.isArray(list) ? list : [];
+  return leadsCache;
+}
+
+/** מושך את רשימת הלקוחות מהשרת */
+export async function loadLeads() {
+  leadsCache = await fetchLeads();
+  return leadsCache;
 }
 
 /**
@@ -489,11 +528,13 @@ export function getLeads() {
  * פנייה חוזרת מעדכנת את הרשומה הקיימת ומוסיפה את המקור.
  */
 export function addLead({ name = "", email = "", phone = "", source = "newsletter" }) {
-  const list = getLeads();
   const key = (email || phone).trim().toLowerCase();
   if (!key) return null;
 
-  const existing = list.find(
+  recordLeadRemote({ name, email, phone, source });
+
+  // מראה מקומי, כדי שהרשימה תתעדכן מיד גם לפני המשיכה הבאה
+  const existing = leadsCache.find(
     (l) => (l.email || l.phone || "").trim().toLowerCase() === key
   );
 
@@ -503,7 +544,6 @@ export function addLead({ name = "", email = "", phone = "", source = "newslette
     existing.email = email || existing.email;
     if (!existing.sources.includes(source)) existing.sources.push(source);
     existing.updatedAt = new Date().toISOString();
-    write(ADMIN_KEYS.leads, list);
     return existing;
   }
 
@@ -516,13 +556,14 @@ export function addLead({ name = "", email = "", phone = "", source = "newslette
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   };
-  list.unshift(lead);
-  write(ADMIN_KEYS.leads, list);
+  leadsCache.unshift(lead);
   return lead;
 }
 
-export function deleteLead(id) {
-  write(ADMIN_KEYS.leads, getLeads().filter((l) => l.id !== id));
+export async function deleteLead(id) {
+  leadsCache = leadsCache.filter((l) => l.id !== id);
+  await deleteLeadRemote(id);
+  announce();
 }
 
 /* ==========================================================================
@@ -575,24 +616,25 @@ export function importAll(json) {
    שמירה — הנקודה היחידה שתשתנה כשיהיה שרת
    ========================================================================== */
 
+/*
+ * שתי הפונקציות האלה הן הגשר אל מסד הנתונים.
+ *
+ * הן נשארו סינכרוניות בכוונה: כל האתר קורא מהן בלי await, והפיכתן
+ * לאסינכרוניות הייתה מחייבת לשכתב כל מסך. במקום זה js/sync.js מחזיק
+ * מטמון בזיכרון — קריאה מיידית ממנו, וכתיבה שנדחפת לשרת ברקע.
+ *
+ * המפתחות כאן נושאים קידומת "liad:" מסיבות היסטוריות; שכבת הסנכרון
+ * עובדת בלעדיה, ולכן מסירים אותה כאן במקום אחד.
+ */
+
+const bare = (key) => String(key).replace(/^liad:/, "");
+
 function read(key, fallback) {
-  try {
-    const raw = localStorage.getItem(key);
-    return raw ? JSON.parse(raw) : fallback;
-  } catch {
-    return fallback;
-  }
+  return stateRead(bare(key), fallback);
 }
 
 function write(key, value, { quiet = false } = {}) {
-  try {
-    localStorage.setItem(key, JSON.stringify(value));
-  } catch (err) {
-    // המקרה הריאלי: מכסת האחסון נגמרה בגלל תמונות שהועלו כ-data URL
-    console.error("[LIAD] השמירה נכשלה:", err);
-    throw new Error("אין מספיק מקום אחסון בדפדפן. נסו למחוק תמונות כבדות או לייצא ולאפס.");
-  }
-  if (!quiet) announce();
+  stateWrite(bare(key), value, { quiet });
 }
 
 function announce() {

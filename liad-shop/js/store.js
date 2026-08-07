@@ -9,6 +9,7 @@
    ========================================================================== */
 
 import { applyCatalogPatch, validateCoupon as checkCoupon } from "./admin-store.js";
+import { saveOrderRemote, fetchOrder, ordersCache } from "./sync.js";
 
 /* ---------------------------------------------------------------- הגדרות */
 
@@ -170,7 +171,7 @@ export function cartCount(cart = getCart()) {
 /* ---------------------------------------------------------------- חישוב סכום */
 
 export function isFirstOrder() {
-  return readJSON(CONFIG.storageKeys.orders, []).length === 0;
+  return ordersCache().length === 0;
 }
 
 /**
@@ -223,15 +224,16 @@ export function validateCoupon(code) {
 
 /* ---------------------------------------------------------------- הזמנות */
 
+/*
+ * ההזמנות עוברות דרך שכבת הסנכרון: הן נשמרות מקומית מיד וגם נדחפות
+ * לשרת, כדי שהן ייראו בניהול ובמעקב מכל מכשיר.
+ */
 export function saveOrder(order) {
-  const orders = readJSON(CONFIG.storageKeys.orders, []);
-  orders.push(order);
-  writeJSON(CONFIG.storageKeys.orders, orders);
-  return order;
+  return saveOrderRemote(order);
 }
 
 export function getOrder(id) {
-  return readJSON(CONFIG.storageKeys.orders, []).find((o) => o.id === id) || null;
+  return fetchOrder(id);
 }
 
 export function newOrderId() {
