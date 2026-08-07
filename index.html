@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LIAD | אסתטיקה ויופי</title>
+  <meta name="description" content="LIAD — חנות מוצרי ציפורניים מקצועיים ואקדמיה בוטיקית להכשרה.">
+
+  <!--
+    שער הכניסה של האתר.
+
+    למה הקובץ הזה קיים: הפרויקט בנוי משתי תיקיות — liad-landing ו-liad-shop —
+    ובלעדיו הכתובת הראשית (למשל בדומיין או ב-GitHub Pages) מחזירה 404.
+    כאן רק מפנים לדף הכניסה. שום תוכן לא יושב בקובץ הזה.
+
+    ההפניה נעשית בשלוש שכבות, כי כל אחת נכשלת במקרה אחר:
+      1. meta refresh  — עובד גם בלי JavaScript
+      2. JS + replace  — מיידי, ולא משאיר את הדף הזה בהיסטוריה
+      3. קישור גלוי    — אם שתי הראשונות נחסמו, עדיין אפשר להיכנס
+  -->
+  <meta http-equiv="refresh" content="0; url=liad-landing/index.html">
+  <link rel="canonical" href="liad-landing/index.html">
+  <link rel="icon" href="liad-landing/assets/_originals/liad-logo.png" type="image/png">
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      gap: 1rem;
+      background-color: #fbf8f4;
+      color: #2b2724;
+      font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      text-align: center;
+    }
+    a {
+      color: #a8862c;
+      font-size: 1.0625rem;
+      text-underline-offset: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <p>מעבירים אותך לאתר של LIAD…</p>
+    <p><a href="liad-landing/index.html">כניסה לאתר</a></p>
+  </main>
+
+  <script>
+    // replace ולא href — כדי שכפתור "אחורה" לא יחזיר לכאן ויתחיל לולאה
+    location.replace("liad-landing/index.html");
+  </script>
+</body>
+</html>
