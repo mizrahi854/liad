@@ -20,6 +20,13 @@
       "runtimeArgs": ["tools/dev_server.py", "4176"],
       "port": 4176,
       "url": "http://localhost:4176"
+    },
+    {
+      "_comment": "אתר Rentus — הועבר ל-~/Documents/rentus (שם ללא עברית/רווחים, כדי למנוע בעיות קידוד בכלים חיצוניים). לפרויקט הזה יש עכשיו launch.json משלו שם.",
+      "name": "index-site",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "/Users/yanaimizrahi/Documents/rentus", "run", "dev"],
+      "port": 3000
     }
   ]
 }
